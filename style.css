@@ -1,0 +1,45 @@
+body {
+    margin: 60px 0;
+}
+h1, h2,
+h3 {
+        text-align: center;
+        margin: 0;
+}
+h1 {
+    font-size: 96px;
+}
+ h2 {
+font-size: 48px;
+ }
+  h3 {
+    font-size: 24px;
+    opacity: 0.7;
+}
+h1 {
+    font-size: 96px;
+}
+.navigation-links {
+    display: flex;
+    justify-content: center;
+}
+.navigation-links a {
+    margin: 20px;
+    border-radius: 4px;
+}
+.contact-link {
+    background: #6c63ff;
+    color: white;
+    text-decoration: none;
+    padding: 20px 15px;
+   
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+.about-link {
+    padding: 20px 15px;
+    color: #6c63ff;
+    border: 1px solid #6c63ff;
+    padding: 20px 15px;
+    text-decoration: none;
+    
+}
