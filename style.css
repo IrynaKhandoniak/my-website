@@ -43,19 +43,23 @@
   
   .navigation-links a {
     margin: 20px;
+  }
+  
+  .primary-link {
     border-radius: 4px;
     padding: 20px 15px;
     text-decoration: none;
     text-transform: capitalize;
-  }
-  
-  .contact-link {
     background: var(--primary-color);
     box-shadow: var(--box-shadow);
     color: white;
   }
   
-  .about-link {
+  .secondary-link {
+    border-radius: 4px;
+    padding: 20px 15px;
+    text-decoration: none;
+    text-transform: capitalize;
     color: var(--primary-color);
     border: 1px solid var(--primary-color);
   }
