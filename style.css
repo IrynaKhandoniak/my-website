@@ -42,7 +42,9 @@
    line-height: 1.5;
     text-align: center;
   }
-  
+  .hero {
+    background: #f9f7fe;
+  }
   .navigation-links {
     display: flex;
     margin-top: 40px;
