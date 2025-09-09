@@ -176,7 +176,8 @@
       <a href="#home" class="navbar-title">Portfolio 2025</a>
       <ul>
         <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#cv">My CV</a></li>
+        <!-- FIXED: link to your dedicated CV page -->
+        <li><a href="mycv.html">My CV</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#explore">Explore</a></li>
         <li><a href="#message">Contact</a></li>
@@ -194,7 +195,6 @@
       </div>
     </section>
 
-  
     <!-- DESIGN / ENGINEERING SPLIT -->
     <section id="design" class="split-wrap">
       <div class="split-card">
@@ -216,14 +216,13 @@
             <ul class="feat-list">
               <li class="on">Reusable component systems</li>
               <li class="on">React, APIs, TypeScript basics</li>
-              
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-      <!-- ABOUT (dark purple) -->
+    <!-- ABOUT (dark purple) -->
     <section id="about" class="about-dark">
       <div class="about-inner">
         <div class="about-dots"></div>
@@ -252,28 +251,26 @@
     </section>
 
     <!-- EXPLORE (two-column) -->
-<section id="explore" class="explore">
-  <div class="explore-inner">
-    <div class="explore-grid">
-      <div>
-        <h2 class="exp-title">I build &<br/>design stuff</h2>
-        <p class="exp-text">Open source projects, web apps and experimentals.</p>
-        <a class="cta-ghost" href="#work">
-          SEE MY WORK <span class="arrow">→</span>
-        </a>
+    <section id="explore" class="explore">
+      <div class="explore-inner">
+        <div class="explore-grid">
+          <div>
+            <h2 class="exp-title">I build &<br/>design stuff</h2>
+            <p class="exp-text">Open source projects, web apps and experimentals.</p>
+            <a class="cta-ghost" href="#work">
+              SEE MY WORK <span class="arrow">→</span>
+            </a>
+          </div>
+          <div>
+            <h2 class="exp-title">I write,<br/>sometimes</h2>
+            <p class="exp-text">About design, frontend dev, learning and life.</p>
+            <a class="cta-ghost" href="articles.html">
+              READ MY ARTICLES <span class="arrow">→</span>
+            </a>
+          </div>
+        </div>
       </div>
-      <div>
-        <h2 class="exp-title">I write,<br/>sometimes</h2>
-        <p class="exp-text">About design, frontend dev, learning and life.</p>
-        <!-- changed to your on-site article page -->
-        <a class="cta-ghost" href="articles.html">
-          READ MY ARTICLES <span class="arrow">→</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- CONTACT FORM -->
     <section id="message" class="message">
@@ -307,19 +304,18 @@
     <footer id="footer" class="footer-dark">
       <div class="footer-inner">
         <div class="footer-grid">
-          <!-- Left: Say hello -->
           <div>
             <span class="footer-label">SAY HELLO</span>
             <a class="footer-link" href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a>
             <a class="footer-link" href="https://t.me/irynakhandoniak" target="_blank" rel="noreferrer">t.me/irynakhandoniak</a>
           </div>
 
-          <!-- Right: quick links -->
           <div>
             <ul class="footer-list">
               <li><a href="#work">My Work</a></li>
-              <li><a href="#explore">My Shelf</a></li>
-              <li><a href="resume.pdf" target="_blank" rel="noreferrer">My Résumé</a></li>
+             
+              <!-- FIXED: point résumé to the dedicated page -->
+              <li><a href="mycv.html">My CV</a></li>
             </ul>
           </div>
         </div>
@@ -339,4 +335,3 @@
     </footer>
   </body>
 </html>
-
