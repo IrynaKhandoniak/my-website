@@ -18,10 +18,11 @@
       :root{
         --primary:#6c63ff;
         --primary-600:#5548d6;
-        --deep:#2d2554;
+        --deep:#2d2554;          /* dark purple */
         --surface:#faf9ff;
         --ink:#272142;
         --muted:#8b86a5;
+        --lime:#e9ff6b;          /* lime accent for footer */
         --shadow:0 12px 30px rgba(0,0,0,.06);
       }
 
@@ -94,51 +95,66 @@
       .feat-list li::before{content:"";flex:0 0 10px;height:10px;border-radius:2px;border:2px solid var(--primary);margin-top:6px;}
       .feat-list li.on::before{background:var(--primary);}
 
-      /* ===== NEW SECTION: EXPLORE (two columns, divider) ===== */
+      /* ===== EXPLORE (two columns, divider) ===== */
       .explore{background:#fff;padding:110px 24px 120px;}
       .explore-inner{max-width:1200px;margin:0 auto;position:relative;}
-      .explore-grid{
-        display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;
-        position:relative;
-      }
-      .explore-grid::before{
-        content:"";position:absolute;top:-20px;bottom:-20px;left:50%;width:1px;background:#d8d2ff;
-        transform:translateX(-0.5px);
-      }
+      .explore-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;position:relative;}
+      .explore-grid::before{content:"";position:absolute;top:-20px;bottom:-20px;left:50%;width:1px;background:#d8d2ff;transform:translateX(-0.5px);}
       .exp-title{font-weight:800;color:var(--primary);font-size:56px;line-height:1.1;margin:0 0 18px;}
       .exp-text{color:#3f3b52;font-size:22px;line-height:1.6;margin-bottom:36px;max-width:520px;}
-      .cta-ghost{
-        display:inline-flex;align-items:center;justify-content:center;gap:16px;
-        padding:18px 28px;border:2px solid var(--primary);color:var(--primary);text-decoration:none;
-        border-radius:6px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-      }
+      .cta-ghost{display:inline-flex;align-items:center;justify-content:center;gap:16px;padding:18px 28px;border:2px solid var(--primary);color:var(--primary);text-decoration:none;border-radius:6px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
       .cta-ghost span.arrow{transition:transform .25s;}
       .cta-ghost:hover .arrow{transform:translateX(6px);}
 
-      /* ===== CONTACT FORM SECTION (Message) ===== */
+      /* ===== CONTACT FORM ===== */
       .message{background:#f7f6ff;padding:120px 24px;}
       .message-inner{max-width:1000px;margin:0 auto;text-align:center;}
       .msg-title{font-size:56px;line-height:1.1;margin:0 0 14px;font-weight:800;color:var(--primary);}
       .msg-sub{color:#4b4466;font-size:22px;max-width:780px;margin:0 auto 46px;}
       .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:28px;text-align:left;}
       .form-field label{display:block;color:#9a92bd;margin-bottom:10px;}
-      .line-input,.line-textarea{
-        width:100%;background:transparent;border:none;border-bottom:2px solid rgba(108,99,255,.35);
-        padding:12px 2px;color:#2d264f;font-size:16px;outline:none;
-      }
+      .line-input,.line-textarea{width:100%;background:transparent;border:none;border-bottom:2px solid rgba(108,99,255,.35);padding:12px 2px;color:#2d264f;font-size:16px;outline:none;}
       .line-input:focus,.line-textarea:focus{border-bottom-color:var(--primary);}
       .line-textarea{min-height:100px;resize:vertical;}
-      .shoot{
-        display:inline-flex;align-items:center;gap:16px;margin-top:30px;
-        padding:18px 40px;border:2px solid var(--primary);color:var(--primary);
-        background:transparent;border-radius:6px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
-      }
+      .shoot{display:inline-flex;align-items:center;gap:16px;margin-top:30px;padding:18px 40px;border:2px solid var(--primary);color:var(--primary);background:transparent;border-radius:6px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;}
       .shoot .arrow{transition:transform .25s;}
       .shoot:hover .arrow{transform:translateX(6px);}
 
-      /* ===== WORK (kept minimal) ===== */
-      .projects-wrap{max-width:1200px;margin:0 auto;padding:60px 24px;}
-      .projects-wrap h2{text-align:center;margin-bottom:24px;}
+      /* ===== FINAL FOOTER PAGE (dark, lime accents) ===== */
+      .footer-dark{
+        background:var(--deep);
+        color:#dcd6ff;
+        padding:140px 24px 80px;
+      }
+      .footer-inner{
+        max-width:1200px;margin:0 auto;
+      }
+      .footer-grid{
+        display:grid;grid-template-columns:1.2fr 1fr;gap:80px;
+        align-items:start;margin-bottom:80px;
+      }
+      .footer-label{
+        letter-spacing:.25em;text-transform:uppercase;color:var(--lime);
+        margin-bottom:24px;display:block;
+      }
+      .footer-link{
+        display:block;color:var(--lime);text-decoration:none;font-size:20px;margin:18px 0;
+      }
+      .footer-link:hover{opacity:.85;}
+      .footer-list{list-style:none;padding:0;margin:0;display:grid;gap:18px;}
+      .footer-list a{color:var(--lime);text-decoration:none;font-size:20px;}
+      .footer-list a:hover{opacity:.85;}
+      .footer-hr{
+        height:1px;background:rgba(255,255,255,.25);
+        border:0;margin:0 0 26px;
+      }
+      .footer-bottom{
+        display:flex;align-items:center;justify-content:space-between;gap:16px;
+      }
+      .copyright{color:#dcd6ff;}
+      .social-mini{display:flex;gap:36px;}
+      .social-mini a{color:var(--lime);text-decoration:none;font-weight:700;letter-spacing:.12em;}
+      .social-mini a:hover{opacity:.85;}
 
       /* ===== RESPONSIVE ===== */
       @media (max-width: 992px){
@@ -149,12 +165,14 @@
         .explore-grid::before{display:none;}
         .explore-grid{grid-template-columns:1fr;gap:48px;}
         .form-grid{grid-template-columns:1fr;}
+        .footer-grid{grid-template-columns:1fr;gap:40px;}
       }
       @media (max-width: 768px){
         .navbar-custom{flex-direction:column;gap:10px;}
         .hero-overlay{left:50%;top:88%;transform:translate(-50%,-50%);justify-content:center;}
         .btn-main,.btn-outline{width:220px;text-align:center;}
         .about-title,.exp-title,.msg-title{font-size:38px;}
+        .footer-bottom{flex-direction:column;gap:12px;align-items:flex-start;}
       }
     </style>
   </head>
@@ -183,34 +201,7 @@
       </div>
     </section>
 
-    <!-- ABOUT (dark purple) -->
-    <section id="about" class="about-dark">
-      <div class="about-inner">
-        <div class="about-dots"></div>
-        <div class="about-card" aria-hidden="true"></div>
-        <div>
-          <p class="about-kicker">How About Me?</p>
-          <h2 class="about-title">Front-end Developer & Photography Lover</h2>
-          <p class="about-text">
-            I build clean, accessible interfaces and component libraries. When I’m not coding, I’m
-            behind the camera capturing portraits, food, and everyday stories. I love design systems,
-            typography, and tiny UI details that make products feel polished.
-          </p>
-          <div class="chips">
-            <span class="chip">Photography</span>
-            <span class="chip">HTML • CSS • JS</span>
-            <span class="chip">React</span>
-            <span class="chip">Design Systems</span>
-            <span class="chip">Accessibility</span>
-          </div>
-          <div class="about-stats">
-            <div class="stat"><div class="num">4+</div><div class="label">Web Projects</div></div>
-            <div class="stat"><div class="num">100+</div><div class="label">Photos Delivered</div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+  
     <!-- DESIGN / ENGINEERING SPLIT -->
     <section id="design" class="split-wrap">
       <div class="split-card">
@@ -240,11 +231,38 @@
       </div>
     </section>
 
-    <!-- EXPLORE (two-column with divider) -->
+      <!-- ABOUT (dark purple) -->
+    <section id="about" class="about-dark">
+      <div class="about-inner">
+        <div class="about-dots"></div>
+        <div class="about-card" aria-hidden="true"></div>
+        <div>
+          <p class="about-kicker">How About Me?</p>
+          <h2 class="about-title">Front-end Developer & Photography Lover</h2>
+          <p class="about-text">
+            I build clean, accessible interfaces and component libraries. When I’m not coding, I’m
+            behind the camera capturing portraits, food, and everyday stories. I love design systems,
+            typography, and tiny UI details that make products feel polished.
+          </p>
+          <div class="chips">
+            <span class="chip">Photography</span>
+            <span class="chip">HTML • CSS • JS</span>
+            <span class="chip">React</span>
+            <span class="chip">Design Systems</span>
+            <span class="chip">Accessibility</span>
+          </div>
+          <div class="about-stats">
+            <div class="stat"><div class="num">4+</div><div class="label">Web Projects</div></div>
+            <div class="stat"><div class="num">100+</div><div class="label">Photos Delivered</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPLORE (two-column) -->
     <section id="explore" class="explore">
       <div class="explore-inner">
         <div class="explore-grid">
-          <!-- Left -->
           <div>
             <h2 class="exp-title">I build &<br/>design stuff</h2>
             <p class="exp-text">Open source projects, web apps and experimentals.</p>
@@ -252,8 +270,6 @@
               SEE MY WORK <span class="arrow">→</span>
             </a>
           </div>
-
-          <!-- Right -->
           <div>
             <h2 class="exp-title">I write,<br/>sometimes</h2>
             <p class="exp-text">About design, frontend dev, learning and life.</p>
@@ -265,22 +281,9 @@
       </div>
     </section>
 
-    <!-- WORK (example) -->
-    <section id="work" class="projects-wrap">
-      <h2>Selected Work</h2>
-      <div class="row align-items-center g-4">
-        <div class="col-md-6">
-          <img src="images/photography.png" class="img-fluid rounded-3 shadow-sm" alt="Photo project preview" />
-        </div>
-        <div class="col-md-6">
-          <h3>Photo Page</h3>
-          <p class="text-muted">A clean landing page that blends crisp typography and interactive details.</p>
-          <a href="https://flashbacks.studio" class="btn btn-outline-primary">Learn more</a>
-        </div>
-      </div>
-    </section>
+   
 
-    <!-- MESSAGE (contact form) -->
+    <!-- CONTACT FORM -->
     <section id="message" class="message">
       <div class="message-inner">
         <h2 class="msg-title">Send me a message!</h2>
@@ -307,5 +310,41 @@
         </form>
       </div>
     </section>
+
+    <!-- ===== FINAL FOOTER PAGE (dark, lime) ===== -->
+    <footer id="footer" class="footer-dark">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <!-- Left: Say hello -->
+          <div>
+            <span class="footer-label">SAY HELLO</span>
+            <a class="footer-link" href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a>
+            <a class="footer-link" href="https://t.me/irynakhandoniak" target="_blank" rel="noreferrer">t.me/irynakhandoniak</a>
+          </div>
+
+          <!-- Right: quick links -->
+          <div>
+            <ul class="footer-list">
+              <li><a href="#work">My Work</a></li>
+              <li><a href="#explore">My Shelf</a></li>
+              <li><a href="resume.pdf" target="_blank" rel="noreferrer">My Résumé</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="footer-hr" />
+
+        <div class="footer-bottom">
+          <div class="copyright">© Iryna Khandoniak 2025</div>
+          <div class="social-mini">
+            <a href="https://twitter.com/" target="_blank" rel="noreferrer" aria-label="Twitter">TW</a>
+            <a href="https://github.com/IrynaKhandoniak" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
+            <a href="https://www.linkedin.com/in/irynakhandoniak/" target="_blank" rel="noreferrer" aria-label="LinkedIn">LN</a>
+            <a href="https://youtube.com/" target="_blank" rel="noreferrer" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
+
