@@ -8,6 +8,7 @@
 
 body {
   font-family: var(--default-font-family);
+  margin: 0;
 }
 
 h1,
@@ -18,22 +19,11 @@ h3 {
   font-weight: bold;
 }
 
-
 h1 {
   font-size: 96px;
   line-height: 1.5;
-  
 }
-@media (max-width: 900px) {
-  h1{
-  font-size: 48px;
-  line-height: 1.5;
- }
- h2 {
-  font-size: 36px ;
- 
- }
-}
+
 h2 {
   font-size: 48px;
 }
@@ -44,34 +34,52 @@ h3 {
 }
 
 p {
- font-size: 18px;
- line-height: 1.5;
-
- 
+  font-size: 18px;
+  line-height: 1.5;
 }
+
+@media (max-width: 900px) {
+  h1 {
+    font-size: 48px;
+    line-height: 1.5;
+  }
+  h2 {
+    font-size: 36px;
+  }
+  h4 {
+    font-size: 26px;
+  }
+}
+
+/* ===== NAVIGATION ===== */
 nav {
   padding: 20px 0;
 }
+
 nav ul {
   padding: 0;
   margin: 0;
 }
+
 nav li {
   display: inline;
   list-style: none;
   line-height: 42px;
-margin-left: 15px;
+  margin-left: 15px;
 }
+
 nav a {
   text-decoration: none;
   color: #272142;
   transition: all 100ms ease-in-out;
 }
+
 nav a:hover,
 nav li.active a {
-  color: var(--branding-color);
+  color: var(--primary-color);
 }
 
+/* ===== LINKS ===== */
 .navigation-links {
   display: flex;
   margin-top: 40px;
@@ -92,6 +100,10 @@ nav li.active a {
   color: white;
 }
 
+.primary-link:hover {
+  background: #5548d6;
+}
+
 .secondary-link {
   border-radius: 4px;
   padding: 20px 15px;
@@ -101,20 +113,21 @@ nav li.active a {
   border: 1px solid var(--primary-color);
 }
 
-.homepage-link {
-  color: var(--primary-color);
-  text-align: center;
-  display: block;
+.secondary-link:hover {
+  background: var(--primary-color);
+  color: white;
 }
 
+/* ===== ABOUT ===== */
 .about-paragraphs {
-   margin: 30px 0;
+  margin: 30px 0;
 }
 
 .about-paragraphs p {
   margin: 10px;
 }
 
+/* ===== EMAIL ===== */
 .email-link {
   display: flex;
   justify-content: center;
@@ -126,6 +139,8 @@ nav li.active a {
 .email-link:hover {
   text-decoration: underline;
 }
+
+/* ===== FOOTER ===== */
 footer {
   margin: 60px 0;
 }
@@ -147,12 +162,12 @@ footer .email-link {
 }
 
 footer .email-link:hover {
-  color: var(--branding-color);
+  color: var(--primary-color);
 }
 
 footer .social-links a {
   margin: 0 20px;
-  color: var(--branding-color);
+  color: var(--primary-color);
   background: var(--secondary-color);
   padding: 10px 14px;
   border-radius: 50%;
@@ -162,23 +177,11 @@ footer .social-links a {
 
 footer .social-links a:hover {
   color: white;
-  background: var(--branding-color);
+  background: var(--primary-color);
 }
 
+/* ===== MOBILE ===== */
 @media (max-width: 900px) {
-  h1 {
-    font-size: 44px;
-    line-height: 1.5;
-  }
-
-  h2 {
-    font-size: 44px;
-  }
-
-  h4 {
-    font-size: 26px;
-  }
-
   .hero {
     padding: 80px 20px;
   }
@@ -193,3 +196,4 @@ footer .social-links a:hover {
     text-align: center;
   }
 }
+
