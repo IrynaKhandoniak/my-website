@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Articles — Portfolio 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{--primary:#6c63ff;--ink:#272142;--muted:#8b86a5;--card:#ffffff;--line:#ece9ff;--shadow:0 10px 24px rgba(0,0,0,.06)}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#fff}
+  .topbar{position:sticky;top:0;z-index:10;display:flex;gap:16px;align-items:center;justify-content:space-between;padding:14px 22px;background:#fff;border-bottom:1px solid #eee}
+  .brand{font-weight:800;color:var(--primary);text-decoration:none}
+  .nav{display:flex;gap:18px}.nav a{color:#333;text-decoration:none;font-weight:600}.nav a:hover{color:var(--primary)}
+  .wrap{width:min(980px,92%);margin:28px auto 80px}
+  .title{font-family:"Playfair Display",serif;font-size:44px;margin:.2em 0 .1em}
+  .subtitle{color:var(--muted);margin:0 0 18px}
+  .list{display:grid;gap:14px}
+  .card{display:grid;grid-template-columns:72px 1fr;gap:16px;align-items:center;padding:16px 18px;border:1px solid var(--line);border-radius:16px;background:var(--card);text-decoration:none;color:inherit;box-shadow:var(--shadow)}
+  .card:hover{border-color:#d7d1ff}
+  .no{font-family:"Playfair Display",serif;font-size:28px;font-weight:700;color:var(--primary);text-align:center}
+  .h{font-weight:800;font-size:20px;margin:0 0 4px}
+  .ex{color:#4a4664;margin:0 0 6px}
+  .m{color:#6f6896;font-size:13px}
+  footer{width:min(980px,92%);margin:24px auto 40px;color:#8b86a5;font-size:14px}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/">Portfolio 2025</a>
+  <nav class="nav">
+    <a href="/">Home</a>
+    <a href="articles.html">Articles</a>
+    <a href="habits.html">Habits</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <h1 class="title">Articles</h1>
+  <p class="subtitle">Clean reads — just these three.</p>
+
+  <a class="card" href="article-1.html">
+    <div class="no">01</div>
+    <div>
+      <h2 class="h">The Simple Marketing Playbook</h2>
+      <p class="ex">Positioning, messaging, and a weekly cadence that actually ships.</p>
+      <div class="m">September 2025 • 6 min read</div>
+    </div>
+  </a>
+
+  <a class="card" href="article-2.html">
+    <div class="no">02</div>
+    <div>
+      <h2 class="h">Tiny Habits, Big Wins</h2>
+      <p class="ex">Start microscopic, attach to cues, and track streaks without guilt.</p>
+      <div class="m">September 2025 • 7 min read</div>
+    </div>
+  </a>
+
+  <a class="card" href="article-3.html">
+    <div class="no">03</div>
+    <div>
+      <h2 class="h">Emotional Intelligence for Makers</h2>
+      <p class="ex">Notice, name, and navigate emotions to build better products & teams.</p>
+      <div class="m">September 2025 • 6 min read</div>
+    </div>
+  </a>
+</main>
+
+<footer>© Iryna Khandoniak 2025</footer>
+</body>
+</html>

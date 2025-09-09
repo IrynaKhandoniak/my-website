@@ -112,6 +112,21 @@
       }
 
       /* ==============================
+         HABITS FOR LIFE (learn block)
+      ============================== */
+      .learn { width:min(1200px,94%); margin:28px auto; }
+      .learn-card{
+        background:#fff; border:1px solid #ece9ff; border-radius:18px;
+        padding:24px; box-shadow:var(--shadow);
+      }
+      .learn .eyebrow{color:#8f86ff;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:0 0 12px}
+      .learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+      .learn h3{font-family:"Playfair Display",serif;font-size:28px;line-height:1.2;margin:0 0 10px;color:var(--primary)}
+      .learn ul{margin:0;padding-left:20px;line-height:1.9;color:#2e2948}
+      .learn .credit{margin-top:14px;font-size:13px;color:#6f6896}
+      @media (max-width:900px){ .learn-grid{grid-template-columns:1fr} }
+
+      /* ==============================
          BENEFITS
       ============================== */
       .benefits{padding:88px 0}
@@ -227,6 +242,7 @@
       <button class="menu-btn" id="menuBtn">MENU ▾</button>
       <ul class="navlinks" id="navlinks">
         <li><a href="#overview">Overview</a></li>
+        <li><a href="#learn">Highlights</a></li>
         <li><a href="#benefits">Benefits</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#cta">Start</a></li>
@@ -251,9 +267,52 @@
         </div>
 
         <div class="hero-media">
-          <!-- Use any image you prefer; swap the src path -->
           <img src="images/Portfolio.png" alt="App preview / hero" />
         </div>
+      </div>
+    </section>
+
+    <!-- HABITS FOR LIFE — highlights (fixed & styled) -->
+    <section id="learn" class="learn" aria-labelledby="learnTitle">
+      <div class="learn-card">
+        <p class="eyebrow" id="learnTitle">Habits for Life — highlights</p>
+
+        <div class="learn-grid">
+          <!-- Good habits -->
+          <div>
+            <h3>Good daily habits</h3>
+            <ul>
+              <li>Lead with generosity and kindness.</li>
+              <li>Move your body every day.</li>
+              <li>Eat simply and hydrate.</li>
+              <li>Nurture friendships and community.</li>
+              <li>Create things—write, code, make music or art.</li>
+              <li>Meditate/breathe for ~10 minutes.</li>
+              <li>Journal gratitude and intentions.</li>
+              <li>Learn or practice a skill daily.</li>
+              <li>Revisit quotes/books that inspire you.</li>
+              <li>Slow down and savor moments.</li>
+            </ul>
+          </div>
+
+          <!-- Habits to avoid -->
+          <div>
+            <h3>Habits to avoid</h3>
+            <ul>
+              <li>Chasing too many desires at once—focus.</li>
+              <li>Substance misuse (alcohol, pills, etc.).</li>
+              <li>News/doom-scrolling overload.</li>
+              <li>Luxury obsession—keep it simple.</li>
+              <li>Seeking external validation.</li>
+              <li>Overbooked schedules—leave margin.</li>
+              <li>Complaining—accept and act.</li>
+              <li>Draining environments and bad energy.</li>
+              <li>Toxic relationships—choose positive people.</li>
+            </ul>
+          </div>
+        </div>
+
+       
       </div>
     </section>
 
@@ -361,7 +420,7 @@
             <li>Light & dark themes</li>
           </ul>
           <div class="actions" style="margin-top:14px;">
-            <a class="btn-main" href="#message">Get in touch →</a>
+            <a class="btn-main" href="mailto:irr.enn.booking@gmail.com">Get in touch →</a>
           </div>
         </aside>
       </div>
@@ -426,3 +485,4 @@
     </script>
   </body>
 </html>
+
