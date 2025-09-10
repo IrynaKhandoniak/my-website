@@ -149,7 +149,6 @@
         .footer-grid{grid-template-columns:1fr;gap:40px;}
       }
 
-      /* >>> Mobile stack for Design / Engineering <<< */
       @media (max-width: 768px){
         .navbar-custom{flex-direction:column;gap:10px;}
         .hero-overlay{left:50%;top:88%;transform:translate(-50%,-50%);justify-content:center;}
@@ -157,7 +156,6 @@
         .about-title,.exp-title,.msg-title{font-size:38px;}
         .footer-bottom{flex-direction:column;gap:12px;align-items:flex-start;}
 
-        /* stack the two columns */
         .split-card{padding:40px 24px;border-radius:16px;}
         .split-grid{grid-template-columns:1fr;gap:40px;}
         .split-grid > div{padding-bottom:28px;border-bottom:1px solid rgba(108,99,255,.15);}
@@ -165,7 +163,6 @@
         .split-title{font-size:34px;line-height:1.2;margin-bottom:12px;}
         .split-text{font-size:16px;line-height:1.7;max-width:none;}
         .slider-dots{justify-content:flex-start;}
-        /* hide decorations on phones */
         .dots-square,.stair,.checks{display:none;}
       }
     </style>
@@ -176,10 +173,9 @@
       <a href="#home" class="navbar-title">Portfolio 2025</a>
       <ul>
         <li><a href="#home" class="active">Home</a></li>
-        <!-- FIXED: link to your dedicated CV page -->
-        <li><a href="mycv.html">My CV</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#explore">Explore</a></li>
+      
+        <!-- UPDATED: Jump to Explore (shows See My Work + Articles) -->
+        <li><a href="#explore">My Work</a></li>
         <li><a href="#message">Contact</a></li>
       </ul>
     </nav>
@@ -189,7 +185,8 @@
       <div class="hero-image-wrapper">
         <img src="images/Portfolio.png" alt="Portfolio Full Photo" class="hero-image" />
         <div class="hero-overlay">
-          <a href="#work" class="btn-main">Web Designer & Development</a>
+          <!-- UPDATED: go straight to Explore block -->
+          <a href="#explore" class="btn-main">Web Designer & Development</a>
           <a href="#message" class="btn-outline">Contact Me</a>
         </div>
       </div>
@@ -257,7 +254,8 @@
           <div>
             <h2 class="exp-title">I build &<br/>design stuff</h2>
             <p class="exp-text">Open source projects, web apps and experimentals.</p>
-            <a class="cta-ghost" href="#work">
+            <!-- Keep this going to your dedicated work page if you have it -->
+            <a class="cta-ghost" href="work.html">
               SEE MY WORK <span class="arrow">→</span>
             </a>
           </div>
@@ -312,9 +310,8 @@
 
           <div>
             <ul class="footer-list">
-              <li><a href="#work">My Work</a></li>
-             
-              <!-- FIXED: point résumé to the dedicated page -->
+              <!-- UPDATED: send people to Explore where they see both CTAs -->
+              <li><a href="#explore">My Work</a></li>
               <li><a href="mycv.html">My CV</a></li>
             </ul>
           </div>
@@ -335,3 +332,4 @@
     </footer>
   </body>
 </html>
+

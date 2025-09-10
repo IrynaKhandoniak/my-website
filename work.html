@@ -1,174 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Projects — Portfolio 2025</title>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-      crossorigin="anonymous"
-    />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles/portfolio.css" />
+  <!-- Fonts (same as main) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://kit.fontawesome.com/ddc3ee268a.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <div class="container">
-      <nav class="d-flex justify-content-between">
-        <a href="/" title="Homepage">
-          <img
-            src="images/logo.png"
-            class="logo d-none d-md-block"
-            alt="Iryna Logo"
-          />
-          <img
-            src="images/logo-small.jpg"
-            class="logo d-block d-md-none"
-            alt="Iryna Logo"
-          />
-        </a>
-        <ul>
-          <li>
-            <a href="/" title="Homepage"> Home</a>
-          </li>
-          <li>
-            <a href="/about.html" title="About Iryna"> About</a>
-          </li>
-          <li class="active">
-            <a href="/work.html" title="Iryna's work"> Work</a>
-          </li>
-          <li>
-            <a href="/contact.html" title="Contact Iryna"> Contact</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-    <div class="content-container container">
-      <div class="content">
-        <h1 class="mb-5">Take a look at what I've been working on!</h1>
+  <style>
+    :root{
+      --primary:#6c63ff;
+      --primary-600:#5548d6;
+      --ink:#272142;
+      --muted:#8b86a5;
+      --line:#ece9ff;
+      --surface:#faf9ff;
+      --shadow:0 12px 30px rgba(0,0,0,.08);
+      --w: 1140px;
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--ink); background:#fff;
+    }
 
-        <div class="row">
-          <div class="col-md-6 mb-4">
-            <img
-              src="images/photography.png"
-              class="img-fluid mb-3 rounded"
-              alt="Yogurt project preview"
-            />
-            <h3 class="text-center m-0">Photo Page</h3>
-            <p class="text-center text-muted">
-              Built with HTML, CSS, and JavaScript
-            </p>
-          </div>
-          <div class="col-md-6 mb-4">
-            <img
-              src="images/weather.png"
-              class="img-fluid mb-3 rounded"
-              alt="Weather project preview"
-            />
-            <h3 class="text-center m-0">Weather App</h3>
-            <p class="text-center text-muted">
-              Built using HTML, an active API, and advanced CSS and JavaScript
-            </p>
-          </div>
-          <div class="col-md-6 mb-4">
-            <img
-              src="images/mushroomm.png"
-              class="img-fluid mb-3 rounded"
-              alt="Disctionary project preview"
-            />
-            <h3 class="text-center m-0">Mushrooom Project</h3>
-            <p class="text-center text-muted">
-              Built using HTML, an active API, advanced CSS, and React
-            </p>
-          </div>
-          <div class="col-md-6 mb-4">
-            <img
-              src="images/mushroomm.png"
-              class="img-fluid mb-3 rounded"
-              alt="Translation project preview"
-            />
-            <h3 class="text-center m-0">Mushroom Project</h3>
-            <p class="text-center text-muted">
-              Built using HTML, an active API, advanced CSS, and React
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer class="container">
-      <div class="contact-box justify-content-between mb-5 d-none d-md-flex">
+    /* ===== NAVBAR (same as main) ===== */
+    .navbar-custom{
+      position:fixed; top:0; left:0; width:100%; z-index:1000;
+      background:#fff; border-bottom:1px solid #eee;
+      padding:15px 40px; display:flex; align-items:center; justify-content:space-between;
+    }
+    .navbar-title{font-weight:700; font-size:20px; color:var(--primary); text-decoration:none;}
+    .navbar-custom ul{list-style:none; display:flex; gap:25px; margin:0; padding:0;}
+    .navbar-custom a{ text-decoration:none; color:#333; font-weight:500; transition:color .3s; }
+    .navbar-custom a:hover,
+    .navbar-custom .active{ color:var(--primary); }
+
+    /* offset so fixed nav doesn’t overlap content */
+    .page-offset{ height:100px; }
+
+    /* Page shell */
+    .wrap{width:min(var(--w), 92%); margin:28px auto 80px}
+    .title{font-family:"Playfair Display",serif; font-size:48px; line-height:1.1; margin:.2em 0 .1em; text-align:center}
+    .subtitle{color:#4a4664; text-align:center; margin:0 0 24px}
+
+    /* CV + LinkedIn strip */
+    .cv-strip{
+      display:flex; align-items:center; justify-content:space-between; gap:20px;
+      border:1px solid var(--line); border-radius:var(--radius); padding:18px 22px; box-shadow:var(--shadow); background:#fff;
+      margin:12px 0 36px;
+    }
+    .cv-left{display:flex; align-items:center; gap:14px}
+    .badge{display:inline-block; background:#e9ff6b; color:#2d2554; font-weight:800; padding:6px 12px; border-radius:999px;}
+    .cv-actions{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 18px; border-radius:12px; font-weight:700; text-decoration:none; transition:.25s;
+    }
+    .btn-main{background:var(--primary); color:#fff; border:2px solid var(--primary);}
+    .btn-main:hover{background:var(--primary-600); border-color:var(--primary-600)}
+    .btn-outline{color:var(--primary); background:#fff; border:2px solid var(--primary);}
+    .btn-outline:hover{background:var(--primary); color:#fff}
+
+    /* LinkedIn pill */
+    .li-pill{
+      display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px;
+      background:#fff; border:2px solid var(--primary); text-decoration:none; color:var(--primary); font-weight:700;
+    }
+    .li-pill:hover{border-color:var(--primary-600); color:var(--primary-600)}
+    .li-pill svg{width:18px; height:18px; fill:currentColor}
+
+    /* Projects grid */
+    .grid{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+    }
+    .card{
+      background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card img{width:100%; height:210px; object-fit:cover; display:block; background:#f7f6ff;}
+    .card-body{padding:18px 18px 20px;}
+    .card h3{margin:0 0 6px; font-size:22px; font-weight:800; color:#222}
+    .card p{margin:0 0 12px; color:#4a4664; line-height:1.6}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 14px;}
+    .chip{padding:8px 12px; border-radius:999px; background:var(--surface); border:1px solid #e8e5ff; color:#564f86; font-size:13px;}
+    .card-actions{margin-top:auto; display:flex; gap:10px; flex-wrap:wrap}
+
+    /* Responsive */
+    @media (max-width: 992px){
+      .navbar-custom{padding:15px 20px;}
+      .grid{grid-template-columns:1fr 1fr;}
+    }
+    @media (max-width: 680px){
+      .title{font-size:38px}
+      .grid{grid-template-columns:1fr;}
+      .cv-strip{flex-direction:column; align-items:flex-start}
+      .cv-actions{width:100%}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar (same font + spacing as main) -->
+  <nav class="navbar-custom">
+    <a href="/" class="navbar-title">Portfolio 2025</a>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a class="active" href="mycv.html">My Projects</a></li>
+      <li><a href="/#explore">My Work</a></li>
+      <li><a href="/#message">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-offset" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <h1 class="title">My Projects</h1>
+    <p class="subtitle">A few things I’ve designed & built recently.</p>
+
+    <!-- CV + LinkedIn strip -->
+    <section class="cv-strip" aria-label="CV and social">
+      <div class="cv-left">
+        <span class="badge">CV</span>
         <div>
-          <h3>Work Inquiry</h3>
-          <p class="text-muted">Let's work together</p>
-        </div>
-        <div>
-          <a
-            href="/contact.html"
-            class="btn btn-branding mt-3"
-            title="Contact Iryna"
-          >
-            Contact me
-          </a>
+          <div style="font-weight:800;">Download my résumé</div>
+          <div style="color:#6f6896; font-size:14px;">Updated September 2025 • PDF</div>
         </div>
       </div>
-      <div class="d-flex justify-content-center mb-5">
-        <a
-          href="mailto:irr.enn.booking@gmail.com"
-          class="email-link"
-          title="Email Iryna"
-        >
-          irr.enn.booking@gmail.com
+      <div class="cv-actions">
+        <!-- These buttons work now -->
+        <a class="btn btn-main" href="cvirynakhandoniak.pdf" download>Download PDF ↓</a>
+        <a class="btn btn-outline" href="cvirynakhandoniak.pdf" target="_blank" rel="noreferrer">Open as PDF ↗</a>
+        <a class="li-pill" href="https://www.linkedin.com/in/irynakhandoniak/" target="_blank" rel="noreferrer" aria-label="LinkedIn profile">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.77 0 5-2.24 5-5V5c0-2.76-2.23-5-5-5zM8 19H5V9h3v10zM6.5 7.7c-.96 0-1.75-.79-1.75-1.75S5.54 4.2 6.5 4.2s1.75.79 1.75 1.75S7.46 7.7 6.5 7.7zM20 19h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.88 0-2.17 1.46-2.17 2.97V19h-3V9h2.88v1.37h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2.0 3.6 4.6V19z"/>
+          </svg>
+          LinkedIn
         </a>
       </div>
-      <div class="social-links d-flex justify-content-center">
-        <a
-          href="https://github.com/IrynaKhandoniak"
-          target="_blank"
-          title="GitHub Profile"
-        >
-          <i class="fab fa-github"></i>
-        </a>
-        <a
-          href="https://www.instagram.com/irakhnk?igsh=MWFldGVidnFkaGc1ag%3D%3D&utm_source=qr"
-          target="_blank"
-          title="instragram Profile"
-        >
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/irynakhandoniak/"
-          target="_blank"
-          title="Linkedin Profile"
-        >
-          <i class="fab fa-twitter"></i>
-        </a>
+    </section>
+
+    <!-- Projects -->
+    <section aria-label="Projects">
+      <div class="grid">
+        <!-- Photography Website -->
+        <article class="card" id="photography">
+          <img src="images/photography.png" alt="Photography website preview" />
+          <div class="card-body">
+            <h3>Photography Website</h3>
+            <p>Clean, minimal landing page with interactive gallery and subtle motion.</p>
+            <div class="chips">
+              <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn-main" href="https://flashbacks.studio" target="_blank" rel="noreferrer">Live Demo ↗</a>
+              <a class="btn btn-outline" href="work.html#photography">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Weather App -->
+        <article class="card" id="weather">
+          <img src="images/weather.png" alt="Weather app preview" />
+          <div class="card-body">
+            <h3>Weather App</h3>
+            <p>Vanilla JS app with API integration, current conditions, and forecast.</p>
+            <div class="chips">
+              <span class="chip">JS</span><span class="chip">Bootstrap</span><span class="chip">API</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn btn-main" href="https://meteoappiryna.netlify.app" target="_blank" rel="noreferrer">Live Demo ↗</a>
+              <a class="btn btn-outline" href="work.html#weather">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Dictionary App -->
+        <article class="card" id="dictionary">
+          <img src="images/translator.png" alt="Dictionary app preview" />
+          <div class="card-body">
+            <h3>Dictionary App</h3>
+            <p>Quick word lookup with phonetics and examples. Built for speed and clarity.</p>
+            <div class="chips">
+              <span class="chip">React</span><span class="chip">API</span><span class="chip">UX</span>
+            </div>
+            <div class="card-actions">
+              <!-- Update this link later to your live demo URL -->
+              <a class="btn btn-main" href="https://bellatranslation.netlify.app/" target="_blank" rel="noreferrer">Live Demo ↗</a>
+              <a class="btn btn-outline" href="work.html#dictionary">Details</a>
+            </div>
+          </div>
+        </article>
       </div>
-      <p class="text-center mt-5">
-        ✌️ This website was coded by Iryna Khandoniak, and is
-        <a
-          href="https://github.com/IrynaKhandoniak"
-          target="_blank"
-        >
-          open-sourced
-        </a>
-      </p>
-    </footer>
-  </body>
+    </section>
+  </main>
+
+</body>
 </html>
