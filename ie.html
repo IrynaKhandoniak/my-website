@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -56,57 +56,26 @@
       .container-narrow{
         max-width: 980px;
         margin: 0 auto;
-        padding: 40px 20px;
+        padding: 100px 20px 40px; /* top padded to clear fixed navbar */
       }
 
       /* Header / Nav */
-      .nav{
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:20px;
-        padding:16px 0;
+      .navbar-custom{
+        position:fixed;top:0;left:0;width:100%;z-index:1000;
+        background:#fff;border-bottom:1px solid #eee;
+        padding:15px 40px;display:flex;align-items:center;justify-content:space-between;
       }
-      .brand{
-        display:flex;
-        align-items:center;
-        gap:12px;
-        font-weight:700;
-        letter-spacing:.3px;
-      }
-      .brand-dot{
-        width:10px;height:10px;border-radius:50%;
-        background:var(--primary);
-        box-shadow:0 0 0 6px rgba(108,99,255,.12);
-      }
-      .nav-actions{
-        display:flex; gap:10px;
-      }
-      .btn{
-        border: var(--border);
-        background:#fff;
-        color:#000;
-        padding:8px 14px;
-        border-radius:10px;
-        font-weight:500;
-        transition:.2s transform ease, .2s box-shadow ease, .2s background;
-        box-shadow: var(--shadow);
-      }
-      [data-theme="dark"] .btn{ background:#1b1a24; color:var(--ink); }
-      .btn:hover{ transform: translateY(-1px); }
-      .btn-primary{
-        background:var(--primary);
-        border-color:transparent;
-        color:#fff;
-      }
-      .btn-ghost{
-        background:transparent;
-        box-shadow:none;
-      }
+      [data-theme="dark"] .navbar-custom{ background:#0f0e16; border-bottom:1px solid rgba(255,255,255,.08);}
+      .navbar-title{font-weight:700;font-size:20px;color:var(--primary);text-decoration:none;}
+      .navbar-custom ul{list-style:none;display:flex;gap:25px;margin:0;padding:0;}
+      .navbar-custom a{text-decoration:none;color:#333;font-weight:500;transition:color .3s;}
+      .navbar-custom a:hover,.navbar-custom .active{color:var(--primary);}
+      [data-theme="dark"] .navbar-custom a{ color:#e6e2ff;}
 
       /* Hero */
       .hero{
         border: var(--border);
+        margin: 10px 0 14px;
         border-radius: var(--radius);
         padding: clamp(28px, 4vw, 44px);
         box-shadow: var(--shadow);
@@ -147,10 +116,7 @@
       }
       [data-theme="dark"] .card{ background:#16151e; }
 
-      .grid{
-        display:grid;
-        gap:18px;
-      }
+      .grid{ display:grid; gap:18px; }
       .grid-2{ grid-template-columns: 1fr; }
       .grid-3{ grid-template-columns: 1fr; }
       @media (min-width: 860px){
@@ -189,82 +155,110 @@
       }
       [data-theme="dark"] .chip{ background:#1b1a24; }
 
-      /* Progress bars for 6% / 94% */
+      /* Progress bars (if needed) */
       .bar{
         height:12px; width:100%;
         background: rgba(108,99,255,.14);
         border-radius:999px;
         overflow:hidden;
       }
-      .bar > span{
-        display:block; height:100%;
-        background: var(--primary);
-        width: var(--w, 50%);
-      }
+      .bar > span{ display:block; height:100%; background: var(--primary); width: var(--w, 50%); }
 
-      /* List with icons */
-      .list{
-        display:grid; gap:12px;
-        padding:0; margin:0;
-        list-style:none;
-      }
-      .li{
-        display:flex; gap:12px; align-items:flex-start;
-        border: var(--border); padding:14px;
-        border-radius:14px; background:#fff;
-        box-shadow: var(--shadow);
-      }
-      [data-theme="dark"] .li{ background:#16151e; }
-      .ico{
-        width:26px; height:26px; border-radius:8px;
-        background: var(--primary);
-        flex: 0 0 26px;
-        display:grid; place-items:center;
-        color:#fff; font-weight:700; font-size:.9rem;
-      }
+      /* Generic list style used in cards (with icons elsewhere) */
+      .list{ display:grid; gap:12px; padding:0; margin:0; list-style:none; }
 
-      /* Footer */
-      footer{
-        margin: 46px 0 10px;
-        color: var(--muted);
-        font-size:.92rem;
-        display:flex; justify-content:space-between; align-items:center; gap:10px;
-      }
-      .mini{
-        font-size:.86rem; color:var(--muted);
-      }
-
-      /* Tiny helpers */
-      .kpi{font-weight:700; color:var(--primary);}
       .sub{ color:var(--muted); font-size:.95rem;}
+      .mini{ font-size:.86rem; color:var(--muted);}
+
       .sep{ height:1px; background: rgba(39,33,66,.08); margin:16px 0;}
       [data-theme="dark"] .sep{ background: rgba(255,255,255,.08); }
-      .sr-only{ position:absolute; clip:rect(1px,1px,1px,1px); padding:0; border:0; height:1px; width:1px; overflow:hidden; }
 
-      /* Links */
-      a{ color:var(--primary-600); text-decoration:none; }
-      a:hover{ text-decoration:underline; }
+      /* ---- EQ list (tick-less card design) ---- */
+      .eq-section{ margin-top: 40px; }
+      .eq-title{
+        font-size: clamp(1.3rem, 1.2rem + 0.8vw, 1.8rem);
+        margin: 0 0 1rem;
+        color: var(--deep);
+      }
+      [data-theme="dark"] .eq-title{ color:#e8e6ff; }
+      .eq-list{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 14px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      .eq-item{
+        padding: 14px 16px;
+        background: #fff;
+        border: 1px solid rgba(0,0,0,.06);
+        border-left: 4px solid var(--primary);
+        border-radius: 14px;
+        box-shadow: 0 6px 18px rgba(0,0,0,.05);
+        font-size: 0.98rem;
+        line-height: 1.45;
+        color: var(--ink);
+        transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      }
+      .eq-item:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(0,0,0,.08);
+        border-color: var(--primary);
+      }
+      [data-theme="dark"] .eq-item{
+        background:#16151e;
+        border-color: rgba(255,255,255,.08);
+        box-shadow: 0 10px 26px rgba(0,0,0,.35);
+        color:#e9e7f4;
+        border-left-color: var(--primary);
+      }
+
+      /* ===== FINAL FOOTER PAGE (Marketing style: dark, lime accents) ===== */
+      .footer-dark{background:var(--deep);color:#dcd6ff;padding:140px 24px 80px;margin-top:60px;}
+      .footer-inner{max-width:1200px;margin:0 auto;}
+      .footer-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start;margin-bottom:80px;}
+      .footer-label{letter-spacing:.25em;text-transform:uppercase;color:var(--lime);margin-bottom:24px;display:block;}
+      .footer-link{display:block;color:var(--lime);text-decoration:none;font-size:20px;margin:18px 0;}
+      .footer-link:hover{opacity:.85;}
+      .footer-list{list-style:none;padding:0;margin:0;display:grid;gap:18px;}
+      .footer-list a{color:var(--lime);text-decoration:none;font-size:20px;}
+      .footer-list a:hover{opacity:.85;}
+      .footer-hr{height:1px;background:rgba(255,255,255,.25);border:0;margin:0 0 26px;}
+      .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+      .copyright{color:#dcd6ff;}
+      .social-mini{display:flex;gap:36px;}
+      .social-mini a{color:var(--lime);text-decoration:none;font-weight:700;letter-spacing:.12em;}
+      .social-mini a:hover{opacity:.85;}
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 992px){
+        .navbar-custom{padding:15px 20px;}
+        .footer-grid{grid-template-columns:1fr;gap:40px;}
+      }
+      @media (max-width: 768px){
+        .navbar-custom{flex-direction:column;gap:10px;}
+        .footer-bottom{flex-direction:column;gap:12px;align-items:flex-start;}
+      }
     </style>
   </head>
 
   <body>
-    <div class="container-narrow">
-      <!-- NAV -->
-      <header class="nav">
-        <div class="brand">
-          <span class="brand-dot" aria-hidden="true"></span>
-          <span>EQ • Skills</span>
-        </div>
-        <div class="nav-actions">
-          <button class="btn btn-ghost" id="themeToggle" aria-pressed="false" aria-label="Toggle dark mode">Theme</button>
-          <a class="btn btn-primary" href="#low-eq">Skip to signs</a>
-        </div>
-      </header>
+    <!-- NAVBAR -->
+    <nav class="navbar-custom">
+      <a href="#home" class="navbar-title">Portfolio 2025</a>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#explore">My Work</a></li>
+        <li><a href="#message">Contact</a></li>
+      </ul>
+    </nav>
 
+    <div class="container-narrow" id="home">
       <!-- HERO -->
       <div class="hero">
-        <span class="eyebrow"><span class="dot"></span> Soft skills, EQ & maturity</span>
-        <h1>Hard skills vs soft skills — and why <span class="kpi">Emotional Intelligence</span> is the glue.</h1>
+        <span class="eyebrow"><span class="dot"></span> Article 3</span>
+        <h1>Hard skills vs soft skills — and why <span style="color:var(--primary)">Emotional Intelligence</span> is the glue.</h1>
         <p class="lead">
           Hard skills are about the job itself, while soft skills are about how you work with people and carry out that job.
           There isn’t one standardized list of soft skills, but one thing <strong>is</strong> clear:
@@ -280,20 +274,20 @@
             <h3>Hard Skills</h3>
             <p class="sub">What you can do</p>
             <div class="sep"></div>
-            <ul class="list">
-              <li class="li"><span class="ico">H</span><div><strong>Tools & methods</strong><br/><span class="mini">e.g., Excel, coding, analytics, procedures</span></div></li>
-              <li class="li"><span class="ico">R</span><div><strong>Repeatable results</strong><br/><span class="mini">Clear standards and measurable output</span></div></li>
-              <li class="li"><span class="ico">P</span><div><strong>Proficiency</strong><br/><span class="mini">Learned via study, practice, certifications</span></div></li>
+            <ul class="eq-list">
+              <li class="eq-item"><strong>Tools &amp; methods</strong><br/><span class="mini">e.g., Excel, coding, analytics, procedures</span></li>
+              <li class="eq-item"><strong>Repeatable results</strong><br/><span class="mini">Clear standards and measurable output</span></li>
+              <li class="eq-item"><strong>Proficiency</strong><br/><span class="mini">Learned via study, practice, certifications</span></li>
             </ul>
           </div>
           <div class="card">
             <h3>Soft Skills</h3>
             <p class="sub">How you do it with people</p>
             <div class="sep"></div>
-            <ul class="list">
-              <li class="li"><span class="ico">E</span><div><strong>EQ-driven</strong><br/><span class="mini">Communication, empathy, collaboration, resilience</span></div></li>
-              <li class="li"><span class="ico">C</span><div><strong>Contextual</strong><br/><span class="mini">Adjusting to people, culture, situations</span></div></li>
-              <li class="li"><span class="ico">G</span><div><strong>Glue</strong><br/><span class="mini">Enables hard skills to land and stick</span></div></li>
+            <ul class="eq-list">
+              <li class="eq-item"><strong>EQ-driven</strong><br/><span class="mini">Communication, empathy, collaboration, resilience</span></li>
+              <li class="eq-item"><strong>Contextual</strong><br/><span class="mini">Adjusting to people, culture, situations</span></li>
+              <li class="eq-item"><strong>Glue</strong><br/><span class="mini">Enables hard skills to land and stick</span></li>
             </ul>
           </div>
         </div>
@@ -318,50 +312,44 @@
         </div>
       </section>
 
-      <!-- CONSCIOUS vs SUBCONSCIOUS -->
-      <section aria-labelledby="mind">
-        <h2 id="mind">Consciousness vs. Subconsciousness</h2>
-        <div class="grid grid-2">
-          <div class="card">
-            <h3>Rough composition of personality</h3>
-            <p class="sub">An easy mental model for where our reactions often come from</p>
-            <p><strong>Consciousness — 6%</strong></p>
-            <div class="bar" aria-label="Consciousness bar"><span style="--w:6%"></span></div>
-            <p class="mt-3"><strong>Subconsciousness — 94%</strong></p>
-            <div class="bar" aria-label="Subconsciousness bar"><span style="--w:94%"></span></div>
-            <p class="mini mt-2">We present “stress resistance” on a CV, yet in real life we might end up <em>yelling at an Excel file</em>. That gap is your <strong>alternative résumé</strong> (how you actually behave).</p>
-          </div>
-          <div class="card">
-            <h3>Résumé vs. real life</h3>
-            <ul class="list">
-              <li class="li"><span class="ico">CV</span><div><strong>Official résumé</strong><br/><span class="mini">“Stress-resistant, team player, excellent communicator.”</span></div></li>
-              <li class="li"><span class="ico">IRL</span><div><strong>Alternative résumé</strong><br/><span class="mini">Snaps at spreadsheets. Avoids feedback. Blames others.</span></div></li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
       <!-- WHERE EQ COMES FROM -->
       <section aria-labelledby="origin">
         <h2 id="origin">Where does EQ come from?</h2>
-        <div class="grid grid-3">
-          <div class="card">
-            <h3>1) Emotions come first</h3>
-            <p class="sub">We feel before we can think</p>
-            <p>Early life is emotion-led. Reactions dominate.</p>
-          </div>
-          <div class="card">
-            <h3>2) ~Age 3: intellect appears</h3>
-            <p class="sub">But emotions still dominate</p>
-            <p>Cognition grows, yet feelings steer behaviour.</p>
-          </div>
-          <div class="card">
-            <h3>3) Maturity = balance</h3>
-            <p class="sub">Emotions + intellect hand-in-hand</p>
-            <p>Adults thrive when they regulate, not suppress, emotion.</p>
+        <div class="card">
+          <!-- Stage 1 -->
+          <h3>1) Emotions come first (0–3)</h3>
+          <p class="sub">We feel before we can think.</p>
+          <ul class="list">
+            <li>Reactions dominate; impulse-driven responses.</li>
+            <li>Regulation is external — caregivers model calm.</li>
+          </ul>
+
+          <!-- Stage 2 -->
+          <h3 style="margin-top:12px;">2) Intellect appears, emotions still lead (~3–7)</h3>
+          <p class="sub">Language lets us label feelings, but emotion still steers behaviour.</p>
+          <ul class="list">
+            <li>Begin linking <em>trigger → feeling → action</em>.</li>
+            <li>Simple self-regulation starts (pause, breathe, ask for help).</li>
+          </ul>
+
+          <!-- Stage 3 -->
+          <h3 style="margin-top:12px;">3) Maturity = balance (teens → adulthood)</h3>
+          <p class="sub">Emotion + intellect work together.</p>
+          <ul class="list">
+            <li>Notice the first reaction; choose a better second response.</li>
+            <li>Empathy and perspective-taking strengthen decisions.</li>
+          </ul>
+
+          <!-- Mini practice row -->
+          <div class="mini" style="margin-top:14px;">
+            <strong>Practice at any stage:</strong> Pause → name the feeling → choose a response.
+            Try: “When X happens, I feel Y, so I’ll do Z.”
           </div>
         </div>
-        <p class="mini mt-2">Many adults stay “stuck” because they resist managing emotions — growth starts with awareness + regulation practice.</p>
+
+        <p class="mini" style="margin-top:8px;">
+          Many adults stay “stuck” when they avoid emotional management. Growth starts with awareness + small regulation reps.
+        </p>
       </section>
 
       <!-- EMOTIONS IN PRACTICE -->
@@ -369,60 +357,79 @@
         <h2 id="practice">Emotions in practice</h2>
         <div class="card">
           <p>Imagine a little inner “monster” with five basic states. All are natural — some feel positive, some negative. The skill is to avoid projecting your full emotional palette onto others.</p>
-          <div class="chips mt-2">
+          <div class="chips" style="margin-top:8px;">
             <span class="chip">Joy</span>
             <span class="chip">Sadness</span>
             <span class="chip">Anger</span>
             <span class="chip">Fear</span>
             <span class="chip">Calm (neutral)</span>
           </div>
-          <p class="mini mt-2">Ethics in action: feel fully, respond thoughtfully.</p>
+          <p class="mini" style="margin-top:8px;">Ethics in action: feel fully, respond thoughtfully.</p>
         </div>
       </section>
 
-      <!-- LOW EQ SIGNS -->
-      <section aria-labelledby="low-eq">
-        <h2 id="low-eq">Signs of low emotional intelligence</h2>
-        <ul class="list">
-          <li class="li"><span class="ico">✓</span><div>A strong need to always be right</div></li>
-          <li class="li"><span class="ico">✓</span><div>Ignoring the feelings of others</div></li>
-          <li class="li"><span class="ico">✓</span><div>Blaming others for personal problems</div></li>
-          <li class="li"><span class="ico">✓</span><div>Emotional outbursts (with or without reason)</div></li>
-          <li class="li"><span class="ico">✓</span><div>Constantly steering the conversation back to oneself</div></li>
-          <li class="li"><span class="ico">✓</span><div>Impatience / irritability</div></li>
-          <li class="li"><span class="ico">✓</span><div>Believing that “everyone around me is an idiot”</div></li>
+      <!-- LOW EQ SIGNS (tick-less) -->
+      <section aria-labelledby="low-eq" class="eq-section">
+        <h2 id="low-eq" class="eq-title">Signs of low emotional intelligence</h2>
+        <ul class="eq-list" role="list">
+          <li class="eq-item">A strong need to always be right</li>
+          <li class="eq-item">Ignoring the feelings of others</li>
+          <li class="eq-item">Blaming others for personal problems</li>
+          <li class="eq-item">Emotional outbursts (with or without reason)</li>
+          <li class="eq-item">Constantly steering the conversation back to oneself</li>
+          <li class="eq-item">Impatience / irritability</li>
+          <li class="eq-item">Believing that “everyone around me is an idiot”</li>
         </ul>
       </section>
-
-      <footer>
-        <span class="mini">© 2025 • EQ & Skills — minimal build</span>
-        <a class="mini" href="#top">Back to top ↑</a>
-      </footer>
     </div>
 
+    <!-- ===== FINAL FOOTER (Marketing style) ===== -->
+    <footer id="footer" class="footer-dark">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div>
+            <span class="footer-label">SAY HELLO</span>
+            <a class="footer-link" href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a>
+            <a class="footer-link" href="https://t.me/irynakhandoniak" target="_blank" rel="noreferrer">t.me/irynakhandoniak</a>
+          </div>
+
+          <div>
+            <span class="footer-label">PAGES</span>
+            <ul class="footer-list">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#explore">My Work</a></li>
+              <li><a href="mycv.html">My CV</a></li>
+              <li><a href="#message">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="footer-hr" />
+
+        <div class="footer-bottom">
+          <div class="copyright">© Iryna Khandoniak 2025</div>
+          <div class="social-mini">
+            <a href="https://twitter.com/" target="_blank" rel="noreferrer" aria-label="Twitter">TW</a>
+            <a href="https://github.com/IrynaKhandoniak" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
+            <a href="https://www.linkedin.com/in/irynakhandoniak/" target="_blank" rel="noreferrer" aria-label="LinkedIn">LN</a>
+            <a href="https://youtube.com/" target="_blank" rel="noreferrer" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- (Optional) tiny theme toggle for preview -->
     <script>
-      // Tiny theme toggler (remembers preference)
-      (function(){
-        const key = "eq-theme";
-        const root = document.documentElement;
-        const btn = document.getElementById("themeToggle");
-
-        const saved = localStorage.getItem(key);
-        if(saved === "dark"){ root.setAttribute("data-theme","dark"); btn.setAttribute("aria-pressed","true"); }
-
-        btn.addEventListener("click", ()=>{
-          const isDark = root.getAttribute("data-theme")==="dark";
-          if(isDark){
-            root.removeAttribute("data-theme");
-            localStorage.setItem(key,"light");
-            btn.setAttribute("aria-pressed","false");
-          }else{
-            root.setAttribute("data-theme","dark");
-            localStorage.setItem(key,"dark");
-            btn.setAttribute("aria-pressed","true");
-          }
-        });
-      })();
+      // Press "D" to toggle dark/light preview without changing your CSS.
+      document.addEventListener('keydown', (e)=>{
+        if(e.key.toLowerCase()==='d'){
+          const r = document.documentElement;
+          r.setAttribute('data-theme', r.getAttribute('data-theme') ? '' : 'dark');
+        }
+      });
     </script>
   </body>
 </html>
+
+
+
