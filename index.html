@@ -54,14 +54,8 @@
       /* ===== ABOUT (dark purple) ===== */
       .about-dark{background:var(--deep);color:#eee;padding:110px 24px;}
       .about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:center;position:relative;}
-      .about-card{width:100%;aspect-ratio:1/1;border-radius:36px;border:22px solid #efeefe;box-shadow:0 25px 60px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.05);
-        background:
-          radial-gradient(circle at 72% 28%, #ffffff 18%, transparent 19%) 0 0/100% 100%,
-          linear-gradient(#cfeaff, #bfe5ff 40%, #8dd3ff 100%) top/100% 70% no-repeat,
-          linear-gradient(#93c14e 0%, #6aa62e 55%, #558d1c 55%, #336b00 100%);
-      }
       .about-dots{position:absolute;right:60px;top:40px;width:190px;height:140px;opacity:.25;background-image:radial-gradient(#c9c2ff 1.5px, transparent 1.5px);background-size:12px 12px;pointer-events:none;}
-      .about-kicker{color:#b4a7ff;letter-spacing:.6px;font-weight:700;margin:0 0 10px;font-size:28px;}
+      .about-kicker{color:#b4a7ff;letter-spacing:.6px;font-weight:700;margin:0 0 10px;font-size:18px;text-transform:uppercase;}
       .about-title{font-size:44px;line-height:1.25;font-weight:800;margin:0 0 18px;color:#fff;}
       .about-text{color:#d5d0ea;line-height:1.85;font-size:18px;max-width:680px;margin-bottom:26px;}
       .chips{display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 26px;}
@@ -69,6 +63,7 @@
       .about-stats{display:flex;gap:56px;flex-wrap:wrap;margin-top:10px;}
       .stat .num{font-size:52px;font-weight:800;color:#a594ff;line-height:1;}
       .stat .label{color:#cbc6e6;margin-top:6px;}
+      .about-photo{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:36px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.12);}
 
       /* ===== DESIGN / ENGINEERING SPLIT ===== */
       .split-wrap{max-width:1200px;margin:0 auto;padding:90px 24px;}
@@ -95,7 +90,7 @@
       .feat-list li::before{content:"";flex:0 0 10px;height:10px;border-radius:2px;border:2px solid var(--primary);margin-top:6px;}
       .feat-list li.on::before{background:var(--primary);}
 
-      /* ===== EXPLORE (two columns, divider) ===== */
+      /* ===== EXPLORE ===== */
       .explore{background:#fff;padding:110px 24px 120px;}
       .explore-inner{max-width:1200px;margin:0 auto;position:relative;}
       .explore-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;position:relative;}
@@ -119,8 +114,9 @@
       .shoot{display:inline-flex;align-items:center;gap:16px;margin-top:30px;padding:18px 40px;border:2px solid var(--primary);color:var(--primary);background:transparent;border-radius:6px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;}
       .shoot .arrow{transition:transform .25s;}
       .shoot:hover .arrow{transform:translateX(6px);}
+      .shoot[disabled]{opacity:.6; cursor:not-allowed;}
 
-      /* ===== FINAL FOOTER PAGE (dark, lime accents) ===== */
+      /* ===== FOOTER ===== */
       .footer-dark{background:var(--deep);color:#dcd6ff;padding:140px 24px 80px;}
       .footer-inner{max-width:1200px;margin:0 auto;}
       .footer-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start;margin-bottom:80px;}
@@ -141,21 +137,19 @@
       @media (max-width: 992px){
         .navbar-custom{padding:15px 20px;}
         .hero-overlay{left:5%;top:70%;}
-        .about-inner{grid-template-columns:1fr;gap:36px;}
-        .about-card{max-width:520px;margin:0 auto;}
         .explore-grid::before{display:none;}
         .explore-grid{grid-template-columns:1fr;gap:48px;}
         .form-grid{grid-template-columns:1fr;}
         .footer-grid{grid-template-columns:1fr;gap:40px;}
+        .about-inner{grid-template-columns:1fr;gap:36px;}
+        .about-photo{order:-1;max-width:520px;margin:0 auto;}
       }
-
       @media (max-width: 768px){
         .navbar-custom{flex-direction:column;gap:10px;}
         .hero-overlay{left:50%;top:88%;transform:translate(-50%,-50%);justify-content:center;}
         .btn-main,.btn-outline{width:220px;text-align:center;}
-        .about-title,.exp-title,.msg-title{font-size:38px;}
+        .exp-title,.msg-title{font-size:38px;}
         .footer-bottom{flex-direction:column;gap:12px;align-items:flex-start;}
-
         .split-card{padding:40px 24px;border-radius:16px;}
         .split-grid{grid-template-columns:1fr;gap:40px;}
         .split-grid > div{padding-bottom:28px;border-bottom:1px solid rgba(108,99,255,.15);}
@@ -173,8 +167,6 @@
       <a href="#home" class="navbar-title">Portfolio 2025</a>
       <ul>
         <li><a href="#home" class="active">Home</a></li>
-      
-        <!-- UPDATED: Jump to Explore (shows See My Work + Articles) -->
         <li><a href="#explore">My Work</a></li>
         <li><a href="#message">Contact</a></li>
       </ul>
@@ -185,7 +177,6 @@
       <div class="hero-image-wrapper">
         <img src="images/Portfolio.png" alt="Portfolio Full Photo" class="hero-image" />
         <div class="hero-overlay">
-          <!-- UPDATED: go straight to Explore block -->
           <a href="#explore" class="btn-main">Web Designer & Development</a>
           <a href="#message" class="btn-outline">Contact Me</a>
         </div>
@@ -223,7 +214,16 @@
     <section id="about" class="about-dark">
       <div class="about-inner">
         <div class="about-dots"></div>
-        <div class="about-card" aria-hidden="true"></div>
+
+        <img
+          class="about-photo"
+          src="images/photo.JPG"
+          alt="Portrait of Iryna Khandoniak — front-end developer and photographer"
+          width="900" height="900"
+          loading="lazy"
+          decoding="async"
+        />
+
         <div>
           <p class="about-kicker">How About Me?</p>
           <h2 class="about-title">Front-end Developer & Photography Lover</h2>
@@ -254,7 +254,6 @@
           <div>
             <h2 class="exp-title">I build &<br/>design stuff</h2>
             <p class="exp-text">Open source projects, web apps and experimentals.</p>
-            <!-- Keep this going to your dedicated work page if you have it -->
             <a class="cta-ghost" href="work.html">
               SEE MY WORK <span class="arrow">→</span>
             </a>
@@ -270,35 +269,47 @@
       </div>
     </section>
 
-    <!-- CONTACT FORM -->
-    <section id="message" class="message">
-      <div class="message-inner">
-        <h2 class="msg-title">Send me a message!</h2>
-        <p class="msg-sub">Got a question or proposal, or just want to say hello? Go ahead.</p>
+    <!-- CONTACT FORM (zero-JS, via FormSubmit) -->
+<section id="message" class="message">
+  <div class="message-inner">
+    <h2 class="msg-title">Send me a message!</h2>
+    <p class="msg-sub">Got a question or proposal, or just want to say hello? Go ahead.</p>
 
-        <form action="mailto:irr.enn.booking@gmail.com" method="post" enctype="text/plain">
-          <div class="form-grid">
-            <div class="form-field">
-              <label for="name">Your Name</label>
-              <input id="name" name="name" type="text" class="line-input" placeholder="Enter your name" required />
-            </div>
-            <div class="form-field">
-              <label for="email">Email Address</label>
-              <input id="email" name="email" type="email" class="line-input" placeholder="Enter your email address" required />
-            </div>
-          </div>
+    <!-- IMPORTANT: keep your real email here -->
+    <form action="https://formsubmit.co/irr.enn.booking@gmail.com" method="POST">
+      <!-- FormSubmit options -->
+      <input type="hidden" name="_subject" value="New message from Portfolio 2025">
+      <input type="hidden" name="_captcha" value="false">
+      <!-- Optional: where to go after submit (or remove this line) -->
+      <!-- <input type="hidden" name="_next" value="https://your-site.com/thanks.html"> -->
 
-          <div class="form-field" style="text-align:left;">
-            <label for="messageBox">Your Message</label>
-            <textarea id="messageBox" name="message" class="line-textarea" placeholder="Hi, I think we need a design system for our products at Company X. How soon can you hop on to discuss this?"></textarea>
-          </div>
-
-          <button type="submit" class="shoot">SHOOT <span class="arrow">→</span></button>
-        </form>
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="name">Your Name</label>
+          <input id="name" name="name" type="text" class="line-input" placeholder="Enter your name" required>
+        </div>
+        <div class="form-field">
+          <label for="email">Email Address</label>
+          <input id="email" name="email" type="email" class="line-input" placeholder="Enter your email address" required>
+        </div>
       </div>
-    </section>
 
-    <!-- ===== FINAL FOOTER PAGE (dark, lime) ===== -->
+      <div class="form-field" style="text-align:left;">
+        <label for="messageBox">Your Message</label>
+        <textarea id="messageBox" name="message" class="line-textarea" placeholder="Hi, I think we need a design system for our products at Company X. How soon can you hop on to discuss this?" required></textarea>
+      </div>
+
+      <button type="submit" class="shoot">SHOOT <span class="arrow">→</span></button>
+
+      <p style="margin-top:10px;font-size:14px;color:#6b6686;">
+        Prefer email? <a href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a>
+      </p>
+    </form>
+  </div>
+</section>
+
+
+    <!-- FOOTER -->
     <footer id="footer" class="footer-dark">
       <div class="footer-inner">
         <div class="footer-grid">
@@ -310,7 +321,6 @@
 
           <div>
             <ul class="footer-list">
-              <!-- UPDATED: send people to Explore where they see both CTAs -->
               <li><a href="#explore">My Work</a></li>
               <li><a href="mycv.html">My CV</a></li>
             </ul>
@@ -318,7 +328,6 @@
         </div>
 
         <hr class="footer-hr" />
-
         <div class="footer-bottom">
           <div class="copyright">© Iryna Khandoniak 2025</div>
           <div class="social-mini">
@@ -330,6 +339,7 @@
         </div>
       </div>
     </footer>
+
   </body>
 </html>
 
