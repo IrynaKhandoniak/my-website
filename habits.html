@@ -25,6 +25,7 @@
         --ink:#272142;
         --muted:#8b86a5;
         --lime:#e9ff6b;
+        --danger:#ff6464;
         --shadow:0 12px 30px rgba(0,0,0,.08);
         --radius-xl:24px;
       }
@@ -38,10 +39,11 @@
         background:#fff;
       }
 
-      h1,h2,h3{font-family:"Playfair Display",serif; font-weight:700; margin:0 0 .4em;}
+      h1,h2,h3,h4{font-family:"Playfair Display",serif; font-weight:700; margin:0 0 .4em;}
       h1{font-size:56px; line-height:1.1;}
       h2{font-size:42px; line-height:1.15;}
       h3{font-size:28px; line-height:1.25;}
+      h4{font-size:22px; line-height:1.35;}
       p{margin:0 0 1em; line-height:1.75;}
 
       @media (max-width: 768px){
@@ -56,19 +58,20 @@
       .navbar-custom{
         position:fixed;top:0;left:0;width:100%;z-index:1000;
         background:#fff;border-bottom:1px solid #eee;
-        padding:15px 40px;display:flex;align-items:center;justify-content:space-between;
+        padding:15px 20px;display:flex;align-items:center;justify-content:space-between;
       }
       .navbar-title{font-weight:700;font-size:20px;color:var(--primary);text-decoration:none;}
       .navbar-custom ul{list-style:none;display:flex;gap:25px;margin:0;padding:0;}
       .navbar-custom a{text-decoration:none;color:#333;font-weight:500;transition:color .3s;}
       .navbar-custom a:hover,.navbar-custom .active{color:var(--primary);}
+      .spacer-lg{height:76px;}
 
-      /* Mobile menu (simple) */
-      .menu-btn{display:none; border:0; background:transparent; font-weight:800; font-size:18px;}
+      /* Mobile menu */
+      .menu-btn{display:none;border:0;background:transparent;font-weight:800;font-size:18px;color:var(--primary);}
       @media (max-width: 900px){
-        .navlinks{display:none}
         .menu-btn{display:block}
-        .navlinks.open{
+        .navbar-custom ul{display:none}
+        #navlinks.open{
           position:absolute; top:64px; right:16px; background:#fff; border:1px solid #eee;
           border-radius:12px; padding:12px 16px; display:flex; flex-direction:column; gap:10px;
           box-shadow:var(--shadow);
@@ -79,7 +82,7 @@
          HERO
       ============================== */
       .hero{
-        min-height:88vh; padding-top:84px;  /* space for navbar */
+        min-height:88vh; padding-top:10px;
         display:grid; place-items:center; position:relative; overflow:hidden;
       }
       .hero-inner{
@@ -90,9 +93,7 @@
                     linear-gradient(180deg,#fff 0%,#fbfaff 100%);
         border-radius:var(--radius-xl); padding:24px; box-shadow:var(--shadow);
       }
-      .hero-media img{
-        width:100%; height:auto; display:block; object-fit:contain; border-radius:18px;
-      }
+      .hero-media img{width:100%; height:auto; display:block; object-fit:contain; border-radius:18px;}
       .eyebrow{color:#8f86ff; font-weight:800; letter-spacing:.1em; text-transform:uppercase; margin-bottom:8px;}
       .lead{font-size:20px; color:#4b4b4b; max-width:560px}
       .actions{display:flex; gap:14px; flex-wrap:wrap; margin-top:16px;}
@@ -112,7 +113,7 @@
       }
 
       /* ==============================
-         HABITS FOR LIFE (learn block)
+         LEARN / LISTS
       ============================== */
       .learn { width:min(1200px,94%); margin:28px auto; }
       .learn-card{
@@ -121,10 +122,17 @@
       }
       .learn .eyebrow{color:#8f86ff;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:0 0 12px}
       .learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-      .learn h3{font-family:"Playfair Display",serif;font-size:28px;line-height:1.2;margin:0 0 10px;color:var(--primary)  }
+      .learn h3{font-family:"Playfair Display",serif;font-size:28px;line-height:1.2;margin:0 0 10px;color:var(--primary)}
       .learn ul{margin:0;padding-left:20px;line-height:1.9;color:#2e2948}
-      .learn .credit{margin-top:14px;font-size:13px;color:#6f6896}
       @media (max-width:900px){ .learn-grid{grid-template-columns:1fr} }
+
+      /* Silent habits card accent */
+      .danger-card{
+        border:1px solid #ffd3d3;
+      }
+      .danger-title{
+        color:var(--danger);
+      }
 
       /* ==============================
          BENEFITS
@@ -204,7 +212,7 @@
       }
 
       /* ==============================
-         FAQ
+         FAQ + FOOTER
       ============================== */
       .faq{padding:90px 0;}
       details{
@@ -213,9 +221,6 @@
       summary{cursor:pointer; font-weight:700; color:#3a2f7a;}
       details[open]{box-shadow:var(--shadow)}
 
-      /* ==============================
-         FOOTER (dark lime)
-      ============================== */
       .footer{
         background:var(--deep); color:#dcd6ff; padding:90px 0 70px;
       }
@@ -237,17 +242,19 @@
   </head>
   <body>
     <!-- NAV -->
-      <nav class="navbar-custom">
-  <a href="/" class="navbar-title">Portfolio 2025</a>
-  <ul>
-    <li><a href="/" class="active">Home</a></li>
-    <li><a href="/">My Work</a></li>
-    <li><a href="/">Contact</a></li>
-  </ul>
-</nav>
+    <nav class="navbar-custom" aria-label="Primary">
+      <a href="/" class="navbar-title">Portfolio 2025</a>
+
+      <button id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="navlinks">Menu ☰</button>
+
+      <ul id="navlinks" class="navlinks">
+        <li><a href="/" class="active">Home</a></li>
+        <li><a href="#benefits">My Work</a></li>
+        <li><a href="#faq">Contact</a></li>
+      </ul>
+    </nav>
 
     <div class="spacer-lg"></div>
-
 
     <!-- HERO / OVERVIEW -->
     <section id="overview" class="hero">
@@ -271,7 +278,7 @@
       </div>
     </section>
 
-    <!-- HABITS FOR LIFE — highlights (fixed & styled) -->
+    <!-- HABITS FOR LIFE — highlights -->
     <section id="learn" class="learn" aria-labelledby="learnTitle">
       <div class="learn-card">
         <p class="eyebrow" id="learnTitle">Habits for Life — highlights</p>
@@ -281,16 +288,16 @@
           <div>
             <h3>Good daily habits</h3>
             <ul>
-              <li>❤️ Love to be loved: give without expecting anything in return, love everyone around you and you'll be loved. Open your heart and people will open theirs.</li>
-              <li>🏋️‍♂️ Exercise: move your body, it will thank you.</li>
-              <li>🥗 Eat healthy: an obvious one but so important. Drink water, avoid junk food and listen to your body.</li>
-              <li>👋 Socialize: meet new people, meet old friends, call people you like to have conversations with. </li>
-              <li>🛠 Create & build: grow a business, code, write, sing, paint, make music.</li>
-              <li>🧘‍♂️ Meditate: Do nothing for 10 minutes and focus only on your breathing, it will calm your mind.</li>
-              <li>📖 Journal: express gratitude, write down your intentions in life.</li>
-              <li>🕺 Learn something: gain a new skill or improve existing ones, try new hobbies, gain valuable knowledge, read books</li>
-              <li>📜 Remind yourself: re-read quotes and books that resonate with you, re-watch speeches that inspire you, read philosophy</li>
-              <li>🍷 Slow down: listen to music, play, drink wine, eat slowly, water your plants</li>
+              <li>❤️ <strong>Give love freely</strong>: share kindness without expecting anything back—open hearts invite open hearts.</li>
+              <li>🏋️‍♂️ <strong>Move your body</strong>: be active and your body (and mind) will thank you.</li>
+              <li>🥗 <strong>Eat with care</strong>: nourish yourself, drink water, and listen to your body’s signals.</li>
+              <li>👋 <strong>Connect with others</strong>: meet new people, check in with friends, or call someone you enjoy talking to.</li>
+              <li>🛠 <strong>Create & express</strong>: build, code, write, sing, paint—channel energy into something meaningful.</li>
+              <li>🧘‍♂️ <strong>Pause & breathe</strong>: take 10 minutes to meditate and let your mind settle.</li>
+              <li>📖 <strong>Keep a journal</strong>: practice gratitude and note your intentions to stay aligned.</li>
+              <li>🕺 <strong>Learn & grow</strong>: explore new hobbies, sharpen skills, read, and stay curious.</li>
+              <li>📜 <strong>Revisit wisdom</strong>: return to quotes, books, and talks that inspire you.</li>
+              <li>🍷 <strong>Slow down</strong>: savor life—music, good food, laughter, and quiet moments (plants included).</li>
             </ul>
           </div>
 
@@ -298,20 +305,47 @@
           <div>
             <h3>Habits to avoid</h3>
             <ul>
-              <li>😍Chasing too many desires at once—focus.</li>
-              <li>💊Substance misuse (alcohol, pills, etc.).</li>
-              <li>📰 News: it’s very toxic.</li>
-              <li>🏨Luxury obsession—keep it simple.</li>
-              <li>👍Seeking external validation.</li>
-              <li>📅Overbooked schedules—leave margin.</li>
-              <li>😠Complaining—accept and act.</li>
-              <li>🦠Draining environments and bad energy.</li>
-              <li>😪Toxic relationships—choose positive people.</li>
+              <li>😍 <strong>Scattering your focus</strong>: don’t chase too many desires at once—choose what matters.</li>
+              <li>💊 <strong>Relying on substances</strong>: avoid using alcohol or pills as coping mechanisms.</li>
+              <li>📰 <strong>Doomscrolling the news</strong>: protect your peace—most of it is noise.</li>
+              <li>🏨 <strong>Luxury obsession</strong>: keep it simple; happiness isn’t found in excess.</li>
+              <li>👍 <strong>Craving approval</strong>: your worth isn’t measured by likes or comments.</li>
+              <li>📅 <strong>Overloading your schedule</strong>: leave space to breathe and recharge.</li>
+              <li>😠 <strong>Complaining without action</strong>: accept what is, then take steps to improve it.</li>
+              <li>🦠 <strong>Toxic environments</strong>: protect your energy—avoid spaces that drain you.</li>
+              <li>😪 <strong>Harmful relationships</strong>: choose supportive, positive people.</li>
             </ul>
           </div>
         </div>
+      </div>
+    </section>
 
-       
+    <!-- 10 Silent Habits -->
+    <section id="silent-habits" class="learn" aria-labelledby="silentTitle">
+      <div class="learn-card danger-card">
+        <p class="eyebrow" id="silentTitle">⚠️ 10 Silent Habits That Destroy Your Life</p>
+        <div class="learn-grid">
+          <div>
+           
+            <ul>
+              <li><strong>Coffee</strong> before water</li> 
+              <li><strong>Skipping</strong>sunlight</li> 
+              <li><strong>Eating</strong>distracted</li>
+              <li><strong>Mouth</strong>breathing</li> 
+              <li><strong>Scrolling</strong>before sleep</li>
+            </ul>
+          </div>
+          <div>
+     
+            <ul>
+              <li><strong>Ultra-processed</strong>snacks</li>
+               <li><strong>No stretching</strong>in the morning</li> 
+               <li><strong>Poor sleep</strong> routine</li> 
+               <li><strong>Inconsistent</strong>meals</li> 
+               <li><strong>Suppressing</strong>emotions</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -328,27 +362,19 @@
           <article class="card">
             <div class="dots"></div>
             <h3>Clear & friendly</h3>
-            <p>
-              Create habits in seconds. No clutter, no pressure —
-              just a clean interface that keeps you moving.
-            </p>
+            <p>Create habits in seconds. No clutter, no pressure — just a clean interface that keeps you moving.</p>
           </article>
 
           <article class="card">
             <div class="dots"></div>
             <h3>Built-in motivation</h3>
-            <p>
-              Streaks, reminders and gentle prompts help you show up,
-              even on low-energy days.
-            </p>
+            <p>Streaks, reminders and gentle prompts help you show up, even on low-energy days.</p>
           </article>
 
           <article class="card">
             <div class="dots"></div>
             <h3>Your rhythm</h3>
-            <p>
-              Daily, weekly or custom schedules. Pick what fits your season of life and adjust anytime.
-            </p>
+            <p>Daily, weekly or custom schedules. Pick what fits your season of life and adjust anytime.</p>
           </article>
         </div>
       </div>
@@ -410,37 +436,34 @@
         </div>
 
         <aside class="cta-card" aria-labelledby="ctaTrackerTitle">
-  <span class="badge">Free</span>
-  <h3 id="ctaTrackerTitle" style="margin-bottom:6px;">Simple habit tracker</h3>
-  <p style="margin-bottom:10px;">No sign-in required. Works great on mobile.</p>
-  <ul style="margin:0; padding-left:18px; line-height:1.8; color:#4a4664;">
-    <li>Create unlimited habits</li>
-    <li>Daily/weekly schedules</li>
-    <li>Light & dark themes</li>
-  </ul>
-  <div class="actions" style="margin-top:14px;">
-    <!-- CHANGED: link to your tracker page -->
-    <a class="btn-main" href="habittracker.html" aria-label="Open Habit Tracker">Open the tracker →</a>
-    <a class="btn-outline" href="#how">How it works</a>
-  </div>
-</aside>
-
+          <span class="badge">Free</span>
+          <h3 id="ctaTrackerTitle" style="margin-bottom:6px;">Simple habit tracker</h3>
+          <p style="margin-bottom:10px;">No sign-in required. Works great on mobile.</p>
+          <ul style="margin:0; padding-left:18px; line-height:1.8; color:#4a4664;">
+            <li>Create unlimited habits</li>
+            <li>Daily/weekly schedules</li>
+            <li>Light & dark themes</li>
+          </ul>
+          <div class="actions" style="margin-top:14px;">
+            <a class="btn-main" href="habittracker.html" aria-label="Open Habit Tracker">Open the tracker →</a>
+            <a class="btn-outline" href="#how">How it works</a>
+          </div>
+        </aside>
+      </div>
+    </section>
 
     <!-- FAQ -->
     <section id="faq" class="faq">
       <div class="section-inner">
         <h2>FAQ</h2>
-
         <details>
           <summary>What makes this different from other trackers?</summary>
           <p>It’s intentionally minimal. You’ll find only the pieces that help you show up — nothing that gets in the way.</p>
         </details>
-
         <details>
           <summary>Can I track weekly habits?</summary>
           <p>Yes. Choose daily or weekly rhythm and set the exact days that suit your schedule.</p>
         </details>
-
         <details>
           <summary>Do I need an account?</summary>
           <p>No account is required to begin. You can export data anytime.</p>
@@ -481,8 +504,12 @@
       // tiny mobile menu toggle
       const btn = document.getElementById('menuBtn');
       const nav = document.getElementById('navlinks');
-      if (btn) btn.addEventListener('click', () => nav.classList.toggle('open'));
+      if (btn && nav) {
+        btn.addEventListener('click', () => {
+          const open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+      }
     </script>
   </body>
 </html>
-
