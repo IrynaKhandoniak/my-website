@@ -41,23 +41,65 @@
   .title{font-family:"Playfair Display",serif;font-size:44px;margin:.2em 0 .1em}
   .subtitle{color:var(--muted);margin:0 0 28px}
 
-  /* Cards */
-  .list{display:grid;gap:18px}
+  /* Square tiles */
+  .list{
+    display:grid;
+    gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  }
   .card{
-    display:grid;grid-template-columns:72px 1fr;gap:18px;align-items:center;
-    padding:20px 22px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    padding:24px;
     border:1px solid var(--line);
     border-radius:20px;
     background:var(--card);
-    text-decoration:none;color:inherit;
+    text-decoration:none;
+    color:inherit;
     box-shadow:var(--shadow);
-    transition:border-color .2s, transform .2s;
+    transition:transform .2s, border-color .2s, box-shadow .2s;
+    aspect-ratio:1 / 1;           /* stays square */
+    min-height:240px;
+    overflow:hidden;
   }
-  .card:hover{border-color:#d7d1ff;transform:translateY(-2px)}
-  .no{font-family:"Playfair Display",serif;font-size:28px;font-weight:700;color:var(--primary);text-align:center}
-  .h{font-weight:800;font-size:20px;margin:0 0 6px}
-  .ex{color:#4a4664;margin:0 0 8px}
-  .m{color:#6f6896;font-size:13px}
+  .card:hover{
+    transform:translateY(-2px);
+    border-color:#d7d1ff;
+    box-shadow:0 16px 36px rgba(0,0,0,.08);
+  }
+
+  /* Elegant watermark number */
+  .card::before{
+    content: attr(data-no);
+    position:absolute;
+    top:10px;
+    left:14px;
+    font-family:"Playfair Display",serif;
+    font-weight:700;
+    font-size:72px;
+    line-height:1;
+    color:var(--primary);
+    opacity:.08;               /* soft ghost look */
+    pointer-events:none;
+    transform:translateY(-6px);
+  }
+
+  /* Content */
+  .h{
+    font-weight:800;
+    font-size:18px;
+    margin:6px 0 6px;
+  }
+  .ex{
+    color:#4a4664;margin:0;
+    display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;
+    line-height:1.6;
+  }
+  .m{
+    color:#6f6896;font-size:12px;margin-top:auto;
+  }
 
   /* Footer */
   footer{width:min(980px,92%);margin:24px auto 60px;color:#8b86a5;font-size:14px;text-align:center}
@@ -75,34 +117,24 @@
 
 <main class="wrap">
   <h1 class="title">Articles</h1>
- 
 
   <div class="list">
     <a class="card" href="marketing.html">
-      <div class="no">01</div>
-      <div>
-        <h2 class="h">The Simple Marketing Playbook</h2>
-        <p class="ex">Positioning, messaging, and a weekly cadence that actually ships.</p>
-        <div class="m">September 2025 • 6 min read</div>
-      </div>
+      <h2 class="h">The Simple Marketing Playbook</h2>
+      <p class="ex">Positioning, messaging, and a weekly cadence that actually ships.</p>
+      <div class="m">September 2025 • 6 min read</div>
     </a>
 
     <a class="card" href="habits.html">
-      <div class="no">02</div>
-      <div>
-        <h2 class="h">Tiny Habits, Big Wins</h2>
-        <p class="ex">Start microscopic, attach to cues, and track streaks without guilt.</p>
-        <div class="m">September 2025 • 7 min read</div>
-      </div>
+      <h2 class="h">Tiny Habits, Big Wins</h2>
+      <p class="ex">Start microscopic, attach to cues, and track streaks without guilt.</p>
+      <div class="m">September 2025 • 7 min read</div>
     </a>
 
     <a class="card" href="marketing.html">
-      <div class="no">03</div>
-      <div>
-        <h2 class="h">Emotional Intelligence for Makers</h2>
-        <p class="ex">Notice, name, and navigate emotions to build better products & teams.</p>
-        <div class="m">September 2025 • 6 min read</div>
-      </div>
+      <h2 class="h">Emotional Intelligence for Makers</h2>
+      <p class="ex">Notice, name, and navigate emotions to build better products & teams.</p>
+      <div class="m">September 2025 • 6 min read</div>
     </a>
   </div>
 </main>
@@ -110,4 +142,3 @@
 <footer>© Iryna Khandoniak 2025</footer>
 </body>
 </html>
-
