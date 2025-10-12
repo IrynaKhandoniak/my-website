@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Crypto risk management article." />
+    <title>Portfolio 2025 — Crypto Risk Management</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+      /* ---------- Tokens ---------- */
+      :root{
+        --primary:#6c63ff;
+        --primary-600:#5548d6;
+        --ink:#1f1a3d;
+        --muted:#7b7696;
+        --line:#eceaf4;
+        --lime:#e9ff6b;
+        --radius:12px;
+        --shadow:0 6px 18px rgba(30,20,70,.06);
+        --shadow-lg:0 10px 28px rgba(30,20,70,.10);
+        --nav-h:64px;
+      }
+
+      /* ---------- Base ---------- */
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{
+        margin:0;
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
+        font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+        color:var(--ink);
+        background:#fff;
+        line-height:1.6;
+      }
+      img{max-width:100%;height:auto;display:block}
+
+      /* ---------- Navbar ---------- */
+      .navbar-custom{
+        position:fixed; inset:0 0 auto 0; height:var(--nav-h); z-index:1000;
+        background:#fff; border-bottom:1px solid #eee;
+        padding:0 24px; display:flex; align-items:center; justify-content:space-between;
+      }
+      .navbar-title{font-weight:800; font-size:18px; color:var(--primary); text-decoration:none;}
+      .navbar-custom ul{list-style:none; display:flex; gap:18px; margin:0; padding:0;}
+      .navbar-custom a{ text-decoration:none; color:#3b345a; font-weight:600; transition:color .15s ease, opacity .15s ease; }
+      .navbar-custom a:hover, .navbar-custom .active{ color:var(--primary); }
+
+      .page-offset{ height:var(--nav-h); }
+
+      /* ---------- Layout ---------- */
+      .wrap{max-width:980px;margin:0 auto;padding:0 18px}
+
+      /* ---------- Hero ---------- */
+      .hero{
+        margin:16px 0 18px;
+        border:1px solid var(--line);
+        border-radius:var(--radius);
+        padding: clamp(20px, 3vw, 28px);
+        box-shadow:var(--shadow);
+        background:linear-gradient(180deg, rgba(108,99,255,.06), rgba(108,99,255,0) 60%);
+      }
+      .eyebrow{
+        display:inline-flex;align-items:center;gap:8px;
+        letter-spacing:.18em;text-transform:uppercase;
+        color:var(--primary-600);font-weight:700;font-size:11px;
+      }
+      .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--primary)}
+      h1.play-title{
+        font-family:"Playfair Display",serif;
+        font-size: clamp(26px, 4.2vw, 38px);
+        line-height:1.15;margin:6px 0 6px;color:#1f1a3d;
+      }
+      .play-sub{
+        font-size:15px;line-height:1.65;color:var(--muted);max-width:72ch;margin:0;
+      }
+
+      /* ---------- Article body ---------- */
+      .playbook{padding:40px 0 56px; background:#faf9ff;}
+      .play-body{
+        margin-top:14px;padding:16px;border-radius:var(--radius);
+        background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);
+      }
+      .lead{font-size:15px;line-height:1.7;color:#392f63;margin:0 0 10px}
+
+      .callout{
+        border-left:4px solid var(--primary);
+        background:#fbfaff;
+        padding:10px 12px;border-radius:10px;margin:12px 0;color:#372f61;
+      }
+      .callout strong{color:#2c2552}
+
+      .step{
+        border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff;margin:10px 0;
+        transition:box-shadow .15s ease, border-color .15s ease;
+      }
+      .step:hover{box-shadow:var(--shadow-lg);border-color:#e5e3f2}
+      .step h3{margin:0 0 6px;font-size:17px;line-height:1.25;color:#1f1a3d;font-weight:800}
+      .step p{margin:0;color:#4a4568;font-size:14.5px}
+
+      /* Checklist */
+      .checklist{padding:0;margin:8px 0 0;list-style:none;display:grid;gap:6px}
+      .checklist li{position:relative;padding-left:16px;color:#463f6d;font-size:14.5px}
+      .checklist li::before{
+        content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:2px;background:var(--primary);
+        box-shadow:0 0 0 4px rgba(108,99,255,.10);
+      }
+
+      /* Tips */
+      .tip{
+        display:flex;gap:8px;align-items:flex-start;background:#f7f6ff;border:1px dashed #d8d5ff;
+        padding:8px 10px;border-radius:9px;margin-top:8px;color:#3b3469;font-size:13.5px;
+      }
+      .tip b{white-space:nowrap;color:#2d2554}
+
+      /* Split */
+      .two-col{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+      @media (min-width: 860px){ .two-col{grid-template-columns:1fr 1fr} }
+
+      .card-lite{
+        background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;
+      }
+
+      .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
+      .kpi .cell{
+        border:1px solid var(--line);border-radius:9px;padding:10px 8px;background:#fafafa;text-align:center;
+        font-size:12.5px;color:#534d78;line-height:1.35;
+      }
+      .cell b{display:block;font-size:14.5px;margin-bottom:2px;color:#1f1a3d}
+
+      /* ---------- Footer ---------- */
+      .footer-dark{
+        background:#221a45;color:#e7e4ff;padding:56px 18px;margin-top:40px;
+        border-top:1px solid #1a1533;
+      }
+      .footer-inner{max-width:1100px;margin:0 auto}
+      .footer-grid{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:start;margin-bottom:14px}
+      .footer-label{letter-spacing:.22em;text-transform:uppercase;color:var(--lime);margin-bottom:8px;display:block;font-size:11px;font-weight:700}
+      .footer-link{display:inline-block;color:var(--lime);text-decoration:none;font-size:15px;margin:6px 0;transition:opacity .15s ease, transform .15s ease}
+      .footer-link:hover{opacity:.9;transform:translateY(-1px)}
+      .footer-list{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+      .footer-list a{color:#cfcaff;text-decoration:none;font-size:15px}
+      .footer-list a:hover{opacity:.9}
+      .footer-hr{height:1px;background:rgba(255,255,255,.18);border:0;margin:6px 0 12px}
+      .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13.5px}
+      .social-mini{display:flex;gap:16px}
+      .social-mini a{color:var(--lime);text-decoration:none;font-weight:800;letter-spacing:.08em;transition:opacity .15s ease, transform .15s ease}
+      .social-mini a:hover{opacity:.9;transform:translateY(-1px)}
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 768px){
+        .navbar-custom{padding:0 16px}
+        h1.play-title{font-size:30px}
+        .play-body{padding:12px}
+        .kpi{grid-template-columns:1fr 1fr}
+        .footer-grid{grid-template-columns:1fr}
+        .footer-bottom{flex-direction:column;align-items:flex-start;gap:6px}
+      }
+
+      @media (prefers-reduced-motion: reduce){
+        *{transition:none !important; animation:none !important}
+        html{scroll-behavior:auto}
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar-custom" aria-label="Primary">
+      <a href="/" class="navbar-title">Portfolio 2025</a>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a class="active" href="mycv.html">My Projects</a></li>
+        <li><a href="/#explore">My Work</a></li>
+        <li><a href="/#message">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="page-offset" aria-hidden="true"></div>
+
+    <!-- ARTICLE -->
+    <section id="playbook" class="playbook">
+      <div class="wrap">
+        <div class="hero">
+          <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Article 4</span>
+          <h1 class="play-title">Risk Management & the Recent Crypto Liquidation Surge</h1>
+          <p class="play-sub">
+            Risk management is the discipline of identifying, assessing, mitigating, and monitoring exposures that threaten capital.
+            In crypto, the stakes are higher: volatility is extreme, leverage is common, and feedback loops can turn a headline into a cascade.
+          </p>
+        </div>
+
+        <div class="play-body">
+          <p class="lead">
+            Traditional finance leans on hedging, limits, stress testing, diversification, capital buffers, and scenario analysis.
+            Crypto requires all of that—plus stricter psychology—because structure, not emotion, keeps portfolios alive.
+          </p>
+
+          <div class="callout">
+            <strong>Mindset:</strong> “Mistakes are experience—if you become aware of them.”<br/>
+           
+          </div>
+
+          <article>
+            <!-- 1 -->
+            <div class="step">
+              <h3>1) Why Crypto Is a High-Risk Playground</h3>
+              <ul class="checklist">
+                <li><b>Leverage & margin:</b> borrowed exposure amplifies moves—and liquidations.</li>
+                <li><b>Thin depth:</b> low liquidity means slippage and gap risk.</li>
+                <li><b>Correlation & contagion:</b> majors fall, alts follow.</li>
+                <li><b>Opacity & counterparty risk:</b> uneven controls across venues and protocols.</li>
+                <li><b>Macro/geo shocks:</b> policy surprises can trigger systemic feedback loops.</li>
+              </ul>
+              <div class="tip"><b>Translation to practice:</b> size small, diversify, and plan exits before entries.</div>
+            </div>
+
+            <!-- 2 -->
+            <div class="step">
+              <h3>2) What Happened: The October 2025 Mega-Liquidations</h3>
+              <p>
+                In October 2025, the market suffered one of its largest liquidation waves on record: over <b>$19B</b> in leveraged positions unwound within a single session
+                as a geopolitical tariff shock hit sentiment. Panic selling drove prices lower, margin calls fired, and automated liquidations cascaded across exchanges and DeFi.
+                An estimated <b>~1.6M</b> accounts were affected; many thinly traded altcoins fell 50%+ at the nadir.
+              </p>
+              <div class="tip"><b>Core truth:</b> in a leveraged, fast market, a modest catalyst can ignite a violent chain of forced selling.</div>
+            </div>
+
+            <!-- 3 -->
+            <div class="step">
+              <h3>3) Emotions vs System</h3>
+              <div class="two-col">
+                <div class="card-lite">
+                  <b>Emotions</b>
+                  <ul class="checklist">
+                    <li>Panic in drawdowns</li>
+                    <li>Thrill on pumps</li>
+                    <li>Envy of others’ PnL</li>
+                    <li>Fear of Missing Out (FOMO)</li>
+                  </ul>
+                </div>
+                <div class="card-lite">
+                  <b>System</b>
+                  <ul class="checklist">
+                    <li>Explicit risk/position limits</li>
+                    <li>Pre-written take-profit tiers</li>
+                    <li>Focus on <i>your</i> process and data</li>
+                    <li>Clear entry/exit and invalidation levels</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="tip"><b>Psychology + Strategy:</b> discipline transforms volatility from enemy to edge.</div>
+            </div>
+
+            <!-- 4 -->
+            <div class="step">
+              <h3>4) Five Rules of a Crypto-Practitioner</h3>
+              <ol class="checklist">
+                <li>Think in months and years, not hours.</li>
+                <li>Ignore noise (news, pumps, fear).</li>
+                <li>Calculate—don’t guess. Backtest, size, model.</li>
+                <li>Respect the strategy and the risk limits.</li>
+                <li>Wait is a position: pause, reflect, and skip low-quality trades.</li>
+              </ol>
+              
+
+            <!-- 5 -->
+            <div class="step">
+              <h3>5) Practical Toolkit</h3>
+              <ul class="checklist">
+                <li><b>Position sizing:</b> cap risk at ~0.5–2% per idea; avoid portfolio-sinking bets.</li>
+                <li><b>Stops & invalidation:</b> set where the thesis is wrong—not where it feels “comfortable.”</li>
+                <li><b>Profit taking:</b> scale out at planned levels; don’t chase extensions.</li>
+                <li><b>Diversification:</b> blend majors with stables/cash; avoid single-narrative exposure.</li>
+                <li><b>Stress testing:</b> “BTC −30% in an hour”—does the portfolio survive?</li>
+                <li><b>Counterparty hygiene:</b> prefer transparent venues (audits, proofs of reserves).</li>
+                <li><b>Structural guardrails:</b> explore circuit-breaker logic where available to slow liquidation spirals.</li>
+              </ul>
+              <div class="tip"><b>Rule of thumb:</b> when volatility expands, raise cash. Dry powder = optionality.</div>
+            </div>
+
+            <!-- 6 -->
+            <div class="step">
+              <h3>6) Review Cadence</h3>
+              <div class="two-col">
+                <div class="card-lite">
+                  <b>Log weekly:</b>
+                  <ul class="checklist">
+                    <li>Best/worst trade and the real cause</li>
+                    <li>Plan vs execution (adherence score)</li>
+                    <li>One change for next week</li>
+                  </ul>
+                </div>
+                <div class="card-lite">
+                  <div class="kpi">
+                    <div class="cell"><b>↓ Max DD</b>controlled drawdown</div>
+                    <div class="cell"><b>↑ R/Trade</b>quality of wins</div>
+                    <div class="cell"><b>↑ Discipline</b>plan adherence</div>
+                  </div>
+                </div>
+              </div>
+              <div class="tip"><b>Cycle:</b> Plan → Execute → Review → Adjust one lever → Repeat.</div>
+            </div>
+          </article>
+
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-dark">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div>
+            <span class="footer-label">SAY HELLO</span>
+            <a class="footer-link" href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a>
+            <a class="footer-link" href="https://t.me/irynakhandoniak" target="_blank" rel="noreferrer">t.me/irynakhandoniak</a>
+          </div>
+          <div>
+            <span class="footer-label">PAGES</span>
+            <ul class="footer-list">
+              <li><a href="mycv.html">My CV</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr class="footer-hr" />
+        <div class="footer-bottom">
+          <div>© Iryna Khandoniak 2025</div>
+          <div class="social-mini">
+            <a href="https://twitter.com/" target="_blank" rel="noreferrer" aria-label="Twitter">TW</a>
+            <a href="https://github.com/IrynaKhandoniak" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
+            <a href="https://www.linkedin.com/in/irynakhandoniak/" target="_blank" rel="noreferrer" aria-label="LinkedIn">LN</a>
+            <a href="https://youtube.com/" target="_blank" rel="noreferrer" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
