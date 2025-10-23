@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Projects — Portfolio 2025</title>
 
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
   <!-- Fonts (same as main) -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 
@@ -61,9 +64,9 @@
       display:inline-flex; align-items:center; gap:10px;
       padding:12px 18px; border-radius:12px; font-weight:700; text-decoration:none; transition:.25s;
     }
-    .btn-main{background:var(--primary); color:#fff; border:2px solid var(--primary);}
+    .btn-main{background:var(--primary); color:#fff; border:2px solid var(--primary);} 
     .btn-main:hover{background:var(--primary-600); border-color:var(--primary-600)}
-    .btn-outline{color:var(--primary); background:#fff; border:2px solid var(--primary);}
+    .btn-outline{color:var(--primary); background:#fff; border:2px solid var(--primary);} 
     .btn-outline:hover{background:var(--primary); color:#fff}
 
     /* LinkedIn pill */
@@ -75,13 +78,8 @@
     .li-pill svg{width:18px; height:18px; fill:currentColor}
 
     /* Projects grid */
-    .grid{
-      display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
-    }
-    .card{
-      background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--shadow);
-      display:flex; flex-direction:column;
-    }
+    .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .card{ background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column; }
     .card img{width:100%; height:210px; object-fit:cover; display:block; background:#f7f6ff;}
     .card-body{padding:18px 18px 20px;}
     .card h3{margin:0 0 6px; font-size:22px; font-weight:800; color:#222}
@@ -89,6 +87,18 @@
     .chips{display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 14px;}
     .chip{padding:8px 12px; border-radius:999px; background:var(--surface); border:1px solid #e8e5ff; color:#564f86; font-size:13px;}
     .card-actions{margin-top:auto; display:flex; gap:10px; flex-wrap:wrap}
+
+    /* Lean Canvas styles */
+    .lean-header{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin:48px 0 18px; }
+    .lean-title{ font-family:"Playfair Display",serif; font-size:38px; margin:0; }
+    .helper{ color:#6f6896; font-size:14px; }
+    .lc-card{ border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); background:#fff; height:100%; }
+    .lc-card .lc-head{ padding:14px 16px; border-bottom:1px solid var(--line); font-weight:800; color:#2d2554; }
+    .lc-card .lc-body{ padding:12px; }
+    .lc-card .form-floating>label{ color:#6f6896; }
+    .lc-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+    .btn-ghost{ border:2px solid var(--primary); color:var(--primary); background:#fff; border-radius:12px; padding:10px 14px; font-weight:800; text-decoration:none; cursor:pointer; }
+    .btn-ghost:hover{ background:var(--primary); color:#fff; }
 
     /* Responsive */
     @media (max-width: 992px){
@@ -100,6 +110,7 @@
       .grid{grid-template-columns:1fr;}
       .cv-strip{flex-direction:column; align-items:flex-start}
       .cv-actions{width:100%}
+      .lean-title{ font-size:32px; }
     }
   </style>
 </head>
@@ -113,6 +124,7 @@
       <li><a class="active" href="mycv.html">My Projects</a></li>
       <li><a href="/#explore">My Work</a></li>
       <li><a href="/#message">Contact</a></li>
+      <li><a href="#lean-canvas">Lean Canvas</a></li>
     </ul>
   </nav>
 
@@ -197,7 +209,204 @@
         </article>
       </div>
     </section>
+
+    <!-- ===================== LEAN CANVAS ===================== -->
+    <section id="lean-canvas" class="mt-5" aria-label="Lean Canvas">
+      <div class="lean-header">
+        <h2 class="lean-title">Lean Canvas</h2>
+        
+      </div>
+      
+
+      <div class="container px-0">
+        <div class="row g-3">
+          <!-- Problem -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="lc-card h-100">
+              <div class="lc-head">Key Partnership</div>
+              <div class="lc-body">
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Top 3 problems" id="lc-problem" style="height:160px"></textarea>
+                  <label for="lc-problem">-------</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Customer Segments -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="lc-card h-100">
+              <div class="lc-head">key Activities</div>
+              <div class="lc-body">
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Early adopters / personas" id="lc-customers" style="height:160px"></textarea>
+                  <label for="lc-customers">------</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Unique Value Proposition -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="lc-card h-100">
+              <div class="lc-head">Key Resources </div>
+              <div class="lc-body">
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Your promise" id="lc-uvp" style="height:160px"></textarea>
+                  <label for="lc-uvp"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Solution -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="lc-card h-100">
+              <div class="lc-head">Value Propositions</div>
+              <div class="lc-body">
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Top features" id="lc-solution" style="height:160px"></textarea>
+                  <label for="lc-solution">-------</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Channels -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="lc-card h-100">
+              <div class="lc-head">Channels</div>
+              <div class="lc-body">
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Acquisition channels" id="lc-channels" style="height:160px"></textarea>
+                  <label for="lc-channels">Acquisition & distribution channels</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Revenue Streams -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="lc-card h-100">
+              <div class="lc-head">Customer Relationships</div>
+              <div class="lc-body">
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="How you make money" id="lc-revenue" style="height:160px"></textarea>
+                  <label for="lc-revenue"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Cost Structure -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="lc-card h-100">
+              <div class="lc-head">Cost Structure</div>
+              <div class="lc-body">
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Main costs" id="lc-costs" style="height:160px"></textarea>
+                  <label for="lc-costs">Fixed & variable costs, CAC</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Key Metrics -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="lc-card h-100">
+              <div class="lc-head">Revenue Streams </div>
+              <div class="lc-body">
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Measure what matters" id="lc-metrics" style="height:160px"></textarea>
+                  <label for="lc-metrics">-------</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Unfair Advantage -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="lc-card h-100">
+              <div class="lc-head">Unfair Advantage</div>
+              <div class="lc-body">
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Hard to copy" id="lc-advantage" style="height:160px"></textarea>
+                  <label for="lc-advantage">-----</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lean Canvas Footer Actions -->
+        <div class="d-flex align-items-center justify-content-between mt-3">
+         
+          <div class="lc-actions">
+            <button id="copyAll" class="btn-ghost" type="button">Copy All</button>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Lean Canvas logic: autosave + export -->
+  <script>
+    (function(){
+      const fields = [
+        'lc-problem','lc-customers','lc-uvp','lc-solution','lc-channels','lc-revenue','lc-costs','lc-metrics','lc-advantage'
+      ];
+      const KEY = 'leanCanvasV1:';
+
+      // Load saved
+      document.addEventListener('DOMContentLoaded', () => {
+        fields.forEach(id => {
+          const el = document.getElementById(id);
+          if(!el) return;
+          const saved = localStorage.getItem(KEY + id);
+          if(saved) el.value = saved;
+          el.addEventListener('input', () => localStorage.setItem(KEY + id, el.value));
+        });
+      });
+
+      // Export JSON
+      function exportJSON(){
+        const data = {};
+        fields.forEach(id => data[id.replace('lc-','')] = (document.getElementById(id)?.value || '').trim());
+        const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'lean-canvas.json';
+        a.click();
+        URL.revokeObjectURL(a.href);
+      }
+
+      // Copy All
+      function copyAll(){
+        const get = id => (document.getElementById(id)?.value || '').trim();
+        const text = `Lean Canvas\n\n`+
+          `Problem:\n${get('lc-problem')}\n\n`+
+          `Customer Segments:\n${get('lc-customers')}\n\n`+
+          `Unique Value Proposition:\n${get('lc-uvp')}\n\n`+
+          `Solution:\n${get('lc-solution')}\n\n`+
+          `Channels:\n${get('lc-channels')}\n\n`+
+          `Revenue Streams:\n${get('lc-revenue')}\n\n`+
+          `Cost Structure:\n${get('lc-costs')}\n\n`+
+          `Key Metrics:\n${get('lc-metrics')}\n\n`+
+          `Unfair Advantage:\n${get('lc-advantage')}\n`;
+        navigator.clipboard.writeText(text).then(() => {
+          alert('Lean Canvas copied to clipboard!');
+        });
+      }
+
+      // Clear All
+      function clearAll(){
+        if(!confirm('Clear all Lean Canvas fields?')) return;
+        fields.forEach(id => {
+          localStorage.removeItem(KEY + id);
+          const el = document.getElementById(id);
+          if(el) el.value = '';
+        });
+      }
+
+      document.getElementById('exportJson')?.addEventListener('click', exportJSON);
+      document.getElementById('copyAll')?.addEventListener('click', copyAll);
+      document.getElementById('clearAll')?.addEventListener('click', clearAll);
+    })();
+  </script>
 </body>
 </html>

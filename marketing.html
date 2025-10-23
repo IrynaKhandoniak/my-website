@@ -1,312 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Front-end engineer portfolio website." />
-    <title>Portfolio 2025</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Business Model Canvas</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-    <style>
-      /* ---------- Tokens ---------- */
-      :root{
-        --primary:#6c63ff;
-        --primary-600:#5548d6;
-        --ink:#1f1a3d;
-        --muted:#7b7696;
-        --line:#eceaf4;
-        --lime:#e9ff6b;
-        --radius:12px;
-        --shadow:0 6px 18px rgba(30,20,70,.06);
-        --shadow-lg:0 10px 28px rgba(30,20,70,.10);
-        --nav-h:64px;
+  <style>
+    :root {
+      --primary:#6c63ff;
+      --primary-600:#5548d6;
+      --ink:#1f1a3d;
+      --muted:#7b7696;
+      --line:#eceaf4;
+      --radius:12px;
+      --shadow:0 6px 18px rgba(30,20,70,.06);
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #faf9ff;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 40px auto;
+      padding: 0 18px;
+    }
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .canvas {
+      display: grid;
+      grid-template-areas:
+        "partners activities value value customers"
+        "resources resources value value channels"
+        "cost cost revenue revenue revenue";
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .block {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .partners { grid-area: partners; }
+    .activities { grid-area: activities; }
+    .resources { grid-area: resources; }
+    .value { grid-area: value; }
+    .customers { grid-area: customers; }
+    .channels { grid-area: channels; }
+    .cost { grid-area: cost; }
+    .revenue { grid-area: revenue; }
+
+    .block h3 {
+      margin-top: 0;
+      font-size: 16px;
+      color: var(--primary-600);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .block p {
+      font-size: 14px;
+      color: #444;
+    }
+
+    .block i {
+      color: var(--primary);
+    }
+
+    .download-btn {
+      margin-top: 30px;
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 12px 20px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      transition: background 0.2s ease;
+    }
+
+    .download-btn:hover {
+      background: var(--primary-600);
+    }
+
+    @media (max-width: 768px) {
+      .canvas {
+        grid-template-areas:
+          "value"
+          "partners"
+          "activities"
+          "resources"
+          "customers"
+          "channels"
+          "cost"
+          "revenue";
+        grid-template-columns: 1fr;
       }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Business Model Canvas</h1>
+    <p class="sub">Strategically define your business structure using this modern, responsive canvas layout.</p>
 
-      /* ---------- Base ---------- */
-      *{box-sizing:border-box}
-      html{scroll-behavior:smooth}
-      body{
-        margin:0;
-        -webkit-font-smoothing:antialiased;
-        -moz-osx-font-smoothing:grayscale;
-        font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-        color:var(--ink);
-        background:#fff;
-        line-height:1.6;
-      }
-      img{max-width:100%;height:auto;display:block}
-
-      /* ---------- Navbar (extra crisp) ---------- */
-      .navbar-custom{
-        position:fixed; inset:0 0 auto 0; height:var(--nav-h); z-index:1000;
-        background:#fff; border-bottom:1px solid #eee;
-        padding:0 24px; display:flex; align-items:center; justify-content:space-between;
-      }
-      .navbar-title{font-weight:800; font-size:18px; color:var(--primary); text-decoration:none;}
-      .navbar-custom ul{list-style:none; display:flex; gap:18px; margin:0; padding:0;}
-      .navbar-custom a{ text-decoration:none; color:#3b345a; font-weight:600; transition:color .15s ease, opacity .15s ease; }
-      .navbar-custom a:hover, .navbar-custom .active{ color:var(--primary); }
-
-      /* offset so fixed nav doesn’t overlap content */
-      .page-offset{ height:var(--nav-h); }
-
-      /* ---------- Layout ---------- */
-      .wrap{max-width:980px;margin:0 auto;padding:0 18px}
-
-      /* ---------- Hero ---------- */
-      .hero{
-        margin:16px 0 18px;
-        border:1px solid var(--line);
-        border-radius:var(--radius);
-        padding: clamp(20px, 3vw, 28px);
-        box-shadow:var(--shadow);
-        background:linear-gradient(180deg, rgba(108,99,255,.06), rgba(108,99,255,0) 60%);
-      }
-      .eyebrow{
-        display:inline-flex;align-items:center;gap:8px;
-        letter-spacing:.18em;text-transform:uppercase;
-        color:var(--primary-600);font-weight:700;font-size:11px;
-      }
-      .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--primary)}
-      h1.play-title{
-        font-family:"Playfair Display",serif;
-        font-size: clamp(26px, 4.2vw, 38px);
-        line-height:1.15;margin:6px 0 6px;color:#1f1a3d;
-      }
-      .play-sub{
-        font-size:15px;line-height:1.65;color:var(--muted);max-width:72ch;margin:0;
-      }
-
-      /* ---------- Article body ---------- */
-      .playbook{padding:40px 0 56px; background:#faf9ff;}
-      .play-body{
-        margin-top:14px;padding:16px;border-radius:var(--radius);
-        background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);
-      }
-      .lead{font-size:15px;line-height:1.7;color:#392f63;margin:0 0 10px}
-
-      .callout{
-        border-left:4px solid var(--primary);
-        background:#fbfaff;
-        padding:10px 12px;border-radius:10px;margin:12px 0;color:#372f61;
-      }
-      .callout strong{color:#2c2552}
-
-      .step{
-        border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff;margin:10px 0;
-        transition:box-shadow .15s ease, border-color .15s ease;
-      }
-      .step:hover{box-shadow:var(--shadow-lg);border-color:#e5e3f2}
-      .step h3{margin:0 0 6px;font-size:17px;line-height:1.25;color:#1f1a3d;font-weight:800}
-      .step p{margin:0;color:#4a4568;font-size:14.5px}
-
-      /* Checklist — crisp bullets */
-      .checklist{padding:0;margin:8px 0 0;list-style:none;display:grid;gap:6px}
-      .checklist li{position:relative;padding-left:16px;color:#463f6d;font-size:14.5px}
-      .checklist li::before{
-        content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:2px;background:var(--primary);
-        box-shadow:0 0 0 4px rgba(108,99,255,.10);
-      }
-
-      /* Tips */
-      .tip{
-        display:flex;gap:8px;align-items:flex-start;background:#f7f6ff;border:1px dashed #d8d5ff;
-        padding:8px 10px;border-radius:9px;margin-top:8px;color:#3b3469;font-size:13.5px;
-      }
-      .tip b{white-space:nowrap;color:#2d2554}
-
-      /* Split */
-      .two-col{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
-      @media (min-width: 860px){ .two-col{grid-template-columns:1fr 1fr} }
-
-      .card-lite{
-        background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;
-      }
-
-      .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
-      .kpi .cell{
-        border:1px solid var(--line);border-radius:9px;padding:10px 8px;background:#fafafa;text-align:center;
-        font-size:12.5px;color:#534d78;line-height:1.35;
-      }
-      .cell b{display:block;font-size:14.5px;margin-bottom:2px;color:#1f1a3d}
-
-      /* ---------- Footer (compact) ---------- */
-      .footer-dark{
-        background:#221a45;color:#e7e4ff;padding:56px 18px;margin-top:40px;
-        border-top:1px solid #1a1533;
-      }
-      .footer-inner{max-width:1100px;margin:0 auto}
-      .footer-grid{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:start;margin-bottom:14px}
-      .footer-label{letter-spacing:.22em;text-transform:uppercase;color:var(--lime);margin-bottom:8px;display:block;font-size:11px;font-weight:700}
-      .footer-link{display:inline-block;color:var(--lime);text-decoration:none;font-size:15px;margin:6px 0;transition:opacity .15s ease, transform .15s ease}
-      .footer-link:hover{opacity:.9;transform:translateY(-1px)}
-      .footer-list{list-style:none;padding:0;margin:0;display:grid;gap:6px}
-      .footer-list a{color:#cfcaff;text-decoration:none;font-size:15px}
-      .footer-list a:hover{opacity:.9}
-      .footer-hr{height:1px;background:rgba(255,255,255,.18);border:0;margin:6px 0 12px}
-      .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13.5px}
-      .social-mini{display:flex;gap:16px}
-      .social-mini a{color:var(--lime);text-decoration:none;font-weight:800;letter-spacing:.08em;transition:opacity .15s ease, transform .15s ease}
-      .social-mini a:hover{opacity:.9;transform:translateY(-1px)}
-
-      /* ---------- Responsive ---------- */
-      @media (max-width: 768px){
-        .navbar-custom{padding:0 16px}
-        h1.play-title{font-size:30px}
-        .play-body{padding:12px}
-        .kpi{grid-template-columns:1fr 1fr}
-        .footer-grid{grid-template-columns:1fr}
-        .footer-bottom{flex-direction:column;align-items:flex-start;gap:6px}
-      }
-
-      /* Motion respect */
-      @media (prefers-reduced-motion: reduce){
-        *{transition:none !important; animation:none !important}
-        html{scroll-behavior:auto}
-      }
-    </style>
-  </head>
-  <body>
-    <!-- NAVBAR -->
-    <nav class="navbar-custom" aria-label="Primary">
-      <a href="/" class="navbar-title">Portfolio 2025</a>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a class="active" href="mycv.html">My Projects</a></li>
-        <li><a href="/#explore">My Work</a></li>
-        <li><a href="/#message">Contact</a></li>
-      </ul>
-    </nav>
-
-    <div class="page-offset" aria-hidden="true"></div>
-
-    <!-- ARTICLE -->
-    <section id="playbook" class="playbook">
-      <div class="wrap">
-        <div class="hero">
-          <span class="eyebrow"><span class="dot" aria-hidden="true"></span> Article 1</span>
-          <h1 class="play-title">A Simple Marketing Playbook</h1>
-          <p class="play-sub">
-            Marketing doesn’t have to be complicated. This lightweight playbook helps you connect your work with the people who need it—without noise, overwhelm, or 12 different tools.
-          </p>
-        </div>
-
-        <div class="play-body">
-          <p class="lead">
-            Marketing is about <strong>clarity</strong> and <strong>consistency</strong>. The steps below keep you on-track: know your audience, craft a message, focus your channels, create value, and learn each week.
-          </p>
-
-          <div class="callout"><strong>Golden Rule:</strong> Consistency beats intensity. One viral post won’t build a brand—steady weekly value will.</div>
-
-          <article>
-            <!-- 1 -->
-            <div class="step">
-              <h3>1) Know Your Audience</h3>
-              <p>Create a 3-line snapshot of your ideal customer so every decision stays aligned.</p>
-              <ul class="checklist">
-                <li><b>Who</b> are they (role, stage, vibe)?</li>
-                <li><b>What</b> problem are they trying to solve?</li>
-                <li><b>Where</b> do they already spend time (platforms, communities)?</li>
-              </ul>
-              <div class="tip"><b>Tip:</b> Give your persona a name and a goal. If a post wouldn’t help that person today, skip it.</div>
-            </div>
-
-            <!-- 2 -->
-            <div class="step">
-              <h3>2) Define a Core Message</h3>
-              <p>Make it easy for people to “get it” and repeat it.</p>
-              <div class="card-lite" style="margin-top:8px">
-                <b>Template:</b> “I help <i>[who]</i> achieve <i>[outcome]</i> through <i>[what you do]</i>.”<br/>
-                <b>Example:</b> “I help small businesses get clean, fast websites that feel human.”
-              </div>
-            </div>
-
-            <!-- 3 -->
-            <div class="step">
-              <h3>3) Pick Your Channels (and Do Them Well)</h3>
-              <p>Start with one channel you can maintain weekly.</p>
-              <ul class="checklist">
-                <li><b>LinkedIn</b> for professional services & B2B</li>
-                <li><b>Instagram</b> for visual work & behind-the-scenes</li>
-                <li><b>Email</b> for nurturing trust & repeat clients</li>
-              </ul>
-              <div class="tip"><b>Rule:</b> One consistent channel &gt; five quiet ones.</div>
-            </div>
-
-            <!-- 4 -->
-            <div class="step">
-              <h3>4) Create Value, Not Noise</h3>
-              <p>Teach, show process, and share proof.</p>
-              <ul class="checklist">
-                <li>Quick how-to posts or mini case studies</li>
-                <li>Before/after breakdowns of your work</li>
-                <li>Client quotes and small wins (social proof)</li>
-              </ul>
-            </div>
-
-            <!-- 5 -->
-            <div class="step">
-              <h3>5) Measure, Learn, Adapt</h3>
-              <div class="two-col">
-                <div class="card-lite">
-                  <b>Track weekly:</b>
-                  <ul class="checklist">
-                    <li>Top post and why it worked</li>
-                    <li>Where enquiries came from</li>
-                    <li>Questions people ask (content ideas!)</li>
-                  </ul>
-                </div>
-                <div class="card-lite">
-                  <div class="kpi">
-                    <div class="cell"><b>↑ Saves</b>useful content</div>
-                    <div class="cell"><b>↑ Replies</b>good resonance</div>
-                    <div class="cell"><b>↑ Clicks</b>clear CTA</div>
-                  </div>
-                </div>
-              </div>
-              <div class="tip"><b>Cycle:</b> Post → Observe → Improve one thing → Repeat next week.</div>
-            </div>
-          </article>
-
-          <div class="callout" style="margin-top:10px">
-            <strong>Mini Plan (30 minutes/week):</strong> 10m choose one topic → 10m draft a helpful post → 5m publish → 5m log results.
-          </div>
-        </div>
+    <div class="canvas">
+      <div class="block partners">
+        <h3><i class="fas fa-handshake"></i> Key Partnerships</h3>
+        <p>Identify essential external partners and suppliers.</p>
       </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer-dark">
-      <div class="footer-inner">
-        <div class="footer-grid">
-          <div>
-            <span class="footer-label">SAY HELLO</span>
-            <a class="footer-link" href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a>
-            <a class="footer-link" href="https://t.me/irynakhandoniak" target="_blank" rel="noreferrer">t.me/irynakhandoniak</a>
-          </div>
-          <div>
-            <span class="footer-label">PAGES</span>
-            <ul class="footer-list">
-              <li><a href="mycv.html">My CV</a></li>
-            </ul>
-          </div>
-        </div>
-        <hr class="footer-hr" />
-        <div class="footer-bottom">
-          <div>© Iryna Khandoniak 2025</div>
-          <div class="social-mini">
-            <a href="https://twitter.com/" target="_blank" rel="noreferrer" aria-label="Twitter">TW</a>
-            <a href="https://github.com/IrynaKhandoniak" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
-            <a href="https://www.linkedin.com/in/irynakhandoniak/" target="_blank" rel="noreferrer" aria-label="LinkedIn">LN</a>
-            <a href="https://youtube.com/" target="_blank" rel="noreferrer" aria-label="YouTube">YT</a>
-          </div>
-        </div>
+      <div class="block activities">
+        <h3><i class="fas fa-tasks"></i> Key Activities</h3>
+        <p>List the main tasks your business must do to succeed.</p>
       </div>
-    </footer>
-  </body>
+      <div class="block resources">
+        <h3><i class="fas fa-cubes"></i> Key Resources</h3>
+        <p>Detail your most important assets: people, tech, or finances.</p>
+      </div>
+      <div class="block value">
+        <h3><i class="fas fa-gift"></i> Value Propositions</h3>
+        <p>What value do you deliver to the customer? Why do they choose you?</p>
+      </div>
+      <div class="block customers">
+        <h3><i class="fas fa-users"></i> Customer Relationships</h3>
+        <p>Describe how you attract, retain, and grow customer relationships.</p>
+      </div>
+      <div class="block channels">
+        <h3><i class="fas fa-bullhorn"></i> Channels</h3>
+        <p>How do you reach your customers to deliver value?</p>
+      </div>
+      <div class="block cost">
+        <h3><i class="fas fa-money-bill-wave"></i> Cost Structure</h3>
+        <p>Summarize the major costs involved in operating your business.</p>
+      </div>
+      <div class="block revenue">
+        <h3><i class="fas fa-coins"></i> Revenue Streams</h3>
+        <p>Explain how your business earns income from each customer segment.</p>
+      </div>
+    </div>
+
+    <!-- Download button -->
+    <a class="download-btn" href="Business%20Model%20Canvas%20-%20Strategyzer.pdf" download>
+      <i class="fas fa-download"></i> Download Canvas PDF
+    </a>
+  </div>
+</body>
 </html>
+

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Business Model Canvas — Iryna Khandoniak</title>
+
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+    /* ===== NAVBAR (same as portfolio) ===== */
+  .navbar-custom{
+    position:fixed;top:0;left:0;width:100%;z-index:1000;
+    background:#fff;border-bottom:1px solid #eee;
+    padding:15px 40px;display:flex;align-items:center;justify-content:space-between;
+  }
+  .navbar-title{font-weight:700;font-size:20px;color:var(--primary);text-decoration:none;}
+  .navbar-custom ul{list-style:none;display:flex;gap:25px;margin:0;padding:0;}
+  .navbar-custom a{text-decoration:none;color:#333;font-weight:500;transition:color .3s;}
+  .navbar-custom a:hover,.navbar-custom .active{color:var(--primary);}
+
+ /* ===== BMC WRAP ===== */
+  .wrap{width:min(var(--w),92%);margin:28px auto 48px}
+  h1{margin:0 0 6px; font:800 28px/1.25 "Poppins",system-ui; text-align:center; color:var(--deep)}
+  .sub{margin:0 0 18px; color:var(--muted); text-align:center; font-size:14px}
+
+  .actions{display:flex; gap:10px; justify-content:center; margin:10px 0 18px}
+  .btn{
+    appearance:none; border:1px solid var(--line); background:#fff; color:#2d2f36;
+    padding:8px 12px; border-radius:999px; font-weight:800; font-size:12px; letter-spacing:.02em; cursor:pointer;
+  }
+  .btn:hover{border-color:#d7d7ea}
+
+  :root{
+    --ink:#22242a;
+    --muted:#6e7280;
+    --line:#e9e9f2;
+    --accent:#6c63ff;
+    --w: 1100px;
+    --gap: 16px;
+    --radius: 12px;
+
+    /* Added so header/footer match your portfolio */
+    --primary:#6c63ff;
+    --primary-600:#5548d6;
+    --deep:#2d2554;
+    --surface:#faf9ff;
+    --lime:#e9ff6b;
+    --shadow:0 12px 30px rgba(0,0,0,.06);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:#fff; color:var(--ink);
+    font:15px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding-top:70px; /* room for fixed navbar */
+  }
+
+  .wrap{width:min(var(--w),92%);margin:28px auto 48px}
+  h1{margin:0 0 6px; font:700 28px/1.25 system-ui; text-align:center}
+  .sub{margin:0 0 18px; color:var(--muted); text-align:center; font-size:14px}
+
+  /* Buttons */
+  .actions{display:flex; gap:10px; justify-content:center; margin:10px 0 18px}
+  .btn{
+    appearance:none; border:1px solid var(--line); background:#fff; color:#2d2f36;
+    padding:8px 12px; border-radius:999px; font-weight:700; font-size:12px; letter-spacing:.02em; cursor:pointer;
+  }
+  .btn:hover{border-color:#d7d7ea}
+
+  /* Canvas grid */
+  .canvas{
+    display:grid; gap:var(--gap);
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas:
+      "partners activities value relationships channels"
+      "partners resources  value segments      channels"
+      "cost     cost      cost  revenue       revenue";
+  }
+
+  /* Card layout */
+  .card{
+    border:1px solid var(--line); border-radius:var(--radius); background:#fff;
+    display:flex; flex-direction:column; overflow:hidden;
+  }
+  .head{
+    display:flex; align-items:center; gap:8px;
+    padding:10px 12px; border-bottom:1px solid var(--line);
+    font-weight:800; font-size:13px; color:#222;
+  }
+  .head .bi{font-size:16px; color:var(--accent)}
+  .body{padding:10px 12px; display:flex; flex:1}
+
+  /* Form */
+  .form-floating{display:block; width:100%}
+  textarea{
+    width:100%; height:100%; min-height:120px; resize:vertical; border:0; outline:0;
+    background:transparent; color:inherit; font:inherit; line-height:1.5;
+    white-space:pre-wrap; word-break:break-word; padding:4px 0 2px;
+  }
+
+  .form-floating>label{
+    color:var(--muted); font-size:12px; pointer-events:none; transform-origin:left top; transition:all .15s ease;
+  }
+  .form-floating>textarea::placeholder{color:transparent}
+  .form-floating>textarea:not(:placeholder-shown)~label,
+  .form-floating>textarea:focus~label{
+    opacity:.8; transform:scale(.9) translateY(-0.45rem);
+  }
+
+  /* Grid areas */
+  #partners{grid-area:partners}
+  #activities{grid-area:activities}
+  #value{grid-area:value}
+  #relationships{grid-area:relationships}
+  #channels{grid-area:channels}
+  #resources{grid-area:resources}
+  #segments{grid-area:segments}
+  #cost{grid-area:cost}
+  #revenue{grid-area:revenue}
+
+  /* Footer note */
+  .note{
+    text-align:center; margin-top:22px; font-size:13px; color:var(--muted);
+  }
+
+  /* ===== FOOTER (same as portfolio) ===== */
+  .footer-dark{background:var(--deep);color:#dcd6ff;padding:140px 24px 80px;}
+  .footer-inner{max-width:1200px;margin:0 auto;}
+  .footer-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start;margin-bottom:80px;}
+  .footer-label{letter-spacing:.25em;text-transform:uppercase;color:var(--lime);margin-bottom:24px;display:block;}
+  .footer-link{display:block;color:var(--lime);text-decoration:none;font-size:20px;margin:18px 0;}
+  .footer-link:hover{opacity:.85;}
+  .footer-list{list-style:none;padding:0;margin:0;display:grid;gap:18px;}
+  .footer-list a{color:var(--lime);text-decoration:none;font-size:20px;}
+  .footer-list a:hover{opacity:.85;}
+  .footer-hr{height:1px;background:rgba(255,255,255,.25);border:0;margin:0 0 26px;}
+  .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .copyright{color:#dcd6ff;}
+  .social-mini{display:flex;gap:36px;}
+  .social-mini a{color:var(--lime);text-decoration:none;font-weight:700;letter-spacing:.12em;}
+  .social-mini a:hover{opacity:.85;}
+
+  /* Print */
+  @media print{
+    @page{size:A4 landscape; margin:12mm}
+    .actions{display:none !important}
+    nav, footer { display:none !important }
+    h1{font-size:20px}
+    .sub{font-size:12px; margin-bottom:6px}
+    textarea{min-height:100px}
+  }
+
+  /* Responsive */
+  @media (max-width:1100px){
+    .canvas{
+      grid-template-columns:1fr 1fr;
+      grid-template-areas:
+        "value value"
+        "activities relationships"
+        "partners channels"
+        "resources segments"
+        "cost revenue";
+    }
+  }
+  @media (max-width:640px){
+    .canvas{
+      grid-template-columns:1fr;
+      grid-template-areas:
+        "value" "activities" "relationships" "partners"
+        "channels" "resources" "segments" "cost" "revenue";
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR (inside body) ===== -->
+<nav class="navbar-custom">
+  <a href="index.html#home" class="navbar-title">Portfolio 2025</a>
+  <ul>
+    <li><a href="index.html#home">Home</a></li>
+    <li><a href="index.html#explore">My Work</a></li>
+    <li><a href="index.html#message">Contact</a></li>
+    <li><a href="#" class="active">Lean Canvas</a></li>
+  </ul>
+</nav>
+
+  <main class="wrap">
+    <h1>Business Model Canvas</h1>
+    <p class="sub">for <strong>Iryna Khandoniak</strong> — bridging <em>Marketing Strategy</em> & <em>Front-end Development</em></p>
+
+    <div class="actions">
+      <button class="btn" id="printBtn">Print</button>
+      <button class="btn" id="clearBtn">Clear</button>
+    </div>
+
+    <section class="canvas">
+      <!-- Key Partners -->
+      <article class="card" id="partners">
+        <div class="head"><i class="bi bi-people"></i>Key Partners</div>
+        <div class="body">
+          <div class="form-floating">
+            <label for="bmc-partners">
+• Creative agencies  <br>
+• Designers & photographers  <br>
+• Developers & freelancers  <br>
+• Hosting providers  <br>
+• Influencers & collaborators</label>
+            <textarea id="bmc-partners" placeholder="Partners"></textarea>
+          </div>
+        </div>
+      </article>
+
+      <!-- Key Activities -->
+      <article class="card" id="activities">
+        <div class="head"><i class="bi bi-gear"></i>Key Activities</div>
+        <div class="body">
+          <div class="form-floating">
+             <label for="bmc-activities">
+• Market research & planning  <br>
+• UX/UI design & prototyping  <br>
+• Front-end coding (HTML, CSS, JS)  <br>
+• Campaign development  <br>
+• Photography & editing  <br>
+• Social media strategy</label>
+            <textarea id="bmc-activities" placeholder="Activities"></textarea>
+          </div>
+        </div>
+      </article>
+
+      <!-- Value Propositions -->
+      <article class="card" id="value">
+        <div class="head"><i class="bi bi-gift"></i>Value Propositions</div>
+        <div class="body">
+          <div class="form-floating">
+            <label for="bmc-value">
+• Smart blend of marketing & design  <br>
+• Fast, responsive websites  <br>
+• Consistent brand storytelling  <br>
+• Visual and strategic coherence  <br>
+• Affordable creative solutions<br></label>
+            <textarea id="bmc-value" placeholder="Value"></textarea>
+          </div>
+        </div>
+      </article>
+
+      <!-- Customer Relationships -->
+      <article class="card" id="relationships">
+        <div class="head"><i class="bi bi-heart"></i>Customer Relationships</div>
+        <div class="body">
+          <div class="form-floating">
+             <label for="bmc-relationships">
+• Friendly onboarding  <br>
+• Transparent communication  <br>
+• Ongoing updates & feedback  <br>
+• After-launch support  <br>
+• Long-term partnerships<br></label>
+            <textarea id="bmc-relationships" placeholder="Relationships"></textarea>
+          </div>
+        </div>
+      </article>
+
+      <!-- Channels -->
+      <article class="card" id="channels">
+        <div class="head"><i class="bi bi-megaphone"></i>Channels</div>
+        <div class="body">
+          <div class="form-floating">
+             <label for="bmc-channels">
+• Portfolio website  <br>
+• Instagram & LinkedIn  <br>
+• Email & networking events  <br>
+• Word of mouth  <br>
+• Partner referrals<br></label>
+            <textarea id="bmc-channels" placeholder="Channels"></textarea>
+          </div>
+        </div>
+      </article>
+
+      <!-- Key Resources -->
+      <article class="card" id="resources">
+        <div class="head"><i class="bi bi-box-seam"></i>Key Resources</div>
+        <div class="body">
+          <div class="form-floating">
+             <label for="bmc-resources">
+• Camera & editing tools  <br>
+• Development software  <br>
+• Portfolio & case studies  <br>
+• Creative network  <br>
+• Time & expertise<br></label>
+            <textarea id="bmc-resources" placeholder="Resources"></textarea>
+          </div>
+        </div>
+      </article>
+
+      <!-- Customer Segments -->
+      <article class="card" id="segments">
+        <div class="head"><i class="bi bi-person-badge"></i>Customer Segments</div>
+        <div class="body">
+          <div class="form-floating">
+            <label for="bmc-segments">
+• Start-ups & small businesses  <br>
+• Creatives & freelancers  <br>
+• E-commerce brands  <br>
+• Event organisers  <br>
+• Digital agencies<br></label>
+            <textarea id="bmc-segments" placeholder="Segments"></textarea>
+          </div>
+        </div>
+      </article>
+
+      <!-- Cost Structure -->
+      <article class="card" id="cost">
+        <div class="head"><i class="bi bi-cash-coin"></i>Cost Structure</div>
+        <div class="body">
+          <div class="form-floating">
+            <label for="bmc-costs">
+• Software subscriptions  <br>
+• Hosting & domains  <br>
+• Marketing & ads  <br>
+• Equipment & travel  <br>
+• Taxes & outsourcing<br></label>
+            <textarea id="bmc-costs" placeholder="Costs"></textarea>
+          </div>
+        </div>
+      </article>
+
+      <!-- Revenue Streams -->
+      <article class="card" id="revenue">
+        <div class="head"><i class="bi bi-wallet2"></i>Revenue Streams</div>
+        <div class="body">
+          <div class="form-floating">
+            <label for="bmc-revenue">
+• Project fees  <br>
+• Retainer packages <br> 
+• Content creation  <br>
+• Website maintenance  <br>
+• Templates / presets<br></label>
+            <textarea id="bmc-revenue" placeholder="Revenue"></textarea>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <p class="note">
+  Iryna’s dual path — <em>strategic marketer</em> & <em>front-end developer</em>.</p>
+  </main>
+
+<!-- ===== FOOTER (same as portfolio) ===== -->
+<footer id="footer" class="footer-dark">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <span class="footer-label">SAY HELLO</span>
+        <a class="footer-link" href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a>
+        <a class="footer-link" href="https://t.me/irynakhandoniak" target="_blank" rel="noreferrer">t.me/irynakhandoniak</a>
+      </div>
+      <div>
+        <ul class="footer-list">
+          <li><a href="index.html#explore">My Work</a></li>
+          <li><a href="mycv.html">My CV</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="footer-hr" />
+    <div class="footer-bottom">
+      <div class="copyright">© Iryna Khandoniak 2025</div>
+      <div class="social-mini">
+        <a href="https://twitter.com/" target="_blank" rel="noreferrer" aria-label="Twitter">TW</a>
+        <a href="https://github.com/IrynaKhandoniak" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
+        <a href="https://www.linkedin.com/in/irynakhandoniak/" target="_blank" rel="noreferrer" aria-label="LinkedIn">LN</a>
+        <a href="https://youtube.com/" target="_blank" rel="noreferrer" aria-label="YouTube">YT</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== JS: autosave + print/clear ===== -->
+<script>
+  (function(){
+    const fields = [
+      'bmc-partners','bmc-activities','bmc-resources','bmc-value',
+      'bmc-relationships','bmc-channels','bmc-segments','bmc-costs','bmc-revenue'
+    ];
+    const KEY='bmc:iryna:v1:';
+
+    function autosize(el){
+      el.style.height='auto';
+      el.style.height=(el.scrollHeight+2)+'px';
+    }
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      fields.forEach(id=>{
+        const el=document.getElementById(id);
+        if(!el) return;
+        const saved=localStorage.getItem(KEY+id);
+        if(saved!==null) el.value=saved;
+        autosize(el);
+        el.addEventListener('input', ()=>{
+          localStorage.setItem(KEY+id, el.value);
+          autosize(el);
+        });
+      });
+
+      document.getElementById('printBtn')?.addEventListener('click', ()=>window.print());
+      document.getElementById('clearBtn')?.addEventListener('click', ()=>{
+        if(!confirm('Clear all fields?')) return;
+        fields.forEach(id=>{
+          localStorage.removeItem(KEY+id);
+          const el=document.getElementById(id);
+          if(el){ el.value=''; autosize(el); }
+        });
+      });
+    });
+  })();
+</script>
+</body>
+</html>
