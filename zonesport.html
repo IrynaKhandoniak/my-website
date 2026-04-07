@@ -804,35 +804,71 @@
     </footer>
 
     <script>
-      const pageUrl = window.location.href;
-      const pageTitle = document.title;
       const feedback = document.getElementById("shareFeedback");
 
       function setFeedback(message) {
         feedback.textContent = message;
-        setTimeout(() => {
+        clearTimeout(window.shareFeedbackTimer);
+        window.shareFeedbackTimer = setTimeout(() => {
           feedback.textContent = "";
         }, 2200);
       }
 
+      function getPageUrl() {
+        return window.location.href;
+      }
+
+      function isLocalFile() {
+        return window.location.protocol === "file:";
+      }
+
       function shareOnLinkedIn() {
-        const url = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(pageUrl);
+        if (isLocalFile()) {
+          setFeedback("Upload the page to your website first for LinkedIn sharing.");
+          return;
+        }
+
+        const url =
+          "https://www.linkedin.com/sharing/share-offsite/?url=" +
+          encodeURIComponent(getPageUrl());
+
         window.open(url, "_blank", "noopener,noreferrer");
       }
 
       function shareOnX() {
+        if (isLocalFile()) {
+          setFeedback("Upload the page to your website first for social sharing.");
+          return;
+        }
+
         const text = "Heart Rate Training Zones: How to Train with More Purpose";
         const url =
           "https://twitter.com/intent/tweet?text=" +
           encodeURIComponent(text) +
           "&url=" +
-          encodeURIComponent(pageUrl);
+          encodeURIComponent(getPageUrl());
+
         window.open(url, "_blank", "noopener,noreferrer");
       }
 
       async function copyLink() {
+        const pageUrl = getPageUrl();
+
         try {
-          await navigator.clipboard.writeText(pageUrl);
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(pageUrl);
+          } else {
+            const textArea = document.createElement("textarea");
+            textArea.value = pageUrl;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+          }
+
           setFeedback("Link copied.");
         } catch (error) {
           setFeedback("Could not copy the link.");
@@ -840,15 +876,17 @@
       }
 
       async function nativeShare() {
-        if (navigator.share) {
+        const pageUrl = getPageUrl();
+        const shareData = {
+          title: document.title,
+          text: "Heart Rate Training Zones: How to Train with More Purpose",
+          url: pageUrl
+        };
+
+        if (navigator.share && !isLocalFile()) {
           try {
-            await navigator.share({
-              title: pageTitle,
-              text: "Heart Rate Training Zones: How to Train with More Purpose",
-              url: pageUrl
-            });
+            await navigator.share(shareData);
           } catch (error) {
-            /* User may cancel share dialog */
           }
         } else {
           copyLink();
