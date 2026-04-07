@@ -4,11 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Heart Rate Training Zones: How to Train with More Purpose</title>
     <meta
       name="description"
-      content="An article explaining heart rate training zones, the formulas behind them, and how to use them strategically."
+      content="A practical guide to heart rate training zones, including Zone 1 to Zone 5, key benefits, and simple formulas to calculate your own ranges."
     />
-    <title>Portfolio 2025 — Sport Zones Guide</title>
+
+    <link rel="canonical" href="http://127.0.0.1:5509/zonesport.html" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Heart Rate Training Zones: How to Train with More Purpose" />
+    <meta
+      property="og:description"
+      content="A practical guide to heart rate training zones, including Zone 1 to Zone 5, key benefits, and simple formulas to calculate your own ranges."
+    />
+    <meta property="og:url" content="http://127.0.0.1:5509/zonesport.html" />
+    <meta property="og:image" content="http://127.0.0.1:5509/images/sportzones-cover.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="627" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Heart Rate Training Zones: How to Train with More Purpose" />
+    <meta
+      name="twitter:description"
+      content="A practical guide to heart rate training zones, including Zone 1 to Zone 5, key benefits, and simple formulas to calculate your own ranges."
+    />
+    <meta name="twitter:image" content="http://127.0.0.1:5509/images/sportzones-cover.jpg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -380,6 +402,9 @@
         cursor:pointer;
         transition:background .15s ease, transform .15s ease, border-color .15s ease;
         color:#1f1a3d;
+        text-decoration:none;
+        display:inline-flex;
+        align-items:center;
       }
 
       .share-btn:hover{
@@ -391,6 +416,13 @@
       .share-feedback{
         font-size:13px;
         color:var(--muted);
+      }
+
+      .share-warning{
+        width:100%;
+        font-size:13px;
+        color:#7b7696;
+        margin-top:4px;
       }
 
       .footer-dark{
@@ -744,23 +776,36 @@
           <div class="share-panel">
             <span class="share-title">Share this article:</span>
 
-            <button class="share-btn" type="button" onclick="shareOnLinkedIn()">
+            <a
+              class="share-btn"
+              href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2F127.0.0.1%3A5509%2Fzonesport.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Share on LinkedIn
-            </button>
+            </a>
 
-            <button class="share-btn" type="button" onclick="shareOnX()">
+            <a
+              class="share-btn"
+              href="https://twitter.com/intent/tweet?text=Heart%20Rate%20Training%20Zones%3A%20How%20to%20Train%20with%20More%20Purpose&url=http%3A%2F%2F127.0.0.1%3A5509%2Fzonesport.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Share on X
-            </button>
+            </a>
 
-            <button class="share-btn" type="button" onclick="copyLink()">
+            <button id="copyBtn" class="share-btn" type="button">
               Copy Link
             </button>
 
-            <button class="share-btn" type="button" onclick="nativeShare()">
+            <button id="nativeShareBtn" class="share-btn" type="button">
               Share
             </button>
 
             <span class="share-feedback" id="shareFeedback" aria-live="polite"></span>
+            <div class="share-warning">
+              This URL is local to your computer. The share dialog can open, but LinkedIn will only show a proper public preview after you publish this page to your website.
+            </div>
           </div>
 
           <div class="callout">
@@ -804,71 +849,34 @@
     </footer>
 
     <script>
+      const pageUrl = "http://127.0.0.1:5509/zonesport.html";
       const feedback = document.getElementById("shareFeedback");
+      const copyBtn = document.getElementById("copyBtn");
+      const nativeShareBtn = document.getElementById("nativeShareBtn");
 
       function setFeedback(message) {
         feedback.textContent = message;
         clearTimeout(window.shareFeedbackTimer);
         window.shareFeedbackTimer = setTimeout(() => {
           feedback.textContent = "";
-        }, 2200);
-      }
-
-      function getPageUrl() {
-        return window.location.href;
-      }
-
-      function isLocalFile() {
-        return window.location.protocol === "file:";
-      }
-
-      function shareOnLinkedIn() {
-        if (isLocalFile()) {
-          setFeedback("Upload the page to your website first for LinkedIn sharing.");
-          return;
-        }
-
-        const url =
-          "https://www.linkedin.com/sharing/share-offsite/?url=" +
-          encodeURIComponent(getPageUrl());
-
-        window.open(url, "_blank", "noopener,noreferrer");
-      }
-
-      function shareOnX() {
-        if (isLocalFile()) {
-          setFeedback("Upload the page to your website first for social sharing.");
-          return;
-        }
-
-        const text = "Heart Rate Training Zones: How to Train with More Purpose";
-        const url =
-          "https://twitter.com/intent/tweet?text=" +
-          encodeURIComponent(text) +
-          "&url=" +
-          encodeURIComponent(getPageUrl());
-
-        window.open(url, "_blank", "noopener,noreferrer");
+        }, 2500);
       }
 
       async function copyLink() {
-        const pageUrl = getPageUrl();
-
         try {
           if (navigator.clipboard && window.isSecureContext) {
             await navigator.clipboard.writeText(pageUrl);
           } else {
-            const textArea = document.createElement("textarea");
-            textArea.value = pageUrl;
-            textArea.style.position = "fixed";
-            textArea.style.left = "-9999px";
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
+            const textarea = document.createElement("textarea");
+            textarea.value = pageUrl;
+            textarea.setAttribute("readonly", "");
+            textarea.style.position = "absolute";
+            textarea.style.left = "-9999px";
+            document.body.appendChild(textarea);
+            textarea.select();
             document.execCommand("copy");
-            document.body.removeChild(textArea);
+            document.body.removeChild(textarea);
           }
-
           setFeedback("Link copied.");
         } catch (error) {
           setFeedback("Could not copy the link.");
@@ -876,22 +884,24 @@
       }
 
       async function nativeShare() {
-        const pageUrl = getPageUrl();
         const shareData = {
           title: document.title,
           text: "Heart Rate Training Zones: How to Train with More Purpose",
           url: pageUrl
         };
 
-        if (navigator.share && !isLocalFile()) {
+        if (navigator.share) {
           try {
             await navigator.share(shareData);
           } catch (error) {
           }
         } else {
-          copyLink();
+          await copyLink();
         }
       }
+
+      copyBtn.addEventListener("click", copyLink);
+      nativeShareBtn.addEventListener("click", nativeShare);
     </script>
   </body>
 </html>
