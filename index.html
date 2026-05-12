@@ -1,368 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Front-end engineer portfolio website." />
-    <title>Portfolio 2025</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Iryna Khandoniak — Front-end developer & photographer." />
+  <title>Iryna Khandoniak</title>
 
-    <!-- Bootstrap (optional) -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      crossorigin="anonymous"
-    />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
-    <style>
-      :root{
-        --primary:#6c63ff;
-        --primary-600:#5548d6;
-        --deep:#2d2554;
-        --surface:#faf9ff;
-        --ink:#272142;
-        --muted:#8b86a5;
-        --lime:#e9ff6b;
-        --shadow:0 12px 30px rgba(0,0,0,.06);
-      }
+  <style>
+    :root {
+      --t:    #0abab5;
+      --t-dk: #088a86;
+      --t-bg: #e8faf9;
+      --ink:  #111111;
+      --mute: #6b7280;
+      --bg:   #ffffff;
+      --surf: #f8fffe;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); }
+    a { text-decoration: none; color: inherit; }
 
-      html{scroll-behavior:smooth;}
-      body{margin:0;font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#fff;color:var(--ink);}
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 60px; height: 68px;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e5f7f6;
+    }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 19px; color: var(--t); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--mute); letter-spacing: .04em; transition: color .2s; }
+    .nav-links a:hover { color: var(--t); }
 
-      /* ===== NAVBAR ===== */
-      .navbar-custom{
-        position:fixed;top:0;left:0;width:100%;z-index:1000;
-        background:#fff;border-bottom:1px solid #eee;
-        padding:15px 40px;display:flex;align-items:center;justify-content:space-between;
-      }
-      .navbar-title{font-weight:700;font-size:20px;color:var(--primary);text-decoration:none;}
-      .navbar-custom ul{list-style:none;display:flex;gap:25px;margin:0;padding:0;}
-      .navbar-custom a{text-decoration:none;color:#333;font-weight:500;transition:color .3s;}
-      .navbar-custom a:hover,.navbar-custom .active{color:var(--primary);}
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 100px 60px 80px;
+      max-width: 1100px; margin: 0 auto;
+      gap: 80px;
+    }
+    .hero-text { flex: 1; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--t-bg); color: var(--t-dk);
+      font-size: 12px; font-weight: 500; letter-spacing: .08em;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 28px;
+    }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--t); }
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(48px, 6vw, 76px);
+      line-height: 1.08; font-weight: 400;
+      color: var(--ink); margin-bottom: 20px;
+    }
+    h1 em { font-style: italic; color: var(--t); }
+    .hero-sub {
+      font-size: 17px; font-weight: 300; line-height: 1.75;
+      color: var(--mute); max-width: 460px; margin-bottom: 40px;
+    }
+    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; border-radius: 6px;
+      font-size: 13px; font-weight: 500; letter-spacing: .04em; transition: all .2s;
+    }
+    .btn-fill { background: var(--t); color: #fff; }
+    .btn-fill:hover { background: var(--t-dk); }
+    .btn-line { border: 1.5px solid var(--t); color: var(--t); }
+    .btn-line:hover { background: var(--t-bg); }
 
-      /* ===== HERO ===== */
-      .hero{width:100%;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#fff;overflow:hidden;padding-top:100px;}
-      .hero-image-wrapper{position:relative;width:100%;max-width:1200px;}
-      .hero-image{width:100%;height:auto;max-height:100vh;object-fit:contain;display:block;margin:0 auto;}
-      .hero-overlay {
-  position:absolute;
-  left:6%;
-  top:62%;
-  transform:translateY(-50%);
-  display:flex;
-  flex-direction:column;
-  gap:14px; /* space between the two lines */
-}
+    .hero-img-col { flex-shrink: 0; width: 340px; position: relative; }
+    .hero-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 12px; display: block; }
+    .hero-pill {
+      position: absolute; bottom: 20px; left: -20px;
+      background: #fff; border: 1px solid #e5f7f6;
+      border-radius: 10px; padding: 14px 20px;
+      box-shadow: 0 8px 24px rgba(10,186,181,.1);
+    }
+    .pill-num { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--t); line-height: 1; }
+    .pill-lbl { font-size: 11px; color: var(--mute); margin-top: 2px; letter-spacing: .06em; }
 
-.btn-row {
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-}
+    .ticker { overflow: hidden; background: var(--t); padding: 12px 0; white-space: nowrap; }
+    .ticker-track { display: inline-flex; animation: tick 20s linear infinite; }
+    .ticker-item { font-size: 11px; font-weight: 500; letter-spacing: .18em; color: #fff; padding: 0 32px; }
+    .ticker-item::after { content: '·'; margin-left: 32px; opacity: .5; }
+    @keyframes tick { to { transform: translateX(-50%); } }
 
-      .btn-main,.btn-outline{font-weight:600;padding:12px 24px;border-radius:10px;text-decoration:none;display:inline-block;line-height:1;transition:all .25s;}
-      .btn-main{background:var(--primary);color:#fff;border:2px solid var(--primary);}
-      .btn-main:hover{background:var(--primary-600);border-color:var(--primary-600);}
-      .btn-outline{background:transparent;color:var(--primary);border:2px solid var(--primary);}
-      .btn-outline:hover{background:var(--primary);color:#fff;}
+    section { padding: 100px 60px; max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--t); margin-bottom: 40px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-tag::before { content: ''; width: 28px; height: 1px; background: var(--t); }
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 400; line-height: 1.1; margin-bottom: 20px;
+    }
+    h2 em { font-style: italic; color: var(--t); }
 
-      /* ===== ABOUT (dark purple) ===== */
-      .about-dark{background:var(--deep);color:#eee;padding:110px 24px;}
-      .about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:center;position:relative;}
-      .about-dots{position:absolute;right:60px;top:40px;width:190px;height:140px;opacity:.25;background-image:radial-gradient(#c9c2ff 1.5px, transparent 1.5px);background-size:12px 12px;pointer-events:none;}
-      .about-kicker{color:#b4a7ff;letter-spacing:.6px;font-weight:700;margin:0 0 10px;font-size:18px;text-transform:uppercase;}
-      .about-title{font-size:44px;line-height:1.25;font-weight:800;margin:0 0 18px;color:#fff;}
-      .about-text{color:#d5d0ea;line-height:1.85;font-size:18px;max-width:680px;margin-bottom:26px;}
-      .chips{display:flex;flex-wrap:wrap;gap:12px;margin:8px 0 26px;}
-      .chip{padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#eae6ff;font-size:14px;}
-      .about-stats{display:flex;gap:56px;flex-wrap:wrap;margin-top:10px;}
-      .stat .num{font-size:52px;font-weight:800;color:#a594ff;line-height:1;}
-      .stat .label{color:#cbc6e6;margin-top:6px;}
-      .about-photo{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:36px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.12);}
+    .about-section { background: #0c0c0c; color: #fff; padding: 100px 0; }
+    .about-inner { max-width: 1100px; margin: 0 auto; padding: 0 60px; display: flex; gap: 80px; align-items: center; }
+    .about-img { width: 320px; flex-shrink: 0; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; }
+    .about-text .section-tag { color: var(--t); }
+    .about-text h2 { color: #fff; }
+    .about-text h2 em { color: #5de0db; }
+    .about-body { font-size: 16px; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.55); margin-bottom: 32px; max-width: 480px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+    .chip { font-size: 11px; letter-spacing: .1em; padding: 6px 14px; border: 1px solid rgba(10,186,181,.3); color: #5de0db; border-radius: 4px; }
+    .stats { display: flex; gap: 48px; }
+    .stat-n { font-family: 'DM Serif Display', serif; font-size: 52px; color: var(--t); line-height: 1; }
+    .stat-l { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 4px; letter-spacing: .08em; }
 
-      /* ===== DESIGN / ENGINEERING SPLIT ===== */
-      .split-wrap{max-width:1200px;margin:0 auto;padding:90px 24px;}
-      .split-card{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);padding:80px 64px;position:relative;overflow:hidden;}
-      .split-card::after{content:"";position:absolute;inset:0;border-radius:22px;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(108,99,255,.06);}
-      .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
-      .split-title{font-size:56px;line-height:1.1;margin:0 0 16px;color:var(--primary);font-weight:800;}
-      .split-text{color:#444;line-height:1.75;max-width:520px;}
-      .slider-dots{display:flex;gap:10px;margin:18px 0 24px;}
-      .slider-dots span{width:8px;height:8px;border-radius:50%;border:2px solid var(--primary);display:inline-block;}
-      .slider-dots span.active{background:var(--primary);}
-      .dots-square{width:150px;height:110px;position:absolute;opacity:.55;background-image:radial-gradient(var(--primary) 1.2px, transparent 1.2px);background-size:10px 10px;}
-      .dots-left{left:120px;top:170px;opacity:.25;}
-      .dots-right{right:160px;top:150px;}
-      .stair{position:absolute;left:340px;bottom:60px;width:56px;height:56px;background:
-          linear-gradient(to right, var(--primary) 2px, transparent 2px) 0 0/14px 14px,
-          linear-gradient(to bottom, var(--primary) 2px, transparent 2px) 0 0/14px 14px;
-        padding:12px;border-radius:4px;opacity:.85;}
-      .checks{position:absolute;right:110px;bottom:82px;display:grid;gap:12px;}
-      .checks span{width:10px;height:10px;border-radius:2px;border:2px solid var(--primary);display:block;}
-      .checks span.filled{background:var(--primary);}
-      .feat-list{margin:18px 0 0 0;padding:0;list-style:none;display:grid;gap:10px;}
-      .feat-list li{display:flex;gap:10px;align-items:flex-start;color:#4b4b4b;}
-      .feat-list li::before{content:"";flex:0 0 10px;height:10px;border-radius:2px;border:2px solid var(--primary);margin-top:6px;}
-      .feat-list li.on::before{background:var(--primary);}
+    .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
+    .work-card {
+      display: block; padding: 56px 48px;
+      background: var(--surf); transition: background .3s;
+      position: relative; overflow: hidden;
+    }
+    .work-card:hover { background: var(--t); }
+    .work-n {
+      font-family: 'DM Serif Display', serif; font-size: 80px;
+      color: rgba(10,186,181,.08); line-height: 1;
+      position: absolute; top: 24px; right: 32px; transition: color .3s;
+    }
+    .work-card:hover .work-n { color: rgba(255,255,255,.1); }
+    .work-card h3 { font-family: 'DM Serif Display', serif; font-size: 32px; font-weight: 400; color: var(--ink); margin-bottom: 12px; transition: color .3s; }
+    .work-card:hover h3 { color: #fff; }
+    .work-card p { font-size: 14px; font-weight: 300; color: var(--mute); line-height: 1.7; margin-bottom: 28px; transition: color .3s; }
+    .work-card:hover p { color: rgba(255,255,255,.75); }
+    .work-link { font-size: 11px; font-weight: 500; letter-spacing: .14em; color: var(--t); transition: color .3s, letter-spacing .3s; }
+    .work-card:hover .work-link { color: #fff; letter-spacing: .22em; }
 
-      /* ===== EXPLORE ===== */
-      .explore{background:#fff;padding:110px 24px 120px;}
-      .explore-inner{max-width:1200px;margin:0 auto;position:relative;}
-      .explore-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;position:relative;}
-      .explore-grid::before{content:"";position:absolute;top:-20px;bottom:-20px;left:50%;width:1px;background:#d8d2ff;transform:translateX(-0.5px);}
-      .exp-title{font-weight:800;color:var(--primary);font-size:56px;line-height:1.1;margin:0 0 18px;}
-      .exp-text{color:#3f3b52;font-size:22px;line-height:1.6;margin-bottom:36px;max-width:520px;}
-      .cta-ghost{display:inline-flex;align-items:center;justify-content:center;gap:16px;padding:18px 28px;border:2px solid var(--primary);color:var(--primary);text-decoration:none;border-radius:6px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
-      .cta-ghost span.arrow{transition:transform .25s;}
-      .cta-ghost:hover .arrow{transform:translateX(6px);}
+    .contact-section { background: var(--surf); padding: 100px 0; }
+    .contact-inner { max-width: 700px; margin: 0 auto; padding: 0 60px; text-align: center; }
+    .contact-inner .section-tag { justify-content: center; }
+    .contact-sub { font-size: 16px; font-weight: 300; color: var(--mute); margin-bottom: 56px; }
+    form { text-align: left; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 28px; }
+    label { display: block; font-size: 11px; letter-spacing: .14em; color: var(--t); margin-bottom: 8px; font-weight: 500; }
+    input[type=text], input[type=email], textarea {
+      width: 100%; background: transparent; border: none;
+      border-bottom: 1px solid rgba(10,186,181,.25);
+      padding: 10px 0; font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 300; color: var(--ink);
+      outline: none; transition: border-color .25s;
+    }
+    input:focus, textarea:focus { border-color: var(--t); }
+    textarea { min-height: 90px; resize: vertical; margin-bottom: 24px; }
+    .form-submit {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 15px 40px; background: transparent;
+      border: 1.5px solid var(--t); color: var(--t);
+      font-family: 'DM Sans', sans-serif; font-size: 12px;
+      font-weight: 500; letter-spacing: .16em; cursor: pointer;
+      border-radius: 4px; transition: background .25s, color .25s;
+    }
+    .form-submit:hover { background: var(--t); color: #fff; }
+    .form-alt { font-size: 13px; color: var(--mute); margin-top: 16px; }
+    .form-alt a { color: var(--t); }
 
-      /* ===== CONTACT FORM ===== */
-      .message{background:#f7f6ff;padding:120px 24px;}
-      .message-inner{max-width:1000px;margin:0 auto;text-align:center;}
-      .msg-title{font-size:56px;line-height:1.1;margin:0 0 14px;font-weight:800;color:var(--primary);}
-      .msg-sub{color:#4b4466;font-size:22px;max-width:780px;margin:0 auto 46px;}
-      .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:28px;text-align:left;}
-      .form-field label{display:block;color:#9a92bd;margin-bottom:10px;}
-      .line-input,.line-textarea{width:100%;background:transparent;border:none;border-bottom:2px solid rgba(108,99,255,.35);padding:12px 2px;color:#2d264f;font-size:16px;outline:none;}
-      .line-input:focus,.line-textarea:focus{border-bottom-color:var(--primary);}
-      .line-textarea{min-height:100px;resize:vertical;}
-      .shoot{display:inline-flex;align-items:center;gap:16px;margin-top:30px;padding:18px 40px;border:2px solid var(--primary);color:var(--primary);background:transparent;border-radius:6px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;}
-      .shoot .arrow{transition:transform .25s;}
-      .shoot:hover .arrow{transform:translateX(6px);}
-      .shoot[disabled]{opacity:.6; cursor:not-allowed;}
+    footer { background: #0c0c0c; color: rgba(255,255,255,.4); padding: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; gap: 40px; flex-wrap: wrap; }
+    .footer-brand { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--t); display: block; margin-bottom: 10px; }
+    .footer-tagline { font-size: 13px; font-weight: 300; line-height: 1.6; max-width: 240px; }
+    .footer-cols { display: flex; gap: 60px; }
+    .footer-col-title { font-size: 10px; letter-spacing: .2em; color: rgba(10,186,181,.6); text-transform: uppercase; margin-bottom: 16px; display: block; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.45); transition: color .2s; }
+    .footer-col a:hover { color: var(--t); }
+    .footer-hr { border: none; border-top: 1px solid rgba(255,255,255,.07); margin-bottom: 24px; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+    .footer-social { display: flex; gap: 24px; }
+    .footer-social a { font-size: 11px; letter-spacing: .14em; color: var(--t); font-weight: 500; transition: opacity .2s; }
+    .footer-social a:hover { opacity: .65; }
 
-      /* ===== FOOTER ===== */
-      .footer-dark{background:var(--deep);color:#dcd6ff;padding:140px 24px 80px;}
-      .footer-inner{max-width:1200px;margin:0 auto;}
-      .footer-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start;margin-bottom:80px;}
-      .footer-label{letter-spacing:.25em;text-transform:uppercase;color:var(--lime);margin-bottom:24px;display:block;}
-      .footer-link{display:block;color:var(--lime);text-decoration:none;font-size:20px;margin:18px 0;}
-      .footer-link:hover{opacity:.85;}
-      .footer-list{list-style:none;padding:0;margin:0;display:grid;gap:18px;}
-      .footer-list a{color:var(--lime);text-decoration:none;font-size:20px;}
-      .footer-list a:hover{opacity:.85;}
-      .footer-hr{height:1px;background:rgba(255,255,255,.25);border:0;margin:0 0 26px;}
-      .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;}
-      .copyright{color:#dcd6ff;}
-      .social-mini{display:flex;gap:36px;}
-      .social-mini a{color:var(--lime);text-decoration:none;font-weight:700;letter-spacing:.12em;}
-      .social-mini a:hover{opacity:.85;}
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .hero { flex-direction: column; padding: 100px 24px 60px; gap: 48px; }
+      .hero-img-col { width: 100%; max-width: 300px; margin: 0 auto; }
+      .about-inner { flex-direction: column; padding: 0 24px; gap: 40px; }
+      .about-img { width: 100%; max-width: 280px; }
+      section { padding: 72px 24px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .contact-inner { padding: 0 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 48px 24px; }
+      .footer-top { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
 
-      /* ===== RESPONSIVE ===== */
-      @media (max-width: 992px){
-        .navbar-custom{padding:15px 20px;}
-        .hero-overlay{left:5%;top:70%;}
-        .explore-grid::before{display:none;}
-        .explore-grid{grid-template-columns:1fr;gap:48px;}
-        .form-grid{grid-template-columns:1fr;}
-        .footer-grid{grid-template-columns:1fr;gap:40px;}
-        .about-inner{grid-template-columns:1fr;gap:36px;}
-        .about-photo{order:-1;max-width:520px;margin:0 auto;}
-      }
-      @media (max-width: 768px){
-        .navbar-custom{flex-direction:column;gap:10px;}
-        .hero-overlay{left:50%;top:88%;transform:translate(-50%,-50%);justify-content:center;}
-        .btn-main,.btn-outline{width:220px;text-align:center;}
-        .exp-title,.msg-title{font-size:38px;}
-        .footer-bottom{flex-direction:column;gap:12px;align-items:flex-start;}
-        .split-card{padding:40px 24px;border-radius:16px;}
-        .split-grid{grid-template-columns:1fr;gap:40px;}
-        .split-grid > div{padding-bottom:28px;border-bottom:1px solid rgba(108,99,255,.15);}
-        .split-grid > div:last-child{border-bottom:0;padding-bottom:0;}
-        .split-title{font-size:34px;line-height:1.2;margin-bottom:12px;}
-        .split-text{font-size:16px;line-height:1.7;max-width:none;}
-        .slider-dots{justify-content:flex-start;}
-        .dots-square,.stair,.checks{display:none;}
-      }
-    </style>
-  </head>
-  <body>
-    <!-- NAVBAR -->
-    <nav class="navbar-custom">
-      <a href="#home" class="navbar-title">Portfolio 2025</a>
-      <ul>
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#explore">My Work</a></li>
-        <li><a href="#message">Contact</a></li>
+  <nav>
+    <a href="#home" class="nav-logo">Iryna Khandoniak</a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div id="home" style="max-width:100%">
+    <div class="hero">
+      <div class="hero-text">
+        <span class="hero-badge">Available for projects</span>
+        <h1>Front-end<br><em>Developer</em><br>&amp; Designer</h1>
+        <p class="hero-sub">I craft clean, accessible interfaces and component libraries — blending engineering with an eye for detail.</p>
+        <div class="btn-row">
+          <a href="#work" class="btn btn-fill">See My Work →</a>
+          <a href="#contact" class="btn btn-line">Contact Me</a>
+          <a href="leancanva.html" class="btn btn-line">Lean Canvas</a>
+        </div>
+      </div>
+      <div class="hero-img-col">
+       
         
-
-      </ul>
-    </nav>
-
-   <!-- HERO -->
-<section id="home" class="hero">
-  <div class="hero-image-wrapper">
-    <img src="images/Portfolio.png" alt="Portfolio Full Photo" class="hero-image" />
-   <div class="hero-overlay">
-  <div class="btn-row">
-    <a href="#explore" class="btn-main">Web Designer & Development</a>
+      </div>
+    </div>
   </div>
-  <div class="btn-row">
-    <a href="#message" class="btn-outline">Contact Me</a>
-    <a href="leancanva.html" class="btn-outline">Lean Canvas</a>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">Front-End Development</span>
+      <span class="ticker-item">UI Design</span>
+      <span class="ticker-item">React</span>
+      <span class="ticker-item">Design Systems</span>
+      <span class="ticker-item">Photography</span>
+      <span class="ticker-item">Accessibility</span>
+      <span class="ticker-item">TypeScript</span>
+      <span class="ticker-item">Component Libraries</span>
+      <span class="ticker-item">Front-End Development</span>
+      <span class="ticker-item">UI Design</span>
+      <span class="ticker-item">React</span>
+      <span class="ticker-item">Design Systems</span>
+      <span class="ticker-item">Photography</span>
+      <span class="ticker-item">Accessibility</span>
+      <span class="ticker-item">TypeScript</span>
+      <span class="ticker-item">Component Libraries</span>
+    </div>
   </div>
-</div>
 
-</section>
-
-
-    <!-- DESIGN / ENGINEERING SPLIT -->
-    <section id="design" class="split-wrap">
-      <div class="split-card">
-        <div class="dots-square dots-left"></div>
-        <div class="dots-square dots-right"></div>
-        <div class="stair"></div>
-        <div class="checks"><span class="filled"></span><span></span><span></span><span class="filled"></span></div>
-
-        <div class="split-grid">
-          <div>
-            <div class="slider-dots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
-            <h2 class="split-title">Design</h2>
-            <p class="split-text">I design fluent user experiences with a focus on clarity, rhythm, and modern typography.</p>
-          </div>
-          <div>
-            <div class="slider-dots" style="justify-content:flex-end"><span class="active"></span><span></span><span></span><span></span><span></span></div>
-            <h2 class="split-title">Engineering</h2>
-            <p class="split-text">I build fast, resilient front-ends in JavaScript/React with reusable components and solid performance.</p>
-            <ul class="feat-list">
-              <li class="on">Reusable component systems</li>
-              <li class="on">React, APIs, TypeScript basics</li>
-            </ul>
-          </div>
+  <div class="about-section" id="about">
+    <div class="about-inner">
+      <img src="images/photo.JPG" alt="Portrait of Iryna" class="about-img" loading="lazy" />
+      <div class="about-text">
+        <p class="section-tag">About me</p>
+        <h2>Developer &<br><em>Photography</em> lover</h2>
+        <p class="about-body">I build clean, accessible interfaces and component libraries. When I'm not coding, I'm behind the camera capturing portraits, food, and everyday stories.</p>
+        <div class="chips">
+          <span class="chip">Photography</span>
+          <span class="chip">HTML · CSS · JS</span>
+          <span class="chip">React</span>
+          <span class="chip">Design Systems</span>
+          <span class="chip">Accessibility</span>
+        </div>
+        <div class="stats">
+          <div><div class="stat-n">4+</div><div class="stat-l">Web Projects</div></div>
+          <div><div class="stat-n">100+</div><div class="stat-l">Photos Delivered</div></div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <!-- ABOUT (dark purple) -->
-    <section id="about" class="about-dark">
-      <div class="about-inner">
-        <div class="about-dots"></div>
+  <section id="work">
+    <p class="section-tag">My work</p>
+    <h2>I build &amp;<br><em>design</em> things</h2>
+    <div class="work-grid">
+      <a class="work-card" href="work.html">
+        <span class="work-n">01</span>
+        <h3>Projects &<br>Web Apps</h3>
+        <p>Open source projects, web apps and experimental interfaces crafted with care.</p>
+        <span class="work-link">SEE MY WORK →</span>
+      </a>
+      <a class="work-card" href="articles.html">
+        <span class="work-n">02</span>
+        <h3>Writing &<br>Articles</h3>
+        <p>Thoughts on design, frontend development, learning and the creative life.</p>
+        <span class="work-link">READ ARTICLES →</span>
+      </a>
+    </div>
+  </section>
 
-        <img
-          class="about-photo"
-          src="images/photo.JPG"
-          alt="Portrait of Iryna Khandoniak — front-end developer and photographer"
-          width="900" height="900"
-          loading="lazy"
-          decoding="async"
-        />
+  <div class="contact-section" id="contact">
+    <div class="contact-inner">
+      <p class="section-tag">Get in touch</p>
+      <h2>Say <em>hello</em></h2>
+      <p class="contact-sub">Got a question, proposal, or just want to chat? Go ahead.</p>
+      <form action="https://formsubmit.co/irr.enn.booking@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New message from Portfolio 2025">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="form-row">
+          <div>
+            <label for="name">Your Name</label>
+            <input id="name" name="name" type="text" placeholder="Enter your name" required>
+          </div>
+          <div>
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" placeholder="Enter your email" required>
+          </div>
+        </div>
+        <label for="msg">Your Message</label>
+        <textarea id="msg" name="message" placeholder="Hi, I'd love to work with you on…" required></textarea>
+        <button type="submit" class="form-submit">Send Message →</button>
+        <p class="form-alt">Or email directly: <a href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a></p>
+      </form>
+    </div>
+  </div>
 
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
         <div>
-          <p class="about-kicker">How About Me?</p>
-          <h2 class="about-title">Front-end Developer & Photography Lover</h2>
-          <p class="about-text">
-            I build clean, accessible interfaces and component libraries. When I’m not coding, I’m
-            behind the camera capturing portraits, food, and everyday stories. I love design systems,
-            typography, and tiny UI details that make products feel polished.
-          </p>
-          <div class="chips">
-            <span class="chip">Photography</span>
-            <span class="chip">HTML • CSS • JS</span>
-            <span class="chip">React</span>
-            <span class="chip">Design Systems</span>
-            <span class="chip">Accessibility</span>
-          </div>
-          <div class="about-stats">
-            <div class="stat"><div class="num">4+</div><div class="label">Web Projects</div></div>
-            <div class="stat"><div class="num">100+</div><div class="label">Photos Delivered</div></div>
-          </div>
+          <span class="footer-brand">Iryna Khandoniak</span>
+          <p class="footer-tagline">Front-End Developer & Photographer crafting beautiful digital experiences.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- EXPLORE (two-column) -->
-    <section id="explore" class="explore">
-      <div class="explore-inner">
-        <div class="explore-grid">
-          <div>
-            <h2 class="exp-title">I build &<br/>design stuff</h2>
-            <p class="exp-text">Open source projects, web apps and experimentals.</p>
-            <a class="cta-ghost" href="work.html">
-              SEE MY WORK <span class="arrow">→</span>
-            </a>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <span class="footer-col-title">Contact</span>
+            <ul>
+              <li><a href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a></li>
+              <li><a href="https://t.me/irynakhandoniak" target="_blank" rel="noreferrer">t.me/irynakhandoniak</a></li>
+            </ul>
           </div>
-          <div>
-            <h2 class="exp-title">I write,<br/>sometimes</h2>
-            <p class="exp-text">About design, frontend dev, learning and life.</p>
-            <a class="cta-ghost" href="articles.html">
-              READ MY ARTICLES <span class="arrow">→</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT FORM (zero-JS, via FormSubmit) -->
-<section id="message" class="message">
-  <div class="message-inner">
-    <h2 class="msg-title">Send me a message!</h2>
-    <p class="msg-sub">Got a question or proposal, or just want to say hello? Go ahead.</p>
-
-    <!-- IMPORTANT: keep your real email here -->
-    <form action="https://formsubmit.co/irr.enn.booking@gmail.com" method="POST">
-      <!-- FormSubmit options -->
-      <input type="hidden" name="_subject" value="New message from Portfolio 2025">
-      <input type="hidden" name="_captcha" value="false">
-      <!-- Optional: where to go after submit (or remove this line) -->
-      <!-- <input type="hidden" name="_next" value="https://your-site.com/thanks.html"> -->
-
-      <div class="form-grid">
-        <div class="form-field">
-          <label for="name">Your Name</label>
-          <input id="name" name="name" type="text" class="line-input" placeholder="Enter your name" required>
-        </div>
-        <div class="form-field">
-          <label for="email">Email Address</label>
-          <input id="email" name="email" type="email" class="line-input" placeholder="Enter your email address" required>
-        </div>
-      </div>
-
-      <div class="form-field" style="text-align:left;">
-        <label for="messageBox">Your Message</label>
-        <textarea id="messageBox" name="message" class="line-textarea" placeholder="Hi, I think we need a design system for our products at Company X. How soon can you hop on to discuss this?" required></textarea>
-      </div>
-
-      <button type="submit" class="shoot">SHOOT <span class="arrow">→</span></button>
-
-      <p style="margin-top:10px;font-size:14px;color:#6b6686;">
-        Prefer email? <a href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a>
-      </p>
-    </form>
-  </div>
-</section>
-
-
-    <!-- FOOTER -->
-    <footer id="footer" class="footer-dark">
-      <div class="footer-inner">
-        <div class="footer-grid">
-          <div>
-            <span class="footer-label">SAY HELLO</span>
-            <a class="footer-link" href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a>
-            <a class="footer-link" href="https://t.me/irynakhandoniak" target="_blank" rel="noreferrer">t.me/irynakhandoniak</a>
-          </div>
-
-          <div>
-            <ul class="footer-list">
-              <li><a href="#explore">My Work</a></li>
+          <div class="footer-col">
+            <span class="footer-col-title">Navigate</span>
+            <ul>
+              <li><a href="#work">My Work</a></li>
               <li><a href="mycv.html">My CV</a></li>
+              <li><a href="articles.html">Articles</a></li>
+              <li><a href="leancanva.html">Lean Canvas</a></li>
             </ul>
           </div>
         </div>
-
-        <hr class="footer-hr" />
-        <div class="footer-bottom">
-          <div class="copyright">© Iryna Khandoniak 2025</div>
-          <div class="social-mini">
-            <a href="https://twitter.com/" target="_blank" rel="noreferrer" aria-label="Twitter">TW</a>
-            <a href="https://github.com/IrynaKhandoniak" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
-            <a href="https://www.linkedin.com/in/irynakhandoniak/" target="_blank" rel="noreferrer" aria-label="LinkedIn">LN</a>
-            <a href="https://youtube.com/" target="_blank" rel="noreferrer" aria-label="YouTube">YT</a>
-          </div>
+      </div>
+      <hr class="footer-hr">
+      <div class="footer-bottom">
+        <span class="footer-copy">© Iryna Khandoniak 2025</span>
+        <div class="footer-social">
+          <a href="https://twitter.com/" target="_blank" rel="noreferrer">TW</a>
+          <a href="https://github.com/IrynaKhandoniak" target="_blank" rel="noreferrer">GH</a>
+          <a href="https://www.linkedin.com/in/irynakhandoniak/" target="_blank" rel="noreferrer">LN</a>
+          <a href="https://youtube.com/" target="_blank" rel="noreferrer">YT</a>
         </div>
       </div>
-    </footer>
+    </div>
+  </footer>
 
-  </body>
+</body>
 </html>
-
