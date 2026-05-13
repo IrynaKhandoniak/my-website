@@ -1,515 +1,552 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Build tiny habits that stick — simple, beautiful, and friendly." />
-    <title>Habits for Life — Portfolio 2025</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Build tiny habits that stick — simple, beautiful, and friendly." />
+  <title>Habits for Life — Iryna Khandoniak</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
-    <!-- (Optional) Bootstrap reset/utilities -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"/>
+  <style>
+    :root {
+      --t:    #0abab5;
+      --t-dk: #088a86;
+      --t-bg: #e8faf9;
+      --t-lt: #5de0db;
+      --ink:  #111111;
+      --mute: #6b7280;
+      --bg:   #ffffff;
+      --surf: #f8fffe;
+      --line: rgba(10,186,181,.15);
+      --danger: #ff5a5f;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    p { margin-bottom: 1em; }
+    p:last-child { margin-bottom: 0; }
 
-    <style>
-      /* ==============================
-         TOKENS
-      ============================== */
-      :root{
-        --primary:#6c63ff;
-        --primary-600:#5548d6;
-        --deep:#2d2554;
-        --surface:#faf9ff;
-        --ink:#272142;
-        --muted:#8b86a5;
-        --lime:#e9ff6b;
-        --danger:#ff6464;
-        --shadow:0 12px 30px rgba(0,0,0,.08);
-        --radius-xl:24px;
-      }
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 60px; height: 68px;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e5f7f6;
+    }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 19px; color: var(--t); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--mute); letter-spacing: .04em; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--t); }
 
-      html{scroll-behavior:smooth;}
-      *{box-sizing:border-box}
-      body{
-        margin:0;
-        color:var(--ink);
-        font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-        background:#fff;
-      }
+    /* ── HERO ── */
+    .hero {
+      min-height: 92vh; display: flex; align-items: center;
+      padding: 100px 60px 80px;
+      max-width: 1100px; margin: 0 auto; gap: 72px;
+    }
+    .hero-text { flex: 1; }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--t); display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+    }
+    .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--t); }
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(52px, 7vw, 88px);
+      line-height: 1.0; font-weight: 400; color: var(--ink); margin-bottom: 20px;
+    }
+    h1 em { font-style: italic; color: var(--t); }
+    .hero-sub {
+      font-size: 17px; font-weight: 300; line-height: 1.75;
+      color: var(--mute); max-width: 480px; margin-bottom: 40px;
+    }
+    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; border-radius: 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+      transition: all .22s; cursor: pointer; border: none;
+    }
+    .btn-fill { background: var(--t); color: #fff; border: 1.5px solid var(--t); }
+    .btn-fill:hover { background: var(--t-dk); border-color: var(--t-dk); }
+    .btn-ghost { background: transparent; color: var(--t); border: 1.5px solid var(--t); }
+    .btn-ghost:hover { background: var(--t-bg); }
 
-      h1,h2,h3,h4{font-family:"Playfair Display",serif; font-weight:700; margin:0 0 .4em;}
-      h1{font-size:56px; line-height:1.1;}
-      h2{font-size:42px; line-height:1.15;}
-      h3{font-size:28px; line-height:1.25;}
-      h4{font-size:22px; line-height:1.35;}
-      p{margin:0 0 1em; line-height:1.75;}
+    .hero-stats { display: flex; gap: 48px; margin-top: 52px; flex-wrap: wrap; }
+    .stat-n { font-family: 'DM Serif Display', serif; font-size: 44px; color: var(--t); line-height: 1; }
+    .stat-l { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); margin-top: 4px; }
 
-      @media (max-width: 768px){
-        h1{font-size:40px;}
-        h2{font-size:32px;}
-        h3{font-size:24px;}
-      }
+    /* ── TICKER ── */
+    .ticker { overflow: hidden; background: var(--t); padding: 12px 0; white-space: nowrap; }
+    .ticker-track { display: inline-flex; animation: tick 22s linear infinite; }
+    .ticker-item { font-size: 11px; font-weight: 500; letter-spacing: .18em; color: #fff; padding: 0 32px; }
+    .ticker-item::after { content: '·'; margin-left: 32px; opacity: .5; }
+    @keyframes tick { to { transform: translateX(-50%); } }
 
-      /* ==============================
-         NAV
-      ============================== */
-      .navbar-custom{
-        position:fixed;top:0;left:0;width:100%;z-index:1000;
-        background:#fff;border-bottom:1px solid #eee;
-        padding:15px 20px;display:flex;align-items:center;justify-content:space-between;
-      }
-      .navbar-title{font-weight:700;font-size:20px;color:var(--primary);text-decoration:none;}
-      .navbar-custom ul{list-style:none;display:flex;gap:25px;margin:0;padding:0;}
-      .navbar-custom a{text-decoration:none;color:#333;font-weight:500;transition:color .3s;}
-      .navbar-custom a:hover,.navbar-custom .active{color:var(--primary);}
-      .spacer-lg{height:76px;}
+    /* ── SHARED SECTION ── */
+    .section { padding: 100px 60px; max-width: 1100px; margin: 0 auto; }
+    .section-full { padding: 100px 0; }
+    .section-full .section-inner { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
 
-      /* Mobile menu */
-      .menu-btn{display:none;border:0;background:transparent;font-weight:800;font-size:18px;color:var(--primary);}
-      @media (max-width: 900px){
-        .menu-btn{display:block}
-        .navbar-custom ul{display:none}
-        #navlinks.open{
-          position:absolute; top:64px; right:16px; background:#fff; border:1px solid #eee;
-          border-radius:12px; padding:12px 16px; display:flex; flex-direction:column; gap:10px;
-          box-shadow:var(--shadow);
-        }
-      }
+    .section-tag {
+      font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--t); display: flex; align-items: center; gap: 10px; margin-bottom: 24px;
+    }
+    .section-tag::before { content: ''; width: 28px; height: 1px; background: var(--t); }
 
-      /* ==============================
-         HERO
-      ============================== */
-      .hero{
-        min-height:88vh; padding-top:10px;
-        display:grid; place-items:center; position:relative; overflow:hidden;
-      }
-      .hero-inner{
-        width:min(1200px,92%); display:grid; grid-template-columns:1.05fr 1fr; gap:56px; align-items:center;
-      }
-      .hero-media{
-        background: radial-gradient(1000px 600px at 30% -10%, #efeaff 0%, transparent 60%) ,
-                    linear-gradient(180deg,#fff 0%,#fbfaff 100%);
-        border-radius:var(--radius-xl); padding:24px; box-shadow:var(--shadow);
-      }
-      .hero-media img{width:100%; height:auto; display:block; object-fit:contain; border-radius:18px;}
-      .eyebrow{color:#8f86ff; font-weight:800; letter-spacing:.1em; text-transform:uppercase; margin-bottom:8px;}
-      .lead{font-size:20px; color:#4b4b4b; max-width:560px}
-      .actions{display:flex; gap:14px; flex-wrap:wrap; margin-top:16px;}
-      .btn-main,.btn-outline{
-        display:inline-flex; align-items:center; gap:10px;
-        padding:12px 20px; border-radius:12px; font-weight:700; text-decoration:none; transition:.25s;
-      }
-      .btn-main{background:var(--primary); color:#fff; border:2px solid var(--primary);}
-      .btn-main:hover{background:var(--primary-600); border-color:var(--primary-600);}
-      .btn-outline{color:var(--primary); border:2px solid var(--primary); background:transparent;}
-      .btn-outline:hover{background:var(--primary); color:#fff;}
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 5vw, 52px); font-weight: 400; line-height: 1.1;
+      color: var(--ink); margin-bottom: 16px;
+    }
+    h2 em { font-style: italic; color: var(--t); }
+    .section-sub { font-size: 17px; font-weight: 300; color: var(--mute); max-width: 680px; margin-bottom: 52px; line-height: 1.75; }
 
-      @media (max-width: 992px){
-        .hero-inner{grid-template-columns:1fr; gap:28px; text-align:center;}
-        .lead{margin-inline:auto}
-        .actions{justify-content:center}
-      }
+    /* ── HABITS GRID ── */
+    .habits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .habit-col {
+      padding: 40px 40px 36px; background: var(--surf);
+      border: 1px solid rgba(10,186,181,.06);
+    }
+    .habit-col h3 {
+      font-family: 'DM Serif Display', serif; font-size: 26px; font-weight: 400;
+      color: var(--ink); margin-bottom: 20px;
+    }
+    .habit-col h3 em { font-style: italic; color: var(--t); }
+    .habit-col.bad h3 em { color: var(--danger); }
 
-      /* ==============================
-         LEARN / LISTS
-      ============================== */
-      .learn { width:min(1200px,94%); margin:28px auto; }
-      .learn-card{
-        background:#fff; border:1px solid #ece9ff; border-radius:18px;
-        padding:24px; box-shadow:var(--shadow);
-      }
-      .learn .eyebrow{color:#8f86ff;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:0 0 12px}
-      .learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-      .learn h3{font-family:"Playfair Display",serif;font-size:28px;line-height:1.2;margin:0 0 10px;color:var(--primary)}
-      .learn ul{margin:0;padding-left:20px;line-height:1.9;color:#2e2948}
-      @media (max-width:900px){ .learn-grid{grid-template-columns:1fr} }
+    .habit-list { list-style: none; padding: 0; display: grid; gap: 10px; }
+    .habit-list li {
+      font-size: 14px; font-weight: 300; color: var(--mute); line-height: 1.65;
+      padding: 10px 14px; background: var(--bg);
+      border: 1px solid var(--line); border-left: 3px solid var(--t); border-radius: 4px;
+      transition: border-color .2s;
+    }
+    .habit-col.bad .habit-list li { border-left-color: var(--danger); }
+    .habit-list li:hover { border-color: var(--t); }
+    .habit-col.bad .habit-list li:hover { border-color: var(--danger); }
+    .habit-list li strong { color: var(--ink); font-weight: 500; }
 
-      /* Silent habits card accent */
-      .danger-card{
-        border:1px solid #ffd3d3;
-      }
-      .danger-title{
-        color:var(--danger);
-      }
+    /* ── SILENT HABITS ── */
+    .silent-section { background: #0c0c0c; padding: 80px 0; }
+    .silent-inner { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+    .silent-eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--danger); display: flex; align-items: center; gap: 10px; margin-bottom: 24px;
+    }
+    .silent-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--danger); }
+    .silent-h2 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 400; color: #fff; margin-bottom: 36px; }
+    .silent-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .silent-item {
+      padding: 16px 14px; background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,90,95,.2); border-left: 3px solid var(--danger);
+      border-radius: 4px;
+      font-size: 13px; font-weight: 300; color: rgba(255,255,255,.6); line-height: 1.6;
+    }
+    .silent-item strong { color: #fff; font-weight: 500; display: block; margin-bottom: 2px; }
 
-      /* ==============================
-         BENEFITS
-      ============================== */
-      .benefits{padding:88px 0}
-      .section-inner{width:min(1200px,92%); margin-inline:auto;}
-      .benefit-grid{
-        display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:32px;
-      }
-      .card{
-        background:var(--surface); border-radius:20px; padding:28px; box-shadow:var(--shadow); position:relative; overflow:hidden;
-      }
-      .card h3{color:var(--primary)}
-      .dots{
-        position:absolute; right:18px; top:18px; width:120px; height:80px; opacity:.35;
-        background-image:radial-gradient(var(--primary) 1.3px, transparent 1.3px);
-        background-size:10px 10px;
-      }
-      @media (max-width: 900px){
-        .benefit-grid{grid-template-columns:1fr; gap:18px;}
-      }
+    /* ── BENEFITS ── */
+    .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 0; }
+    .benefit-card {
+      padding: 48px 36px; background: var(--surf);
+      border: 1px solid rgba(10,186,181,.06);
+      transition: background .3s;
+    }
+    .benefit-card:hover { background: var(--t); }
+    .benefit-card h3 {
+      font-family: 'DM Serif Display', serif; font-size: 24px; font-weight: 400;
+      color: var(--ink); margin-bottom: 12px; transition: color .3s;
+    }
+    .benefit-card:hover h3 { color: #fff; }
+    .benefit-card p { font-size: 14px; font-weight: 300; color: var(--mute); line-height: 1.75; transition: color .3s; }
+    .benefit-card:hover p { color: rgba(255,255,255,.75); }
 
-      /* ==============================
-         HOW IT WORKS
-      ============================== */
-      .how{padding:90px 0; background:#fff;}
-      .steps{
-        display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:28px;
-      }
-      .step{background:#fff; border:1px solid #ece9ff; border-radius:18px; padding:24px; box-shadow:var(--shadow)}
-      .step .n{display:inline-block; background:var(--primary); color:#fff; font-weight:800; padding:6px 11px; border-radius:999px; margin-bottom:12px;}
-      @media (max-width: 900px){ .steps{grid-template-columns:1fr;} }
+    /* ── HOW IT WORKS ── */
+    .how-bg { background: var(--surf); }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .step-card {
+      padding: 44px 36px; background: var(--bg);
+      border: 1px solid rgba(10,186,181,.06);
+      position: relative; overflow: hidden;
+      transition: border-color .2s;
+    }
+    .step-card:hover { border-color: var(--t); }
+    .step-num {
+      font-family: 'DM Serif Display', serif; font-size: 72px;
+      color: rgba(10,186,181,.07); line-height: 1;
+      position: absolute; top: 12px; right: 20px; pointer-events: none;
+    }
+    .step-card h3 {
+      font-family: 'DM Serif Display', serif; font-size: 22px; font-weight: 400;
+      color: var(--ink); margin-bottom: 12px;
+    }
+    .step-card p { font-size: 14px; font-weight: 300; color: var(--mute); line-height: 1.75; }
 
-      /* ==============================
-         FEATURES STRIP
-      ============================== */
-      .features{padding:90px 0; background:linear-gradient(180deg,#fbfaff 0%, #fff 100%);}
-      .feature-row{
-        display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:22px;
-      }
-      .pill{
-        border:1px dashed #d8d2ff; border-radius:999px; padding:14px 18px; text-align:center; background:#fff;
-        font-weight:600; color:#3f3b52;
-      }
-      @media (max-width: 900px){ .feature-row{grid-template-columns:1fr 1fr;} }
+    /* ── FEATURES ── */
+    .features-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 0; }
+    .feature-pill {
+      font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+      padding: 10px 20px; border: 1.5px solid var(--line); color: var(--t);
+      border-radius: 4px; background: var(--surf); transition: background .2s, color .2s, border-color .2s;
+    }
+    .feature-pill:hover { background: var(--t); color: #fff; border-color: var(--t); }
 
-      /* ==============================
-         CTA (Dark)
-      ============================== */
-      .cta-dark{
-        background:var(--deep); color:#e9e6ff; padding:110px 0; position:relative; overflow:hidden;
-      }
-      .cta-inner{width:min(1100px,92%); margin-inline:auto; display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center;}
-      .cta-box{
-        background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15);
-        border-radius:20px; padding:28px;
-      }
-      .cta-kicker{color:#b9b1ff; letter-spacing:.08em; text-transform:uppercase; font-weight:800; margin-bottom:8px;}
-      .cta-title{color:#fff;}
-      .cta-sub{color:#cfc9ff;}
+    /* ── CTA DARK ── */
+    .cta-dark { background: #0c0c0c; padding: 100px 0; position: relative; overflow: hidden; }
+    .cta-dark::before {
+      content: ''; position: absolute; top: -200px; right: -200px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(10,186,181,.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-inner { max-width: 1100px; margin: 0 auto; padding: 0 60px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; position: relative; z-index: 1; }
+    .cta-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--t-lt); margin-bottom: 16px; }
+    .cta-h2 { font-family: 'DM Serif Display', serif; font-size: clamp(36px, 4vw, 52px); font-weight: 400; color: #fff; line-height: 1.1; margin-bottom: 16px; }
+    .cta-sub { font-size: 16px; font-weight: 300; color: rgba(255,255,255,.5); line-height: 1.75; margin-bottom: 32px; }
+    .cta-card {
+      background: #fff; border-radius: 8px; padding: 28px 28px 24px;
+    }
+    .cta-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--t-bg); color: var(--t-dk);
+      font-size: 11px; font-weight: 500; letter-spacing: .08em;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 16px;
+    }
+    .cta-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--t); }
+    .cta-card h3 { font-family: 'DM Serif Display', serif; font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 8px; }
+    .cta-card p { font-size: 14px; font-weight: 300; color: var(--mute); margin-bottom: 16px; }
+    .cta-list { list-style: none; padding: 0; margin-bottom: 20px; display: grid; gap: 6px; }
+    .cta-list li { font-size: 14px; font-weight: 300; color: var(--mute); display: flex; align-items: center; gap: 8px; }
+    .cta-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--t); flex-shrink: 0; }
 
-      .cta-card{
-        background:#fff; border-radius:20px; padding:20px; color:#2c2650; box-shadow:var(--shadow);
-      }
-      .badge{display:inline-block; background:var(--lime); color:#2d2554; font-weight:800; padding:6px 12px; border-radius:999px; margin-bottom:10px;}
+    /* ── FAQ ── */
+    .faq-grid { display: grid; gap: 10px; margin-top: 0; }
+    details {
+      background: var(--surf); border: 1px solid var(--line);
+      border-radius: 6px; padding: 18px 20px; transition: border-color .2s;
+    }
+    details:hover { border-color: var(--t); }
+    details[open] { border-color: var(--t); }
+    summary {
+      cursor: pointer; font-size: 15px; font-weight: 500; color: var(--ink);
+      list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    summary::after { content: '+'; font-size: 20px; color: var(--t); font-weight: 300; flex-shrink: 0; }
+    details[open] summary::after { content: '−'; }
+    details p { font-size: 14px; font-weight: 300; color: var(--mute); line-height: 1.75; margin-top: 12px; margin-bottom: 0; }
 
-      .decor-dots{
-        position:absolute; right:5%; bottom:28px; width:160px; height:110px; opacity:.25;
-        background-image:radial-gradient(#c9c2ff 1.4px, transparent 1.4px);
-        background-size:12px 12px;
-      }
+    /* ── FOOTER ── */
+    footer { background: #0c0c0c; color: rgba(255,255,255,.4); padding: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; gap: 40px; flex-wrap: wrap; }
+    .footer-brand { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--t); display: block; margin-bottom: 10px; }
+    .footer-tagline { font-size: 13px; font-weight: 300; line-height: 1.6; max-width: 240px; }
+    .footer-cols { display: flex; gap: 60px; }
+    .footer-col-title { font-size: 10px; letter-spacing: .2em; color: rgba(10,186,181,.6); text-transform: uppercase; margin-bottom: 16px; display: block; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.45); transition: color .2s; }
+    .footer-col a:hover { color: var(--t); }
+    .footer-hr { border: none; border-top: 1px solid rgba(255,255,255,.07); margin-bottom: 24px; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+    .footer-social { display: flex; gap: 24px; }
+    .footer-social a { font-size: 11px; letter-spacing: .14em; color: var(--t); font-weight: 500; transition: opacity .2s; }
+    .footer-social a:hover { opacity: .65; }
 
-      @media (max-width: 992px){
-        .cta-inner{grid-template-columns:1fr; text-align:center;}
-        .cta-box{order:2}
-        .cta-card{order:1}
-      }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .hero { flex-direction: column; padding: 100px 24px 64px; gap: 48px; }
+      .section { padding: 72px 24px; }
+      .section-full .section-inner { padding: 0 24px; }
+      .silent-inner { padding: 0 24px; }
+      .cta-inner { grid-template-columns: 1fr; padding: 0 24px; }
+      .habits-grid, .benefits-grid, .steps-grid { grid-template-columns: 1fr; }
+      .silent-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding: 48px 24px; }
+      .footer-top { flex-direction: column; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { gap: 18px; }
+      .silent-grid { grid-template-columns: 1fr; }
+      .footer-cols { gap: 32px; }
+      .hero-stats { gap: 32px; }
+    }
+  </style>
+</head>
+<body>
 
-      /* ==============================
-         FAQ + FOOTER
-      ============================== */
-      .faq{padding:90px 0;}
-      details{
-        background:#fff; border:1px solid #ece9ff; border-radius:14px; padding:18px 20px; margin:10px 0;
-      }
-      summary{cursor:pointer; font-weight:700; color:#3a2f7a;}
-      details[open]{box-shadow:var(--shadow)}
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Iryna Khandoniak</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mycv.html">Projects</a></li>
+      <li><a href="articles.html" class="active">Articles</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-      .footer{
-        background:var(--deep); color:#dcd6ff; padding:90px 0 70px;
-      }
-      .foot-inner{width:min(1200px,92%); margin-inline:auto;}
-      .foot-grid{
-        display:grid; grid-template-columns:1.2fr 1fr; gap:60px; align-items:start; margin-bottom:40px;
-      }
-      .foot-label{letter-spacing:.2em; text-transform:uppercase; color:var(--lime); margin-bottom:10px; display:block;}
-      .foot-link{display:block; color:var(--lime); text-decoration:none; margin:10px 0; font-weight:700;}
-      .foot-hr{height:1px; background:rgba(255,255,255,.25); border:0; margin:22px 0;}
-      .foot-bottom{display:flex; justify-content:space-between; align-items:center; gap:16px;}
-      .foot-mini{display:flex; gap:26px;}
-      .foot-mini a{color:var(--lime); text-decoration:none; font-weight:800;}
-      @media (max-width: 900px){
-        .foot-grid{grid-template-columns:1fr;}
-        .foot-bottom{flex-direction:column; align-items:flex-start;}
-      }
-    </style>
-  </head>
-  <body>
-    <!-- NAV -->
-    <nav class="navbar-custom" aria-label="Primary">
-      <a href="/" class="navbar-title">Portfolio 2025</a>
+  <!-- HERO -->
+  <div style="max-width:100%">
+    <div class="hero">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Tiny actions. Big change.</p>
+        <h1>Habits<br>for <em>Life</em></h1>
+        <p class="hero-sub">Build consistent routines with a simple, beautiful tracker. Design your day with micro-habits that actually stick.</p>
+        <div class="btn-row">
+          <a href="#cta" class="btn btn-fill">Start free →</a>
+          <a href="#how" class="btn btn-ghost">How it works</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-n">10</div><div class="stat-l">Good Habits</div></div>
+          <div><div class="stat-n">10</div><div class="stat-l">Habits to Avoid</div></div>
+          <div><div class="stat-n">8</div><div class="stat-l">Features</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <button id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="navlinks">Menu ☰</button>
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">Move Your Body</span>
+      <span class="ticker-item">Eat with Care</span>
+      <span class="ticker-item">Pause & Breathe</span>
+      <span class="ticker-item">Keep a Journal</span>
+      <span class="ticker-item">Learn & Grow</span>
+      <span class="ticker-item">Connect with Others</span>
+      <span class="ticker-item">Tiny Habits</span>
+      <span class="ticker-item">Build Streaks</span>
+      <span class="ticker-item">Move Your Body</span>
+      <span class="ticker-item">Eat with Care</span>
+      <span class="ticker-item">Pause & Breathe</span>
+      <span class="ticker-item">Keep a Journal</span>
+      <span class="ticker-item">Learn & Grow</span>
+      <span class="ticker-item">Connect with Others</span>
+      <span class="ticker-item">Tiny Habits</span>
+      <span class="ticker-item">Build Streaks</span>
+    </div>
+  </div>
 
-      <ul id="navlinks" class="navlinks">
-        <li><a href="/" class="active">Home</a></li>
-        <li><a href="#benefits">My Work</a></li>
-        <li><a href="#faq">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- HABITS FOR LIFE -->
+  <section class="section" id="habits">
+    <p class="section-tag">Habits for Life — highlights</p>
+    <div class="habits-grid">
+      <div class="habit-col">
+        <h3>Good daily <em>habits</em></h3>
+        <ul class="habit-list">
+          <li>❤️ <strong>Give love freely</strong> — share kindness without expecting anything back.</li>
+          <li>🏋️ <strong>Move your body</strong> — be active and your body and mind will thank you.</li>
+          <li>🥗 <strong>Eat with care</strong> — nourish yourself, drink water, listen to your body.</li>
+          <li>👋 <strong>Connect with others</strong> — meet new people or call someone you enjoy.</li>
+          <li>🛠 <strong>Create & express</strong> — build, code, write, sing, paint something meaningful.</li>
+          <li>🧘 <strong>Pause & breathe</strong> — 10 minutes to meditate and let your mind settle.</li>
+          <li>📖 <strong>Keep a journal</strong> — practice gratitude and note your intentions.</li>
+          <li>🕺 <strong>Learn & grow</strong> — explore hobbies, sharpen skills, stay curious.</li>
+          <li>📜 <strong>Revisit wisdom</strong> — return to quotes, books, and talks that inspire.</li>
+          <li>🍷 <strong>Slow down</strong> — savour music, good food, laughter, and quiet moments.</li>
+        </ul>
+      </div>
+      <div class="habit-col bad">
+        <h3>Habits to <em>avoid</em></h3>
+        <ul class="habit-list">
+          <li>😍 <strong>Scattering your focus</strong> — don't chase too many desires at once.</li>
+          <li>💊 <strong>Relying on substances</strong> — avoid using alcohol or pills as coping tools.</li>
+          <li>📰 <strong>Doomscrolling the news</strong> — protect your peace, most of it is noise.</li>
+          <li>🏨 <strong>Luxury obsession</strong> — keep it simple; happiness isn't found in excess.</li>
+          <li>👍 <strong>Craving approval</strong> — your worth isn't measured by likes or comments.</li>
+          <li>📅 <strong>Overloading your schedule</strong> — leave space to breathe and recharge.</li>
+          <li>😠 <strong>Complaining without action</strong> — accept what is, then improve it.</li>
+          <li>🦠 <strong>Toxic environments</strong> — protect your energy from draining spaces.</li>
+          <li>😪 <strong>Harmful relationships</strong> — choose supportive, positive people.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <div class="spacer-lg"></div>
+  <!-- SILENT HABITS -->
+  <div class="silent-section" id="silent-habits">
+    <div class="silent-inner">
+      <p class="silent-eyebrow">Warning</p>
+      <h2 class="silent-h2">10 Silent Habits That Destroy Your Life</h2>
+      <div class="silent-grid">
+        <div class="silent-item"><strong>Coffee before water</strong>dehydrates you before the day begins</div>
+        <div class="silent-item"><strong>Skipping sunlight</strong>disrupts your circadian rhythm</div>
+        <div class="silent-item"><strong>Eating distracted</strong>disconnects you from your body's signals</div>
+        <div class="silent-item"><strong>Mouth breathing</strong>reduces oxygen quality and focus</div>
+        <div class="silent-item"><strong>Scrolling before sleep</strong>ruins your sleep quality</div>
+        <div class="silent-item"><strong>Ultra-processed snacks</strong>drain energy and mood</div>
+        <div class="silent-item"><strong>No morning stretch</strong>stiffens your body and mind</div>
+        <div class="silent-item"><strong>Poor sleep routine</strong>compounds into poor performance</div>
+        <div class="silent-item"><strong>Inconsistent meals</strong>destabilises your energy and hunger cues</div>
+        <div class="silent-item"><strong>Suppressing emotions</strong>stores tension in the body</div>
+      </div>
+    </div>
+  </div>
 
-    <!-- HERO / OVERVIEW -->
-    <section id="overview" class="hero">
-      <div class="hero-inner">
+  <!-- BENEFITS -->
+  <section class="section" id="benefits">
+    <p class="section-tag">Why tiny habits?</p>
+    <h2>Small actions <em>compound</em></h2>
+    <p class="section-sub">We focus on clarity, rhythm, and positive feedback so you enjoy the process — not just the end goal.</p>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <h3>Clear &amp; friendly</h3>
+        <p>Create habits in seconds. No clutter, no pressure — just a clean interface that keeps you moving.</p>
+      </div>
+      <div class="benefit-card">
+        <h3>Built-in motivation</h3>
+        <p>Streaks, reminders, and gentle prompts help you show up, even on low-energy days.</p>
+      </div>
+      <div class="benefit-card">
+        <h3>Your rhythm</h3>
+        <p>Daily, weekly, or custom schedules. Pick what fits your season of life and adjust anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <div class="section-full how-bg" id="how">
+    <div class="section-inner">
+      <p class="section-tag">How it works</p>
+      <h2>Three simple <em>steps</em></h2>
+      <p class="section-sub">Keep it small. Keep it consistent. Watch it compound.</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-num">1</span>
+          <h3>Choose one tiny habit</h3>
+          <p>Keep it small: "Drink one glass of water", "Read 1 page", "Stretch for 2 minutes".</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">2</span>
+          <h3>Track &amp; get reminders</h3>
+          <p>Tick it off daily. Optional nudges keep you on track without feeling nagged.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-num">3</span>
+          <h3>Streaks &amp; celebrate</h3>
+          <p>Watch your streak grow. Miss a day? No shame — your next check-in is what counts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="section">
+    <p class="section-tag">What's inside</p>
+    <h2>Everything you <em>need</em></h2>
+    <p class="section-sub" style="margin-bottom: 32px;">Built to stay out of your way and keep you on track.</p>
+    <div class="features-grid">
+      <span class="feature-pill">One-tap tracking</span>
+      <span class="feature-pill">Smart reminders</span>
+      <span class="feature-pill">Habit templates</span>
+      <span class="feature-pill">Dark mode</span>
+      <span class="feature-pill">Weekly reflections</span>
+      <span class="feature-pill">Export &amp; backup</span>
+      <span class="feature-pill">Widgets</span>
+      <span class="feature-pill">Privacy first</span>
+    </div>
+  </section>
+
+  <!-- CTA DARK -->
+  <div class="cta-dark" id="cta">
+    <div class="cta-inner">
+      <div>
+        <p class="cta-eyebrow">Ready to begin?</p>
+        <h2 class="cta-h2">Start with one tiny habit today</h2>
+        <p class="cta-sub">This week, pick something you can do in under two minutes. Consistency beats intensity.</p>
+        <div class="btn-row">
+          <a href="#faq" class="btn btn-fill">See FAQs</a>
+          <a href="#habits" class="btn" style="background:transparent;color:rgba(255,255,255,.5);border:1.5px solid rgba(255,255,255,.15);">Back to top</a>
+        </div>
+      </div>
+      <div class="cta-card">
+        <span class="cta-badge">Free</span>
+        <h3>Simple habit tracker</h3>
+        <p>No sign-in required. Works great on mobile.</p>
+        <ul class="cta-list">
+          <li>Create unlimited habits</li>
+          <li>Daily/weekly schedules</li>
+          <li>Light &amp; dark themes</li>
+        </ul>
+        <div class="btn-row">
+          <a href="habittracker.html" class="btn btn-fill">Open the tracker →</a>
+          <a href="#how" class="btn btn-ghost">How it works</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <p class="section-tag">FAQ</p>
+    <h2>Common <em>questions</em></h2>
+    <p class="section-sub" style="margin-bottom: 32px;">Everything you need to know before you start.</p>
+    <div class="faq-grid">
+      <details>
+        <summary>What makes this different from other trackers?</summary>
+        <p>It's intentionally minimal. You'll find only the pieces that help you show up — nothing that gets in the way.</p>
+      </details>
+      <details>
+        <summary>Can I track weekly habits?</summary>
+        <p>Yes. Choose daily or weekly rhythm and set the exact days that suit your schedule.</p>
+      </details>
+      <details>
+        <summary>Do I need an account?</summary>
+        <p>No account is required to begin. You can export your data anytime.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
         <div>
-          <div class="eyebrow">Tiny actions. Big change.</div>
-          <h1>Habits for Life</h1>
-          <p class="lead">
-            Build consistent routines with a simple, beautiful tracker. Design your day with
-            micro-habits that actually stick — reminders, streaks, templates, and gentle nudges.
-          </p>
-          <div class="actions">
-            <a class="btn-main" href="#cta">Start free →</a>
-            <a class="btn-outline" href="#how">How it works</a>
-          </div>
+          <span class="footer-brand">Iryna Khandoniak</span>
+          <p class="footer-tagline">Front-End Developer &amp; Photographer crafting beautiful digital experiences.</p>
         </div>
-
-        <div class="hero-media">
-          <img src="images/Portfolio.png" alt="App preview / hero" />
-        </div>
-      </div>
-    </section>
-
-    <!-- HABITS FOR LIFE — highlights -->
-    <section id="learn" class="learn" aria-labelledby="learnTitle">
-      <div class="learn-card">
-        <p class="eyebrow" id="learnTitle">Habits for Life — highlights</p>
-
-        <div class="learn-grid">
-          <!-- Good habits -->
-          <div>
-            <h3>Good daily habits</h3>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <span class="footer-col-title">Contact</span>
             <ul>
-              <li>❤️ <strong>Give love freely</strong>: share kindness without expecting anything back—open hearts invite open hearts.</li>
-              <li>🏋️‍♂️ <strong>Move your body</strong>: be active and your body (and mind) will thank you.</li>
-              <li>🥗 <strong>Eat with care</strong>: nourish yourself, drink water, and listen to your body’s signals.</li>
-              <li>👋 <strong>Connect with others</strong>: meet new people, check in with friends, or call someone you enjoy talking to.</li>
-              <li>🛠 <strong>Create & express</strong>: build, code, write, sing, paint—channel energy into something meaningful.</li>
-              <li>🧘‍♂️ <strong>Pause & breathe</strong>: take 10 minutes to meditate and let your mind settle.</li>
-              <li>📖 <strong>Keep a journal</strong>: practice gratitude and note your intentions to stay aligned.</li>
-              <li>🕺 <strong>Learn & grow</strong>: explore new hobbies, sharpen skills, read, and stay curious.</li>
-              <li>📜 <strong>Revisit wisdom</strong>: return to quotes, books, and talks that inspire you.</li>
-              <li>🍷 <strong>Slow down</strong>: savor life—music, good food, laughter, and quiet moments (plants included).</li>
+              <li><a href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a></li>
+              <li><a href="https://t.me/irynakhandoniak" target="_blank" rel="noreferrer">t.me/irynakhandoniak</a></li>
             </ul>
           </div>
-
-          <!-- Habits to avoid -->
-          <div>
-            <h3>Habits to avoid</h3>
+          <div class="footer-col">
+            <span class="footer-col-title">Navigate</span>
             <ul>
-              <li>😍 <strong>Scattering your focus</strong>: don’t chase too many desires at once—choose what matters.</li>
-              <li>💊 <strong>Relying on substances</strong>: avoid using alcohol or pills as coping mechanisms.</li>
-              <li>📰 <strong>Doomscrolling the news</strong>: protect your peace—most of it is noise.</li>
-              <li>🏨 <strong>Luxury obsession</strong>: keep it simple; happiness isn’t found in excess.</li>
-              <li>👍 <strong>Craving approval</strong>: your worth isn’t measured by likes or comments.</li>
-              <li>📅 <strong>Overloading your schedule</strong>: leave space to breathe and recharge.</li>
-              <li>😠 <strong>Complaining without action</strong>: accept what is, then take steps to improve it.</li>
-              <li>🦠 <strong>Toxic environments</strong>: protect your energy—avoid spaces that drain you.</li>
-              <li>😪 <strong>Harmful relationships</strong>: choose supportive, positive people.</li>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="mycv.html">Projects</a></li>
+              <li><a href="articles.html">Articles</a></li>
+              <li><a href="#benefits">Benefits</a></li>
             </ul>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- 10 Silent Habits -->
-    <section id="silent-habits" class="learn" aria-labelledby="silentTitle">
-      <div class="learn-card danger-card">
-        <p class="eyebrow" id="silentTitle">⚠️ 10 Silent Habits That Destroy Your Life</p>
-        <div class="learn-grid">
-          <div>
-           
-            <ul>
-              <li><strong>Coffee</strong> before water</li> 
-              <li><strong>Skipping</strong> sunlight</li> 
-              <li><strong>Eating</strong> distracted</li>
-              <li><strong>Mouth</strong> breathing</li> 
-              <li><strong>Scrolling</strong> before sleep</li>
-            </ul>
-          </div>
-          <div>
-     
-            <ul>
-              <li><strong>Ultra-processed</strong> snacks</li>
-               <li><strong>No stretching</strong> in the morning</li> 
-               <li><strong>Poor sleep</strong> routine</li> 
-               <li><strong>Inconsistent</strong> meals</li> 
-               <li><strong>Suppressing</strong> emotions</li>
-            </ul>
-          </div>
+      <hr class="footer-hr">
+      <div class="footer-bottom">
+        <span class="footer-copy">© Iryna Khandoniak 2025</span>
+        <div class="footer-social">
+          <a href="https://twitter.com/" target="_blank" rel="noreferrer">TW</a>
+          <a href="https://github.com/IrynaKhandoniak" target="_blank" rel="noreferrer">GH</a>
+          <a href="https://www.linkedin.com/in/irynakhandoniak/" target="_blank" rel="noreferrer">LN</a>
+          <a href="https://youtube.com/" target="_blank" rel="noreferrer">YT</a>
         </div>
       </div>
-    </section>
+    </div>
+  </footer>
 
-    <!-- BENEFITS -->
-    <section id="benefits" class="benefits">
-      <div class="section-inner">
-        <h2>Why tiny habits?</h2>
-        <p class="lead" style="max-width:760px">
-          Small, repeatable actions compound. We focus on clarity, rhythm and positive feedback
-          so you enjoy the process — not just the end goal.
-        </p>
-
-        <div class="benefit-grid">
-          <article class="card">
-            <div class="dots"></div>
-            <h3>Clear & friendly</h3>
-            <p>Create habits in seconds. No clutter, no pressure — just a clean interface that keeps you moving.</p>
-          </article>
-
-          <article class="card">
-            <div class="dots"></div>
-            <h3>Built-in motivation</h3>
-            <p>Streaks, reminders and gentle prompts help you show up, even on low-energy days.</p>
-          </article>
-
-          <article class="card">
-            <div class="dots"></div>
-            <h3>Your rhythm</h3>
-            <p>Daily, weekly or custom schedules. Pick what fits your season of life and adjust anytime.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section id="how" class="how">
-      <div class="section-inner">
-        <h2>How it works</h2>
-        <div class="steps">
-          <div class="step">
-            <span class="n">1</span>
-            <h3>Choose one tiny habit</h3>
-            <p>Keep it small: “Drink one glass of water”, “Read 1 page”, “Stretch for 2 minutes”.</p>
-          </div>
-          <div class="step">
-            <span class="n">2</span>
-            <h3>Track & get reminders</h3>
-            <p>Tick it off daily. Optional nudges keep you on track without feeling nagged.</p>
-          </div>
-          <div class="step">
-            <span class="n">3</span>
-            <h3>Streaks & celebrate</h3>
-            <p>Watch your streak grow. Miss a day? No shame — your next check-in is what counts.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURES STRIP -->
-    <section class="features">
-      <div class="section-inner">
-        <h2>What’s inside</h2>
-        <div class="feature-row">
-          <div class="pill">One-tap tracking</div>
-          <div class="pill">Smart reminders</div>
-          <div class="pill">Habit templates</div>
-          <div class="pill">Dark mode</div>
-          <div class="pill">Weekly reflections</div>
-          <div class="pill">Export & backup</div>
-          <div class="pill">Widgets</div>
-          <div class="pill">Privacy first</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA (Dark) -->
-    <section id="cta" class="cta-dark">
-      <div class="decor-dots"></div>
-      <div class="cta-inner">
-        <div class="cta-box">
-          <div class="cta-kicker">Ready to begin?</div>
-          <h2 class="cta-title">Start with one tiny habit today</h2>
-          <p class="cta-sub">This week, pick something you can do in under two minutes. Consistency beats intensity.</p>
-          <div class="actions" style="margin-top:14px;">
-            <a class="btn-main" href="#faq">See FAQs</a>
-            <a class="btn-outline" href="#overview">Back to top</a>
-          </div>
-        </div>
-
-        <aside class="cta-card" aria-labelledby="ctaTrackerTitle">
-          <span class="badge">Free</span>
-          <h3 id="ctaTrackerTitle" style="margin-bottom:6px;">Simple habit tracker</h3>
-          <p style="margin-bottom:10px;">No sign-in required. Works great on mobile.</p>
-          <ul style="margin:0; padding-left:18px; line-height:1.8; color:#4a4664;">
-            <li>Create unlimited habits</li>
-            <li>Daily/weekly schedules</li>
-            <li>Light & dark themes</li>
-          </ul>
-          <div class="actions" style="margin-top:14px;">
-            <a class="btn-main" href="habittracker.html" aria-label="Open Habit Tracker">Open the tracker →</a>
-            <a class="btn-outline" href="#how">How it works</a>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="faq">
-      <div class="section-inner">
-        <h2>FAQ</h2>
-        <details>
-          <summary>What makes this different from other trackers?</summary>
-          <p>It’s intentionally minimal. You’ll find only the pieces that help you show up — nothing that gets in the way.</p>
-        </details>
-        <details>
-          <summary>Can I track weekly habits?</summary>
-          <p>Yes. Choose daily or weekly rhythm and set the exact days that suit your schedule.</p>
-        </details>
-        <details>
-          <summary>Do I need an account?</summary>
-          <p>No account is required to begin. You can export data anytime.</p>
-        </details>
-      </div>
-    </section>
-
-    <!-- CONTACT / FOOTER -->
-    <footer class="footer">
-      <div class="foot-inner">
-        <div class="foot-grid">
-          <div>
-            <span class="foot-label">Say hello</span>
-            <a class="foot-link" href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a>
-            <a class="foot-link" href="https://t.me/irynakhandoniak" target="_blank" rel="noreferrer">t.me/irynakhandoniak</a>
-          </div>
-          <div>
-            <span class="foot-label">Quick links</span>
-            <a class="foot-link" href="#benefits">Benefits</a>
-            <a class="foot-link" href="#how">How it works</a>
-            <a class="foot-link" href="#faq">FAQ</a>
-          </div>
-        </div>
-
-        <hr class="foot-hr" />
-        <div class="foot-bottom">
-          <div>© Iryna Khandoniak 2025</div>
-          <div class="foot-mini">
-            <a href="https://github.com/IrynaKhandoniak" target="_blank" rel="noreferrer">GH</a>
-            <a href="https://www.linkedin.com/in/irynakhandoniak/" target="_blank" rel="noreferrer">LN</a>
-            <a href="https://www.instagram.com/irakhnk" target="_blank" rel="noreferrer">IG</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <script>
-      // tiny mobile menu toggle
-      const btn = document.getElementById('menuBtn');
-      const nav = document.getElementById('navlinks');
-      if (btn && nav) {
-        btn.addEventListener('click', () => {
-          const open = nav.classList.toggle('open');
-          btn.setAttribute('aria-expanded', String(open));
-        });
-      }
-    </script>
-  </body>
+</body>
 </html>
