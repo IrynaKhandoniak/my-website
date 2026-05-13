@@ -9,28 +9,20 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
 <style>
   :root{
-    --t:#0abab5;
-    --t-dk:#088a86;
-    --t-bg:#e8faf9;
-    --ink:#111111;
-    --mute:#6b7280;
-    --bg:#ffffff;
-    --surf:#f8fffe;
-    --line:#e5f7f6;
-    --dark:#0c0c0c;
+    --t:#0abab5;--t-dk:#088a86;--t-bg:#e8faf9;--t-lt:#5de0db;
+    --ink:#111111;--mute:#6b7280;--bg:#ffffff;--surf:#f8fffe;
+    --line:#e5f7f6;--dark:#0c0c0c;--teal-deep:#064e4b;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
   a{text-decoration:none;color:inherit}
 
-  /* NAV */
   nav{
     position:fixed;top:0;left:0;right:0;z-index:200;
     display:flex;align-items:center;justify-content:space-between;
     padding:0 60px;height:68px;
-    background:rgba(255,255,255,.92);
-    backdrop-filter:blur(14px);
+    background:rgba(255,255,255,.92);backdrop-filter:blur(14px);
     border-bottom:1px solid var(--line);
   }
   .nav-logo{font-family:'DM Serif Display',serif;font-size:19px;color:var(--t)}
@@ -39,143 +31,66 @@
   .nav-links a:hover{color:var(--t)}
   .nav-links a.active{color:var(--t);font-weight:500}
 
-  /* HERO */
-  .hero{
-    padding:148px 60px 72px;
-    max-width:1100px;margin:0 auto;
-  }
-  .eyebrow{
-    font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--t);display:flex;align-items:center;gap:10px;margin-bottom:24px;
-  }
+  .hero{padding:148px 60px 72px;max-width:1100px;margin:0 auto}
+  .eyebrow{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--t);display:flex;align-items:center;gap:10px;margin-bottom:24px}
   .eyebrow::before{content:'';width:28px;height:1px;background:var(--t)}
-  .hero h1{
-    font-family:'DM Serif Display',serif;
-    font-size:clamp(56px,8vw,96px);
-    font-weight:400;line-height:1.0;
-    max-width:800px;
-  }
+  .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(56px,8vw,96px);font-weight:400;line-height:1.0;max-width:800px}
   .hero h1 em{font-style:italic;color:var(--t)}
-  .hero-sub{
-    font-size:16px;font-weight:300;color:var(--mute);
-    margin-top:20px;max-width:420px;line-height:1.7;
-  }
+  .hero-sub{font-size:16px;font-weight:300;color:var(--mute);margin-top:20px;max-width:420px;line-height:1.7}
 
-  /* TICKER */
   .ticker{overflow:hidden;background:var(--t);padding:11px 0;white-space:nowrap}
   .ticker-track{display:inline-flex;animation:tick 22s linear infinite}
   .ticker-item{font-size:11px;font-weight:500;letter-spacing:.18em;color:#fff;padding:0 28px}
   .ticker-item::after{content:'·';margin-left:28px;opacity:.5}
   @keyframes tick{to{transform:translateX(-50%)}}
 
-  /* FILTER */
-  .filter-wrap{
-    max-width:1100px;margin:0 auto;
-    padding:32px 60px 0;
-    display:flex;align-items:center;gap:8px;flex-wrap:wrap;
-  }
+  .filter-wrap{max-width:1100px;margin:0 auto;padding:32px 60px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .filter-label{font-size:12px;color:var(--mute);letter-spacing:.1em;text-transform:uppercase;margin-right:8px}
-  .pill{
-    font-family:'DM Sans',sans-serif;
-    font-size:12px;font-weight:500;letter-spacing:.06em;
-    padding:6px 18px;border-radius:100px;
-    border:1px solid var(--line);background:transparent;color:var(--mute);
-    cursor:pointer;transition:all .18s;
-  }
+  .pill{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:.06em;padding:6px 18px;border-radius:100px;border:1px solid var(--line);background:transparent;color:var(--mute);cursor:pointer;transition:all .18s}
   .pill:hover{border-color:var(--t);color:var(--t)}
   .pill.on{background:var(--t);border-color:var(--t);color:#fff}
 
-  /* GRID */
   .grid-outer{max-width:1100px;margin:36px auto 100px;padding:0 60px}
 
-  /* FEATURED — full-width split */
-  .featured{
-    display:grid;grid-template-columns:1fr 1fr;
-    border:1px solid var(--line);border-radius:16px;overflow:hidden;
-    margin-bottom:20px;
-  }
-  .feat-l{
-    padding:52px 48px;
-    display:flex;flex-direction:column;gap:18px;
-    background:var(--bg);transition:background .2s;
-    position:relative;overflow:hidden;
-  }
-  .feat-l:hover{background:var(--surf)}
-  .feat-r{
-    padding:52px 48px;
-    display:flex;flex-direction:column;gap:18px;
-    background:var(--dark);
-    transition:background .2s;position:relative;overflow:hidden;
-  }
-  .feat-r:hover{background:#181818}
+  /* FEATURED SPLIT */
+  .featured{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:20px}
 
-  /* REGULAR GRID */
-  .cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-    border-radius:16px;overflow:hidden;
-  }
-  .card{
-    background:var(--bg);
-    padding:36px 30px;
-    display:flex;flex-direction:column;gap:14px;
-    transition:background .2s;
-    position:relative;overflow:hidden;
-  }
+  /* LEFT — white */
+  .feat-l{padding:52px 48px;display:flex;flex-direction:column;gap:18px;background:var(--bg);transition:background .2s;position:relative;overflow:hidden}
+  .feat-l:hover{background:var(--surf)}
+
+  /* RIGHT — deep teal (new article always here) */
+  .feat-r{padding:52px 48px;display:flex;flex-direction:column;gap:18px;background:var(--teal-deep);transition:background .2s;position:relative;overflow:hidden}
+  .feat-r:hover{background:#053a38}
+
+  /* CARDS */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .card{background:var(--bg);padding:36px 30px;display:flex;flex-direction:column;gap:14px;transition:background .2s;position:relative;overflow:hidden}
   .card:hover{background:var(--surf)}
 
-  /* SHARED CARD PARTS */
-  .c-tag{
-    font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--t);display:flex;align-items:center;gap:8px;
-  }
+  .c-tag{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--t);display:flex;align-items:center;gap:8px}
   .c-tag::before{content:'';width:14px;height:1px;background:var(--t)}
-  .c-title{
-    font-family:'DM Serif Display',serif;
-    font-size:22px;font-weight:400;line-height:1.22;color:var(--ink);
-  }
+  .c-title{font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;line-height:1.22;color:var(--ink)}
   .feat-l .c-title{font-size:30px}
   .feat-r .c-title{font-size:26px;color:#fff}
   .c-excerpt{font-size:14px;font-weight:300;line-height:1.72;color:var(--mute)}
-  .feat-r .c-excerpt{color:rgba(255,255,255,.45)}
-  .c-foot{
-    margin-top:auto;display:flex;align-items:center;justify-content:space-between;
-    padding-top:16px;border-top:1px solid var(--line);
-  }
-  .feat-r .c-foot{border-top-color:rgba(255,255,255,.1)}
+  .feat-r .c-excerpt{color:rgba(255,255,255,.6)}
+  .c-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--line)}
+  .feat-r .c-foot{border-top-color:rgba(255,255,255,.15)}
   .c-meta{font-size:12px;color:var(--mute);font-weight:300;letter-spacing:.03em}
-  .feat-r .c-meta{color:rgba(255,255,255,.3)}
-  .c-arrow{
-    width:30px;height:30px;border-radius:50%;border:1px solid var(--line);
-    display:flex;align-items:center;justify-content:center;
-    font-size:13px;color:var(--t);transition:all .18s;flex-shrink:0;
-  }
+  .feat-r .c-meta{color:rgba(255,255,255,.45)}
+  .c-arrow{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--t);transition:all .18s;flex-shrink:0}
   .card:hover .c-arrow,.feat-l:hover .c-arrow{background:var(--t);border-color:var(--t);color:#fff}
-  .feat-r .c-arrow{border-color:rgba(255,255,255,.18);color:#5de0db}
+  .feat-r .c-arrow{border-color:rgba(255,255,255,.25);color:#fff}
   .feat-r:hover .c-arrow{background:var(--t);border-color:var(--t);color:#fff}
-  .c-ghost{
-    font-family:'DM Serif Display',serif;
-    font-size:110px;color:var(--t);opacity:.045;
-    position:absolute;bottom:-18px;right:-8px;line-height:1;pointer-events:none;
-  }
-  .feat-r .c-ghost{color:#fff;opacity:.04}
+  .c-ghost{font-family:'DM Serif Display',serif;font-size:110px;color:var(--t);opacity:.045;position:absolute;bottom:-18px;right:-8px;line-height:1;pointer-events:none}
+  .feat-r .c-ghost{color:#fff;opacity:.07}
   .card .c-ghost{font-size:88px}
 
-  /* NEW badge */
-  .badge-new{
-    display:inline-block;font-size:9px;font-weight:500;letter-spacing:.14em;
-    text-transform:uppercase;padding:3px 9px;border-radius:100px;
-    background:var(--t-bg);color:var(--t-dk);border:1px solid var(--line);
-    margin-left:8px;vertical-align:middle;
-  }
+  .badge-new{display:inline-block;font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border-radius:100px;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);margin-left:8px;vertical-align:middle}
 
-  /* EMPTY */
   .empty{text-align:center;padding:80px 20px;font-size:15px;color:var(--mute);font-weight:300;display:none}
 
-  /* FOOTER */
   footer{background:var(--dark);color:rgba(255,255,255,.38);padding:60px}
   .f-inner{max-width:1100px;margin:0 auto}
   .f-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px;gap:40px;flex-wrap:wrap}
@@ -194,7 +109,6 @@
   .f-social a{font-size:11px;letter-spacing:.14em;color:var(--t);font-weight:500;transition:opacity .2s}
   .f-social a:hover{opacity:.6}
 
-  /* ANIMATIONS */
   .fade-in{opacity:0;transform:translateY(18px);animation:fadeUp .5s forwards}
   @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
   .feat-l,.feat-r{animation:fadeUp .55s forwards}
@@ -205,6 +119,7 @@
   .card:nth-child(4){animation:fadeUp .5s .2s forwards;opacity:0}
   .card:nth-child(5){animation:fadeUp .5s .25s forwards;opacity:0}
   .card:nth-child(6){animation:fadeUp .5s .3s forwards;opacity:0}
+  .card:nth-child(7){animation:fadeUp .5s .35s forwards;opacity:0}
 
   @media(max-width:900px){
     nav{padding:0 24px}
@@ -212,13 +127,10 @@
     .filter-wrap{padding:24px 24px 0}
     .grid-outer{padding:28px 24px 80px}
     .featured{grid-template-columns:1fr}
-    .feat-r{border-top:1px solid rgba(255,255,255,.08)}
     .f-top{flex-direction:column}
     footer{padding:48px 24px}
   }
-  @media(max-width:600px){
-    .cards{grid-template-columns:1fr}
-  }
+  @media(max-width:600px){.cards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -248,6 +160,8 @@
     <span class="ticker-item">Sport & Fitness</span>
     <span class="ticker-item">Agentic AI</span>
     <span class="ticker-item">Future Skills</span>
+    <span class="ticker-item">Pomodoro</span>
+    <span class="ticker-item">Deep Work</span>
     <span class="ticker-item">Marketing</span>
     <span class="ticker-item">Habits</span>
     <span class="ticker-item">Emotional Intelligence</span>
@@ -255,6 +169,8 @@
     <span class="ticker-item">Sport & Fitness</span>
     <span class="ticker-item">Agentic AI</span>
     <span class="ticker-item">Future Skills</span>
+    <span class="ticker-item">Pomodoro</span>
+    <span class="ticker-item">Deep Work</span>
   </div>
 </div>
 
@@ -269,10 +185,11 @@
 
 <div class="grid-outer">
 
-  <!-- FEATURED: two latest side by side -->
   <div class="featured" id="featured">
+
+    <!-- LEFT: older featured — white -->
     <a class="feat-l" href="agenticai.html" data-tags="tech">
-      <div class="c-tag">Tech & AI <span class="badge-new">New</span></div>
+      <div class="c-tag">Tech & AI</div>
       <div class="c-title">Agentic AI &amp; the future of work</div>
       <div class="c-excerpt">Agentic AI is changing how companies think about jobs, leadership, workflows, and organisational design. A deep look at what's coming.</div>
       <div class="c-foot">
@@ -281,20 +198,33 @@
       </div>
       <div class="c-ghost">01</div>
     </a>
-    <a class="feat-r" href="future-skills.html" data-tags="tech productivity">
-      <div class="c-tag" style="color:#5de0db">Productivity <span class="badge-new" style="background:rgba(10,186,181,.12);color:#5de0db;border-color:rgba(10,186,181,.2)">New</span></div>
-      <div class="c-title">Top 10 fastest-growing skills by 2030</div>
-      <div class="c-excerpt">The future of work is changing fast. Here are the skills that will matter most — and why you should start building them now.</div>
+
+    <!-- RIGHT: newest article — deep teal -->
+    <a class="feat-r" href="pomodoro.html" data-tags="productivity">
+      <div class="c-tag" style="color:var(--t-lt)">Productivity <span class="badge-new">New</span></div>
+      <div class="c-title">The Pomodoro Technique &amp; how deep work actually gets done</div>
+      <div class="c-excerpt">One of the simplest productivity systems ever created — yet a powerful framework for focus, energy management, and sustainable performance.</div>
       <div class="c-foot">
-        <div class="c-meta">April 2026 · 10 min read</div>
+        <div class="c-meta">May 2026 · 8 min read</div>
         <div class="c-arrow">→</div>
       </div>
       <div class="c-ghost">02</div>
     </a>
+
   </div>
 
-  <!-- CARD GRID -->
   <div class="cards" id="cardGrid">
+
+    <a class="card" href="future-skills.html" data-tags="tech productivity">
+      <div class="c-tag">Tech & AI</div>
+      <div class="c-title">Top 10 fastest-growing skills by 2030</div>
+      <div class="c-excerpt">The future of work is changing fast. Here are the skills that will matter most — and why you should start building them now.</div>
+      <div class="c-foot">
+        <div class="c-meta">April 2026 · 10 min</div>
+        <div class="c-arrow">→</div>
+      </div>
+      <div class="c-ghost">03</div>
+    </a>
 
     <a class="card" href="zonesport.html" data-tags="health">
       <div class="c-tag">Health</div>
@@ -304,7 +234,7 @@
         <div class="c-meta">April 2026 · 15 min</div>
         <div class="c-arrow">→</div>
       </div>
-      <div class="c-ghost">03</div>
+      <div class="c-ghost">04</div>
     </a>
 
     <a class="card" href="crypto.html" data-tags="finance">
@@ -315,7 +245,7 @@
         <div class="c-meta">Oct 2025 · 8 min</div>
         <div class="c-arrow">→</div>
       </div>
-      <div class="c-ghost">04</div>
+      <div class="c-ghost">05</div>
     </a>
 
     <a class="card" href="ie.html" data-tags="productivity">
@@ -326,7 +256,7 @@
         <div class="c-meta">Sep 2025 · 6 min</div>
         <div class="c-arrow">→</div>
       </div>
-      <div class="c-ghost">05</div>
+      <div class="c-ghost">06</div>
     </a>
 
     <a class="card" href="habits.html" data-tags="productivity health">
@@ -337,7 +267,7 @@
         <div class="c-meta">Sep 2025 · 7 min</div>
         <div class="c-arrow">→</div>
       </div>
-      <div class="c-ghost">06</div>
+      <div class="c-ghost">07</div>
     </a>
 
     <a class="card" href="marketing.html" data-tags="productivity">
@@ -348,7 +278,7 @@
         <div class="c-meta">Sep 2025 · 6 min</div>
         <div class="c-arrow">→</div>
       </div>
-      <div class="c-ghost">07</div>
+      <div class="c-ghost">08</div>
     </a>
 
   </div>
@@ -377,7 +307,6 @@
           <ul>
             <li><a href="index.html#work">My Work</a></li>
             <li><a href="articles.html">Articles</a></li>
-            <li><a href="mycv.html">My CV</a></li>
             <li><a href="leancanva.html">Lean Canvas</a></li>
           </ul>
         </div>
@@ -407,7 +336,6 @@ pills.forEach(btn => {
     pills.forEach(p => p.classList.remove('on'));
     btn.classList.add('on');
     const tag = btn.dataset.tag;
-
     let visibleCards = 0;
     cards.forEach(card => {
       const tags = card.dataset.tags || '';
@@ -415,7 +343,6 @@ pills.forEach(btn => {
       card.style.display = show ? '' : 'none';
       if(show) visibleCards++;
     });
-
     let featVisible = 0;
     featLinks.forEach(link => {
       const tags = link.dataset.tags || '';
@@ -423,7 +350,6 @@ pills.forEach(btn => {
       link.style.display = show ? '' : 'none';
       if(show) featVisible++;
     });
-
     featured.style.display = featVisible === 0 ? 'none' : '';
     empty.style.display = (visibleCards === 0 && featVisible === 0) ? 'block' : 'none';
   });
