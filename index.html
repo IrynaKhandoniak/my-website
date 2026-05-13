@@ -1,361 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Iryna Khandoniak — Front-end developer & photographer." />
-  <title>Iryna Khandoniak</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Articles — Iryna Khandoniak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --t:#0abab5;
+    --t-dk:#088a86;
+    --t-bg:#e8faf9;
+    --ink:#111111;
+    --mute:#6b7280;
+    --bg:#ffffff;
+    --surf:#f8fffe;
+    --line:#e5f7f6;
+    --dark:#0c0c0c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
+  a{text-decoration:none;color:inherit}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 60px;height:68px;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-logo{font-family:'DM Serif Display',serif;font-size:19px;color:var(--t)}
+  .nav-links{display:flex;gap:36px;list-style:none}
+  .nav-links a{font-size:13px;color:var(--mute);letter-spacing:.04em;transition:color .2s}
+  .nav-links a:hover{color:var(--t)}
+  .nav-links a.active{color:var(--t);font-weight:500}
 
-  <style>
-    :root {
-      --t:    #0abab5;
-      --t-dk: #088a86;
-      --t-bg: #e8faf9;
-      --ink:  #111111;
-      --mute: #6b7280;
-      --bg:   #ffffff;
-      --surf: #f8fffe;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); }
-    a { text-decoration: none; color: inherit; }
+  /* HERO */
+  .hero{
+    padding:148px 60px 72px;
+    max-width:1100px;margin:0 auto;
+  }
+  .eyebrow{
+    font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--t);display:flex;align-items:center;gap:10px;margin-bottom:24px;
+  }
+  .eyebrow::before{content:'';width:28px;height:1px;background:var(--t)}
+  .hero h1{
+    font-family:'DM Serif Display',serif;
+    font-size:clamp(56px,8vw,96px);
+    font-weight:400;line-height:1.0;
+    max-width:800px;
+  }
+  .hero h1 em{font-style:italic;color:var(--t)}
+  .hero-sub{
+    font-size:16px;font-weight:300;color:var(--mute);
+    margin-top:20px;max-width:420px;line-height:1.7;
+  }
 
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 60px; height: 68px;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #e5f7f6;
-    }
-    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 19px; color: var(--t); }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a { font-size: 13px; color: var(--mute); letter-spacing: .04em; transition: color .2s; }
-    .nav-links a:hover { color: var(--t); }
+  /* TICKER */
+  .ticker{overflow:hidden;background:var(--t);padding:11px 0;white-space:nowrap}
+  .ticker-track{display:inline-flex;animation:tick 22s linear infinite}
+  .ticker-item{font-size:11px;font-weight:500;letter-spacing:.18em;color:#fff;padding:0 28px}
+  .ticker-item::after{content:'·';margin-left:28px;opacity:.5}
+  @keyframes tick{to{transform:translateX(-50%)}}
 
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 100px 60px 80px;
-      max-width: 1100px; margin: 0 auto;
-      gap: 80px;
-    }
-    .hero-text { flex: 1; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--t-bg); color: var(--t-dk);
-      font-size: 12px; font-weight: 500; letter-spacing: .08em;
-      padding: 6px 14px; border-radius: 100px; margin-bottom: 28px;
-    }
-    .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--t); }
-    h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(48px, 6vw, 76px);
-      line-height: 1.08; font-weight: 400;
-      color: var(--ink); margin-bottom: 20px;
-    }
-    h1 em { font-style: italic; color: var(--t); }
-    .hero-sub {
-      font-size: 17px; font-weight: 300; line-height: 1.75;
-      color: var(--mute); max-width: 460px; margin-bottom: 40px;
-    }
-    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 28px; border-radius: 6px;
-      font-size: 13px; font-weight: 500; letter-spacing: .04em; transition: all .2s;
-    }
-    .btn-fill { background: var(--t); color: #fff; }
-    .btn-fill:hover { background: var(--t-dk); }
-    .btn-line { border: 1.5px solid var(--t); color: var(--t); }
-    .btn-line:hover { background: var(--t-bg); }
+  /* FILTER */
+  .filter-wrap{
+    max-width:1100px;margin:0 auto;
+    padding:32px 60px 0;
+    display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  }
+  .filter-label{font-size:12px;color:var(--mute);letter-spacing:.1em;text-transform:uppercase;margin-right:8px}
+  .pill{
+    font-family:'DM Sans',sans-serif;
+    font-size:12px;font-weight:500;letter-spacing:.06em;
+    padding:6px 18px;border-radius:100px;
+    border:1px solid var(--line);background:transparent;color:var(--mute);
+    cursor:pointer;transition:all .18s;
+  }
+  .pill:hover{border-color:var(--t);color:var(--t)}
+  .pill.on{background:var(--t);border-color:var(--t);color:#fff}
 
-    .hero-img-col { flex-shrink: 0; width: 340px; position: relative; }
-    .hero-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 12px; display: block; }
-    .hero-pill {
-      position: absolute; bottom: 20px; left: -20px;
-      background: #fff; border: 1px solid #e5f7f6;
-      border-radius: 10px; padding: 14px 20px;
-      box-shadow: 0 8px 24px rgba(10,186,181,.1);
-    }
-    .pill-num { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--t); line-height: 1; }
-    .pill-lbl { font-size: 11px; color: var(--mute); margin-top: 2px; letter-spacing: .06em; }
+  /* GRID */
+  .grid-outer{max-width:1100px;margin:36px auto 100px;padding:0 60px}
 
-    .ticker { overflow: hidden; background: var(--t); padding: 12px 0; white-space: nowrap; }
-    .ticker-track { display: inline-flex; animation: tick 20s linear infinite; }
-    .ticker-item { font-size: 11px; font-weight: 500; letter-spacing: .18em; color: #fff; padding: 0 32px; }
-    .ticker-item::after { content: '·'; margin-left: 32px; opacity: .5; }
-    @keyframes tick { to { transform: translateX(-50%); } }
+  /* FEATURED — full-width split */
+  .featured{
+    display:grid;grid-template-columns:1fr 1fr;
+    border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    margin-bottom:20px;
+  }
+  .feat-l{
+    padding:52px 48px;
+    display:flex;flex-direction:column;gap:18px;
+    background:var(--bg);transition:background .2s;
+    position:relative;overflow:hidden;
+  }
+  .feat-l:hover{background:var(--surf)}
+  .feat-r{
+    padding:52px 48px;
+    display:flex;flex-direction:column;gap:18px;
+    background:var(--dark);
+    transition:background .2s;position:relative;overflow:hidden;
+  }
+  .feat-r:hover{background:#181818}
 
-    section { padding: 100px 60px; max-width: 1100px; margin: 0 auto; }
-    .section-tag {
-      font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
-      color: var(--t); margin-bottom: 40px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .section-tag::before { content: ''; width: 28px; height: 1px; background: var(--t); }
-    h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(36px, 5vw, 56px);
-      font-weight: 400; line-height: 1.1; margin-bottom: 20px;
-    }
-    h2 em { font-style: italic; color: var(--t); }
+  /* REGULAR GRID */
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:16px;overflow:hidden;
+  }
+  .card{
+    background:var(--bg);
+    padding:36px 30px;
+    display:flex;flex-direction:column;gap:14px;
+    transition:background .2s;
+    position:relative;overflow:hidden;
+  }
+  .card:hover{background:var(--surf)}
 
-    .about-section { background: #0c0c0c; color: #fff; padding: 100px 0; }
-    .about-inner { max-width: 1100px; margin: 0 auto; padding: 0 60px; display: flex; gap: 80px; align-items: center; }
-    .about-img { width: 320px; flex-shrink: 0; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; }
-    .about-text .section-tag { color: var(--t); }
-    .about-text h2 { color: #fff; }
-    .about-text h2 em { color: #5de0db; }
-    .about-body { font-size: 16px; font-weight: 300; line-height: 1.8; color: rgba(255,255,255,.55); margin-bottom: 32px; max-width: 480px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
-    .chip { font-size: 11px; letter-spacing: .1em; padding: 6px 14px; border: 1px solid rgba(10,186,181,.3); color: #5de0db; border-radius: 4px; }
-    .stats { display: flex; gap: 48px; }
-    .stat-n { font-family: 'DM Serif Display', serif; font-size: 52px; color: var(--t); line-height: 1; }
-    .stat-l { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 4px; letter-spacing: .08em; }
+  /* SHARED CARD PARTS */
+  .c-tag{
+    font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--t);display:flex;align-items:center;gap:8px;
+  }
+  .c-tag::before{content:'';width:14px;height:1px;background:var(--t)}
+  .c-title{
+    font-family:'DM Serif Display',serif;
+    font-size:22px;font-weight:400;line-height:1.22;color:var(--ink);
+  }
+  .feat-l .c-title{font-size:30px}
+  .feat-r .c-title{font-size:26px;color:#fff}
+  .c-excerpt{font-size:14px;font-weight:300;line-height:1.72;color:var(--mute)}
+  .feat-r .c-excerpt{color:rgba(255,255,255,.45)}
+  .c-foot{
+    margin-top:auto;display:flex;align-items:center;justify-content:space-between;
+    padding-top:16px;border-top:1px solid var(--line);
+  }
+  .feat-r .c-foot{border-top-color:rgba(255,255,255,.1)}
+  .c-meta{font-size:12px;color:var(--mute);font-weight:300;letter-spacing:.03em}
+  .feat-r .c-meta{color:rgba(255,255,255,.3)}
+  .c-arrow{
+    width:30px;height:30px;border-radius:50%;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;color:var(--t);transition:all .18s;flex-shrink:0;
+  }
+  .card:hover .c-arrow,.feat-l:hover .c-arrow{background:var(--t);border-color:var(--t);color:#fff}
+  .feat-r .c-arrow{border-color:rgba(255,255,255,.18);color:#5de0db}
+  .feat-r:hover .c-arrow{background:var(--t);border-color:var(--t);color:#fff}
+  .c-ghost{
+    font-family:'DM Serif Display',serif;
+    font-size:110px;color:var(--t);opacity:.045;
+    position:absolute;bottom:-18px;right:-8px;line-height:1;pointer-events:none;
+  }
+  .feat-r .c-ghost{color:#fff;opacity:.04}
+  .card .c-ghost{font-size:88px}
 
-    .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
-    .work-card {
-      display: block; padding: 56px 48px;
-      background: var(--surf); transition: background .3s;
-      position: relative; overflow: hidden;
-    }
-    .work-card:hover { background: var(--t); }
-    .work-n {
-      font-family: 'DM Serif Display', serif; font-size: 80px;
-      color: rgba(10,186,181,.08); line-height: 1;
-      position: absolute; top: 24px; right: 32px; transition: color .3s;
-    }
-    .work-card:hover .work-n { color: rgba(255,255,255,.1); }
-    .work-card h3 { font-family: 'DM Serif Display', serif; font-size: 32px; font-weight: 400; color: var(--ink); margin-bottom: 12px; transition: color .3s; }
-    .work-card:hover h3 { color: #fff; }
-    .work-card p { font-size: 14px; font-weight: 300; color: var(--mute); line-height: 1.7; margin-bottom: 28px; transition: color .3s; }
-    .work-card:hover p { color: rgba(255,255,255,.75); }
-    .work-link { font-size: 11px; font-weight: 500; letter-spacing: .14em; color: var(--t); transition: color .3s, letter-spacing .3s; }
-    .work-card:hover .work-link { color: #fff; letter-spacing: .22em; }
+  /* NEW badge */
+  .badge-new{
+    display:inline-block;font-size:9px;font-weight:500;letter-spacing:.14em;
+    text-transform:uppercase;padding:3px 9px;border-radius:100px;
+    background:var(--t-bg);color:var(--t-dk);border:1px solid var(--line);
+    margin-left:8px;vertical-align:middle;
+  }
 
-    .contact-section { background: var(--surf); padding: 100px 0; }
-    .contact-inner { max-width: 700px; margin: 0 auto; padding: 0 60px; text-align: center; }
-    .contact-inner .section-tag { justify-content: center; }
-    .contact-sub { font-size: 16px; font-weight: 300; color: var(--mute); margin-bottom: 56px; }
-    form { text-align: left; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 28px; }
-    label { display: block; font-size: 11px; letter-spacing: .14em; color: var(--t); margin-bottom: 8px; font-weight: 500; }
-    input[type=text], input[type=email], textarea {
-      width: 100%; background: transparent; border: none;
-      border-bottom: 1px solid rgba(10,186,181,.25);
-      padding: 10px 0; font-family: 'DM Sans', sans-serif;
-      font-size: 15px; font-weight: 300; color: var(--ink);
-      outline: none; transition: border-color .25s;
-    }
-    input:focus, textarea:focus { border-color: var(--t); }
-    textarea { min-height: 90px; resize: vertical; margin-bottom: 24px; }
-    .form-submit {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 15px 40px; background: transparent;
-      border: 1.5px solid var(--t); color: var(--t);
-      font-family: 'DM Sans', sans-serif; font-size: 12px;
-      font-weight: 500; letter-spacing: .16em; cursor: pointer;
-      border-radius: 4px; transition: background .25s, color .25s;
-    }
-    .form-submit:hover { background: var(--t); color: #fff; }
-    .form-alt { font-size: 13px; color: var(--mute); margin-top: 16px; }
-    .form-alt a { color: var(--t); }
+  /* EMPTY */
+  .empty{text-align:center;padding:80px 20px;font-size:15px;color:var(--mute);font-weight:300;display:none}
 
-    footer { background: #0c0c0c; color: rgba(255,255,255,.4); padding: 60px; }
-    .footer-inner { max-width: 1100px; margin: 0 auto; }
-    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; gap: 40px; flex-wrap: wrap; }
-    .footer-brand { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--t); display: block; margin-bottom: 10px; }
-    .footer-tagline { font-size: 13px; font-weight: 300; line-height: 1.6; max-width: 240px; }
-    .footer-cols { display: flex; gap: 60px; }
-    .footer-col-title { font-size: 10px; letter-spacing: .2em; color: rgba(10,186,181,.6); text-transform: uppercase; margin-bottom: 16px; display: block; }
-    .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: 10px; }
-    .footer-col a { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.45); transition: color .2s; }
-    .footer-col a:hover { color: var(--t); }
-    .footer-hr { border: none; border-top: 1px solid rgba(255,255,255,.07); margin-bottom: 24px; }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-    .footer-copy { font-size: 12px; }
-    .footer-social { display: flex; gap: 24px; }
-    .footer-social a { font-size: 11px; letter-spacing: .14em; color: var(--t); font-weight: 500; transition: opacity .2s; }
-    .footer-social a:hover { opacity: .65; }
+  /* FOOTER */
+  footer{background:var(--dark);color:rgba(255,255,255,.38);padding:60px}
+  .f-inner{max-width:1100px;margin:0 auto}
+  .f-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px;gap:40px;flex-wrap:wrap}
+  .f-brand{font-family:'DM Serif Display',serif;font-size:22px;color:var(--t);display:block;margin-bottom:8px}
+  .f-tagline{font-size:13px;font-weight:300;line-height:1.6;max-width:220px}
+  .f-cols{display:flex;gap:60px}
+  .f-col-title{font-size:10px;letter-spacing:.2em;color:rgba(10,186,181,.55);text-transform:uppercase;margin-bottom:14px;display:block}
+  .f-col ul{list-style:none}
+  .f-col li{margin-bottom:10px}
+  .f-col a{font-size:14px;font-weight:300;color:rgba(255,255,255,.42);transition:color .2s}
+  .f-col a:hover{color:var(--t)}
+  .f-hr{border:none;border-top:1px solid rgba(255,255,255,.07);margin-bottom:22px}
+  .f-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .f-copy{font-size:12px}
+  .f-social{display:flex;gap:24px}
+  .f-social a{font-size:11px;letter-spacing:.14em;color:var(--t);font-weight:500;transition:opacity .2s}
+  .f-social a:hover{opacity:.6}
 
-    @media (max-width: 900px) {
-      nav { padding: 0 24px; }
-      .hero { flex-direction: column; padding: 100px 24px 60px; gap: 48px; }
-      .hero-img-col { width: 100%; max-width: 300px; margin: 0 auto; }
-      .about-inner { flex-direction: column; padding: 0 24px; gap: 40px; }
-      .about-img { width: 100%; max-width: 280px; }
-      section { padding: 72px 24px; }
-      .work-grid { grid-template-columns: 1fr; }
-      .contact-inner { padding: 0 24px; }
-      .form-row { grid-template-columns: 1fr; }
-      footer { padding: 48px 24px; }
-      .footer-top { flex-direction: column; }
-    }
-  </style>
+  /* ANIMATIONS */
+  .fade-in{opacity:0;transform:translateY(18px);animation:fadeUp .5s forwards}
+  @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+  .feat-l,.feat-r{animation:fadeUp .55s forwards}
+  .feat-r{animation-delay:.08s}
+  .card:nth-child(1){animation:fadeUp .5s .05s forwards;opacity:0}
+  .card:nth-child(2){animation:fadeUp .5s .1s forwards;opacity:0}
+  .card:nth-child(3){animation:fadeUp .5s .15s forwards;opacity:0}
+  .card:nth-child(4){animation:fadeUp .5s .2s forwards;opacity:0}
+  .card:nth-child(5){animation:fadeUp .5s .25s forwards;opacity:0}
+  .card:nth-child(6){animation:fadeUp .5s .3s forwards;opacity:0}
+
+  @media(max-width:900px){
+    nav{padding:0 24px}
+    .hero{padding:110px 24px 56px}
+    .filter-wrap{padding:24px 24px 0}
+    .grid-outer{padding:28px 24px 80px}
+    .featured{grid-template-columns:1fr}
+    .feat-r{border-top:1px solid rgba(255,255,255,.08)}
+    .f-top{flex-direction:column}
+    footer{padding:48px 24px}
+  }
+  @media(max-width:600px){
+    .cards{grid-template-columns:1fr}
+  }
+</style>
 </head>
 <body>
 
-  <nav>
-    <a href="#home" class="nav-logo">Iryna Khandoniak</a>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<nav>
+  <a href="index.html" class="nav-logo">Iryna Khandoniak</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="articles.html" class="active">Articles</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <div id="home" style="max-width:100%">
-    <div class="hero">
-      <div class="hero-text">
-        <span class="hero-badge">Available for projects</span>
-        <h1>Front-end<br><em>Developer</em><br>&amp; Designer</h1>
-        <p class="hero-sub">I craft clean, accessible interfaces and component libraries — blending engineering with an eye for detail.</p>
-        <div class="btn-row">
-          <a href="#work" class="btn btn-fill">See My Work →</a>
-          <a href="#contact" class="btn btn-line">Contact Me</a>
-          <a href="leancanva.html" class="btn btn-line">Lean Canvas</a>
+<section class="hero fade-in">
+  <div class="eyebrow">Writing & ideas</div>
+  <h1>Things I think<br>about &amp; <em>write</em></h1>
+  <p class="hero-sub">Design, frontend, productivity, fitness, and the occasional deep dive into whatever has my attention.</p>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">Marketing</span>
+    <span class="ticker-item">Habits</span>
+    <span class="ticker-item">Emotional Intelligence</span>
+    <span class="ticker-item">Crypto</span>
+    <span class="ticker-item">Sport & Fitness</span>
+    <span class="ticker-item">Agentic AI</span>
+    <span class="ticker-item">Future Skills</span>
+    <span class="ticker-item">Marketing</span>
+    <span class="ticker-item">Habits</span>
+    <span class="ticker-item">Emotional Intelligence</span>
+    <span class="ticker-item">Crypto</span>
+    <span class="ticker-item">Sport & Fitness</span>
+    <span class="ticker-item">Agentic AI</span>
+    <span class="ticker-item">Future Skills</span>
+  </div>
+</div>
+
+<div class="filter-wrap">
+  <span class="filter-label">Filter</span>
+  <button class="pill on" data-tag="all">All</button>
+  <button class="pill" data-tag="productivity">Productivity</button>
+  <button class="pill" data-tag="tech">Tech & AI</button>
+  <button class="pill" data-tag="health">Health</button>
+  <button class="pill" data-tag="finance">Finance</button>
+</div>
+
+<div class="grid-outer">
+
+  <!-- FEATURED: two latest side by side -->
+  <div class="featured" id="featured">
+    <a class="feat-l" href="agenticai.html" data-tags="tech">
+      <div class="c-tag">Tech & AI <span class="badge-new">New</span></div>
+      <div class="c-title">Agentic AI &amp; the future of work</div>
+      <div class="c-excerpt">Agentic AI is changing how companies think about jobs, leadership, workflows, and organisational design. A deep look at what's coming.</div>
+      <div class="c-foot">
+        <div class="c-meta">April 2026 · 17 min read</div>
+        <div class="c-arrow">→</div>
+      </div>
+      <div class="c-ghost">01</div>
+    </a>
+    <a class="feat-r" href="future-skills.html" data-tags="tech productivity">
+      <div class="c-tag" style="color:#5de0db">Productivity <span class="badge-new" style="background:rgba(10,186,181,.12);color:#5de0db;border-color:rgba(10,186,181,.2)">New</span></div>
+      <div class="c-title">Top 10 fastest-growing skills by 2030</div>
+      <div class="c-excerpt">The future of work is changing fast. Here are the skills that will matter most — and why you should start building them now.</div>
+      <div class="c-foot">
+        <div class="c-meta">April 2026 · 10 min read</div>
+        <div class="c-arrow">→</div>
+      </div>
+      <div class="c-ghost">02</div>
+    </a>
+  </div>
+
+  <!-- CARD GRID -->
+  <div class="cards" id="cardGrid">
+
+    <a class="card" href="zonesport.html" data-tags="health">
+      <div class="c-tag">Health</div>
+      <div class="c-title">Heart rate training zones</div>
+      <div class="c-excerpt">Zone class — are you working hard or hardly working? How to train with more purpose using heart rate data.</div>
+      <div class="c-foot">
+        <div class="c-meta">April 2026 · 15 min</div>
+        <div class="c-arrow">→</div>
+      </div>
+      <div class="c-ghost">03</div>
+    </a>
+
+    <a class="card" href="crypto.html" data-tags="finance">
+      <div class="c-tag">Finance</div>
+      <div class="c-title">Risk management &amp; crypto liquidations</div>
+      <div class="c-excerpt">Mistakes are experience — if you become aware of them. A breakdown of the October 2025 liquidation surge.</div>
+      <div class="c-foot">
+        <div class="c-meta">Oct 2025 · 8 min</div>
+        <div class="c-arrow">→</div>
+      </div>
+      <div class="c-ghost">04</div>
+    </a>
+
+    <a class="card" href="ie.html" data-tags="productivity">
+      <div class="c-tag">Productivity</div>
+      <div class="c-title">Emotional intelligence for makers</div>
+      <div class="c-excerpt">Notice, name, and navigate emotions to build better products and teams. The soft skill that's actually hard.</div>
+      <div class="c-foot">
+        <div class="c-meta">Sep 2025 · 6 min</div>
+        <div class="c-arrow">→</div>
+      </div>
+      <div class="c-ghost">05</div>
+    </a>
+
+    <a class="card" href="habits.html" data-tags="productivity health">
+      <div class="c-tag">Productivity</div>
+      <div class="c-title">Tiny habits, big wins</div>
+      <div class="c-excerpt">Start microscopic, attach to cues, and track streaks without guilt. The science behind lasting habit change.</div>
+      <div class="c-foot">
+        <div class="c-meta">Sep 2025 · 7 min</div>
+        <div class="c-arrow">→</div>
+      </div>
+      <div class="c-ghost">06</div>
+    </a>
+
+    <a class="card" href="marketing.html" data-tags="productivity">
+      <div class="c-tag">Productivity</div>
+      <div class="c-title">The simple marketing playbook</div>
+      <div class="c-excerpt">Positioning, messaging, and a weekly cadence that actually ships. No fluff, just what works.</div>
+      <div class="c-foot">
+        <div class="c-meta">Sep 2025 · 6 min</div>
+        <div class="c-arrow">→</div>
+      </div>
+      <div class="c-ghost">07</div>
+    </a>
+
+  </div>
+
+  <div class="empty" id="empty">No articles in this category yet.</div>
+
+</div>
+
+<footer>
+  <div class="f-inner">
+    <div class="f-top">
+      <div>
+        <span class="f-brand">Iryna Khandoniak</span>
+        <p class="f-tagline">Front-End Developer & Photographer crafting beautiful digital experiences.</p>
+      </div>
+      <div class="f-cols">
+        <div class="f-col">
+          <span class="f-col-title">Contact</span>
+          <ul>
+            <li><a href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a></li>
+            <li><a href="https://t.me/irynakhandoniak" target="_blank" rel="noreferrer">t.me/irynakhandoniak</a></li>
+          </ul>
+        </div>
+        <div class="f-col">
+          <span class="f-col-title">Navigate</span>
+          <ul>
+            <li><a href="index.html#work">My Work</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="mycv.html">My CV</a></li>
+            <li><a href="leancanva.html">Lean Canvas</a></li>
+          </ul>
         </div>
       </div>
-      <div class="hero-img-col">
-       
-        
+    </div>
+    <hr class="f-hr"/>
+    <div class="f-bottom">
+      <span class="f-copy">© Iryna Khandoniak 2025</span>
+      <div class="f-social">
+        <a href="https://github.com/IrynaKhandoniak" target="_blank" rel="noreferrer">GH</a>
+        <a href="https://www.linkedin.com/in/irynakhandoniak/" target="_blank" rel="noreferrer">LN</a>
+        <a href="https://www.instagram.com/irakhnk" target="_blank" rel="noreferrer">IG</a>
       </div>
     </div>
   </div>
+</footer>
 
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <span class="ticker-item">Front-End Development</span>
-      <span class="ticker-item">UI Design</span>
-      <span class="ticker-item">React</span>
-      <span class="ticker-item">Design Systems</span>
-      <span class="ticker-item">Photography</span>
-      <span class="ticker-item">Accessibility</span>
-      <span class="ticker-item">TypeScript</span>
-      <span class="ticker-item">Component Libraries</span>
-      <span class="ticker-item">Front-End Development</span>
-      <span class="ticker-item">UI Design</span>
-      <span class="ticker-item">React</span>
-      <span class="ticker-item">Design Systems</span>
-      <span class="ticker-item">Photography</span>
-      <span class="ticker-item">Accessibility</span>
-      <span class="ticker-item">TypeScript</span>
-      <span class="ticker-item">Component Libraries</span>
-    </div>
-  </div>
+<script>
+const pills = document.querySelectorAll('.pill');
+const cards = document.querySelectorAll('#cardGrid .card');
+const featLinks = document.querySelectorAll('.feat-l, .feat-r');
+const featured = document.getElementById('featured');
+const empty = document.getElementById('empty');
 
-  <div class="about-section" id="about">
-    <div class="about-inner">
-      <img src="images/photo.JPG" alt="Portrait of Iryna" class="about-img" loading="lazy" />
-      <div class="about-text">
-        <p class="section-tag">About me</p>
-        <h2>Developer &<br><em>Photography</em> lover</h2>
-        <p class="about-body">I build clean, accessible interfaces and component libraries. When I'm not coding, I'm behind the camera capturing portraits, food, and everyday stories.</p>
-        <div class="chips">
-          <span class="chip">Photography</span>
-          <span class="chip">HTML · CSS · JS</span>
-          <span class="chip">React</span>
-          <span class="chip">Design Systems</span>
-          <span class="chip">Accessibility</span>
-        </div>
-        <div class="stats">
-          <div><div class="stat-n">4+</div><div class="stat-l">Web Projects</div></div>
-          <div><div class="stat-n">100+</div><div class="stat-l">Photos Delivered</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
+pills.forEach(btn => {
+  btn.addEventListener('click', () => {
+    pills.forEach(p => p.classList.remove('on'));
+    btn.classList.add('on');
+    const tag = btn.dataset.tag;
 
-  <section id="work">
-    <p class="section-tag">My work</p>
-    <h2>I build &amp;<br><em>design</em> things</h2>
-    <div class="work-grid">
-      <a class="work-card" href="work.html">
-        <span class="work-n">01</span>
-        <h3>Projects &<br>Web Apps</h3>
-        <p>Open source projects, web apps and experimental interfaces crafted with care.</p>
-        <span class="work-link">SEE MY WORK →</span>
-      </a>
-      <a class="work-card" href="articles.html">
-        <span class="work-n">02</span>
-        <h3>Writing &<br>Articles</h3>
-        <p>Thoughts on design, frontend development, learning and the creative life.</p>
-        <span class="work-link">READ ARTICLES →</span>
-      </a>
-    </div>
-  </section>
+    let visibleCards = 0;
+    cards.forEach(card => {
+      const tags = card.dataset.tags || '';
+      const show = tag === 'all' || tags.includes(tag);
+      card.style.display = show ? '' : 'none';
+      if(show) visibleCards++;
+    });
 
-  <div class="contact-section" id="contact">
-    <div class="contact-inner">
-      <p class="section-tag">Get in touch</p>
-      <h2>Say <em>hello</em></h2>
-      <p class="contact-sub">Got a question, proposal, or just want to chat? Go ahead.</p>
-      <form action="https://formsubmit.co/irr.enn.booking@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="New message from Portfolio 2025">
-        <input type="hidden" name="_captcha" value="false">
-        <div class="form-row">
-          <div>
-            <label for="name">Your Name</label>
-            <input id="name" name="name" type="text" placeholder="Enter your name" required>
-          </div>
-          <div>
-            <label for="email">Email Address</label>
-            <input id="email" name="email" type="email" placeholder="Enter your email" required>
-          </div>
-        </div>
-        <label for="msg">Your Message</label>
-        <textarea id="msg" name="message" placeholder="Hi, I'd love to work with you on…" required></textarea>
-        <button type="submit" class="form-submit">Send Message →</button>
-        <p class="form-alt">Or email directly: <a href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a></p>
-      </form>
-    </div>
-  </div>
+    let featVisible = 0;
+    featLinks.forEach(link => {
+      const tags = link.dataset.tags || '';
+      const show = tag === 'all' || tags.includes(tag);
+      link.style.display = show ? '' : 'none';
+      if(show) featVisible++;
+    });
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div>
-          <span class="footer-brand">Iryna Khandoniak</span>
-          <p class="footer-tagline">Front-End Developer & Photographer crafting beautiful digital experiences.</p>
-        </div>
-        <div class="footer-cols">
-          <div class="footer-col">
-            <span class="footer-col-title">Contact</span>
-            <ul>
-              <li><a href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a></li>
-              <li><a href="https://t.me/irynakhandoniak" target="_blank" rel="noreferrer">t.me/irynakhandoniak</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <span class="footer-col-title">Navigate</span>
-            <ul>
-              <li><a href="#work">My Work</a></li>
-              <li><a href="mycv.html">My CV</a></li>
-              <li><a href="articles.html">Articles</a></li>
-              <li><a href="leancanva.html">Lean Canvas</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <hr class="footer-hr">
-      <div class="footer-bottom">
-        <span class="footer-copy">© Iryna Khandoniak 2025</span>
-        <div class="footer-social">
-          <a href="https://twitter.com/" target="_blank" rel="noreferrer">TW</a>
-          <a href="https://github.com/IrynaKhandoniak" target="_blank" rel="noreferrer">GH</a>
-          <a href="https://www.linkedin.com/in/irynakhandoniak/" target="_blank" rel="noreferrer">LN</a>
-          <a href="https://youtube.com/" target="_blank" rel="noreferrer">YT</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
+    featured.style.display = featVisible === 0 ? 'none' : '';
+    empty.style.display = (visibleCards === 0 && featVisible === 0) ? 'block' : 'none';
+  });
+});
+</script>
 </body>
 </html>
