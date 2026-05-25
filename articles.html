@@ -4,15 +4,18 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Articles — Iryna Khandoniak</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+
 <style>
   :root{
     --t:#0abab5;--t-dk:#088a86;--t-bg:#e8faf9;--t-lt:#5de0db;
     --ink:#111111;--mute:#6b7280;--bg:#ffffff;--surf:#f8fffe;
     --line:#e5f7f6;--dark:#0c0c0c;--teal-deep:#064e4b;
   }
+
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
@@ -25,6 +28,7 @@
     background:rgba(255,255,255,.92);backdrop-filter:blur(14px);
     border-bottom:1px solid var(--line);
   }
+
   .nav-logo{font-family:'DM Serif Display',serif;font-size:19px;color:var(--t)}
   .nav-links{display:flex;gap:36px;list-style:none}
   .nav-links a{font-size:13px;color:var(--mute);letter-spacing:.04em;transition:color .2s}
@@ -52,37 +56,39 @@
 
   .grid-outer{max-width:1100px;margin:36px auto 100px;padding:0 60px}
 
-  /* FEATURED SPLIT */
   .featured{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:20px}
 
-  /* LEFT — white */
   .feat-l{padding:52px 48px;display:flex;flex-direction:column;gap:18px;background:var(--bg);transition:background .2s;position:relative;overflow:hidden}
   .feat-l:hover{background:var(--surf)}
 
-  /* RIGHT — deep teal (new article always here) */
   .feat-r{padding:52px 48px;display:flex;flex-direction:column;gap:18px;background:var(--teal-deep);transition:background .2s;position:relative;overflow:hidden}
   .feat-r:hover{background:#053a38}
 
-  /* CARDS */
   .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
   .card{background:var(--bg);padding:36px 30px;display:flex;flex-direction:column;gap:14px;transition:background .2s;position:relative;overflow:hidden}
   .card:hover{background:var(--surf)}
 
   .c-tag{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--t);display:flex;align-items:center;gap:8px}
   .c-tag::before{content:'';width:14px;height:1px;background:var(--t)}
+
   .c-title{font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;line-height:1.22;color:var(--ink)}
   .feat-l .c-title{font-size:30px}
   .feat-r .c-title{font-size:26px;color:#fff}
+
   .c-excerpt{font-size:14px;font-weight:300;line-height:1.72;color:var(--mute)}
   .feat-r .c-excerpt{color:rgba(255,255,255,.6)}
+
   .c-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--line)}
   .feat-r .c-foot{border-top-color:rgba(255,255,255,.15)}
+
   .c-meta{font-size:12px;color:var(--mute);font-weight:300;letter-spacing:.03em}
   .feat-r .c-meta{color:rgba(255,255,255,.45)}
+
   .c-arrow{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--t);transition:all .18s;flex-shrink:0}
   .card:hover .c-arrow,.feat-l:hover .c-arrow{background:var(--t);border-color:var(--t);color:#fff}
   .feat-r .c-arrow{border-color:rgba(255,255,255,.25);color:#fff}
   .feat-r:hover .c-arrow{background:var(--t);border-color:var(--t);color:#fff}
+
   .c-ghost{font-family:'DM Serif Display',serif;font-size:110px;color:var(--t);opacity:.045;position:absolute;bottom:-18px;right:-8px;line-height:1;pointer-events:none}
   .feat-r .c-ghost{color:#fff;opacity:.07}
   .card .c-ghost{font-size:88px}
@@ -111,8 +117,10 @@
 
   .fade-in{opacity:0;transform:translateY(18px);animation:fadeUp .5s forwards}
   @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
   .feat-l,.feat-r{animation:fadeUp .55s forwards}
   .feat-r{animation-delay:.08s}
+
   .card:nth-child(1){animation:fadeUp .5s .05s forwards;opacity:0}
   .card:nth-child(2){animation:fadeUp .5s .1s forwards;opacity:0}
   .card:nth-child(3){animation:fadeUp .5s .15s forwards;opacity:0}
@@ -120,6 +128,7 @@
   .card:nth-child(5){animation:fadeUp .5s .25s forwards;opacity:0}
   .card:nth-child(6){animation:fadeUp .5s .3s forwards;opacity:0}
   .card:nth-child(7){animation:fadeUp .5s .35s forwards;opacity:0}
+  .card:nth-child(8){animation:fadeUp .5s .4s forwards;opacity:0}
 
   @media(max-width:900px){
     nav{padding:0 24px}
@@ -130,9 +139,14 @@
     .f-top{flex-direction:column}
     footer{padding:48px 24px}
   }
-  @media(max-width:600px){.cards{grid-template-columns:1fr}}
+
+  @media(max-width:600px){
+    .cards{grid-template-columns:1fr}
+    .nav-links{gap:18px}
+  }
 </style>
 </head>
+
 <body>
 
 <nav>
@@ -148,12 +162,14 @@
 <section class="hero fade-in">
   <div class="eyebrow">Writing & ideas</div>
   <h1>Things I think<br>about &amp; <em>write</em></h1>
-  <p class="hero-sub">Design, frontend, productivity, fitness, and the occasional deep dive into whatever has my attention.</p>
+  <p class="hero-sub">Design, frontend, productivity, fitness, technology, and the occasional deep dive into whatever has my attention.</p>
 </section>
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <span class="ticker-item">Marketing</span>
+    <span class="ticker-item">Robotics</span>
+    <span class="ticker-item">Automation</span>
     <span class="ticker-item">Habits</span>
     <span class="ticker-item">Emotional Intelligence</span>
     <span class="ticker-item">Crypto</span>
@@ -162,7 +178,10 @@
     <span class="ticker-item">Future Skills</span>
     <span class="ticker-item">Pomodoro</span>
     <span class="ticker-item">Deep Work</span>
+
     <span class="ticker-item">Marketing</span>
+    <span class="ticker-item">Robotics</span>
+    <span class="ticker-item">Automation</span>
     <span class="ticker-item">Habits</span>
     <span class="ticker-item">Emotional Intelligence</span>
     <span class="ticker-item">Crypto</span>
@@ -187,7 +206,6 @@
 
   <div class="featured" id="featured">
 
-    <!-- LEFT: older featured — white -->
     <a class="feat-l" href="agenticai.html" data-tags="tech">
       <div class="c-tag">Tech & AI</div>
       <div class="c-title">Agentic AI &amp; the future of work</div>
@@ -199,13 +217,12 @@
       <div class="c-ghost">01</div>
     </a>
 
-    <!-- RIGHT: newest article — deep teal -->
-    <a class="feat-r" href="pomodoro.html" data-tags="productivity">
-      <div class="c-tag" style="color:var(--t-lt)">Productivity <span class="badge-new">New</span></div>
-      <div class="c-title">The Pomodoro Technique &amp; how deep work actually gets done</div>
-      <div class="c-excerpt">One of the simplest productivity systems ever created — yet a powerful framework for focus, energy management, and sustainable performance.</div>
+    <a class="feat-r" href="robotics.html" data-tags="tech">
+      <div class="c-tag" style="color:var(--t-lt)">Tech & AI <span class="badge-new">New</span></div>
+      <div class="c-title">Robotics in Western Countries vs China</div>
+      <div class="c-excerpt">A deep dive into the global robotics race — comparing Western innovation, Chinese scale, automation strategy, and the future of intelligent machines.</div>
       <div class="c-foot">
-        <div class="c-meta">May 2026 · 8 min read</div>
+        <div class="c-meta">May 2026 · 12 min read</div>
         <div class="c-arrow">→</div>
       </div>
       <div class="c-ghost">02</div>
@@ -215,6 +232,17 @@
 
   <div class="cards" id="cardGrid">
 
+    <a class="card" href="pomodoro.html" data-tags="productivity">
+      <div class="c-tag">Productivity</div>
+      <div class="c-title">The Pomodoro Technique &amp; how deep work actually gets done</div>
+      <div class="c-excerpt">One of the simplest productivity systems ever created — yet a powerful framework for focus, energy management, and sustainable performance.</div>
+      <div class="c-foot">
+        <div class="c-meta">May 2026 · 8 min</div>
+        <div class="c-arrow">→</div>
+      </div>
+      <div class="c-ghost">03</div>
+    </a>
+
     <a class="card" href="future-skills.html" data-tags="tech productivity">
       <div class="c-tag">Tech & AI</div>
       <div class="c-title">Top 10 fastest-growing skills by 2030</div>
@@ -223,7 +251,7 @@
         <div class="c-meta">April 2026 · 10 min</div>
         <div class="c-arrow">→</div>
       </div>
-      <div class="c-ghost">03</div>
+      <div class="c-ghost">04</div>
     </a>
 
     <a class="card" href="zonesport.html" data-tags="health">
@@ -234,7 +262,7 @@
         <div class="c-meta">April 2026 · 15 min</div>
         <div class="c-arrow">→</div>
       </div>
-      <div class="c-ghost">04</div>
+      <div class="c-ghost">05</div>
     </a>
 
     <a class="card" href="crypto.html" data-tags="finance">
@@ -245,7 +273,7 @@
         <div class="c-meta">Oct 2025 · 8 min</div>
         <div class="c-arrow">→</div>
       </div>
-      <div class="c-ghost">05</div>
+      <div class="c-ghost">06</div>
     </a>
 
     <a class="card" href="ie.html" data-tags="productivity">
@@ -256,7 +284,7 @@
         <div class="c-meta">Sep 2025 · 6 min</div>
         <div class="c-arrow">→</div>
       </div>
-      <div class="c-ghost">06</div>
+      <div class="c-ghost">07</div>
     </a>
 
     <a class="card" href="habits.html" data-tags="productivity health">
@@ -267,7 +295,7 @@
         <div class="c-meta">Sep 2025 · 7 min</div>
         <div class="c-arrow">→</div>
       </div>
-      <div class="c-ghost">07</div>
+      <div class="c-ghost">08</div>
     </a>
 
     <a class="card" href="marketing.html" data-tags="productivity">
@@ -278,7 +306,7 @@
         <div class="c-meta">Sep 2025 · 6 min</div>
         <div class="c-arrow">→</div>
       </div>
-      <div class="c-ghost">08</div>
+      <div class="c-ghost">09</div>
     </a>
 
   </div>
@@ -294,6 +322,7 @@
         <span class="f-brand">Iryna Khandoniak</span>
         <p class="f-tagline">Front-End Developer & Photographer crafting beautiful digital experiences.</p>
       </div>
+
       <div class="f-cols">
         <div class="f-col">
           <span class="f-col-title">Contact</span>
@@ -302,6 +331,7 @@
             <li><a href="https://t.me/irynakhandoniak" target="_blank" rel="noreferrer">t.me/irynakhandoniak</a></li>
           </ul>
         </div>
+
         <div class="f-col">
           <span class="f-col-title">Navigate</span>
           <ul>
@@ -312,7 +342,9 @@
         </div>
       </div>
     </div>
+
     <hr class="f-hr"/>
+
     <div class="f-bottom">
       <span class="f-copy">© Iryna Khandoniak 2025</span>
       <div class="f-social">
@@ -335,25 +367,31 @@ pills.forEach(btn => {
   btn.addEventListener('click', () => {
     pills.forEach(p => p.classList.remove('on'));
     btn.classList.add('on');
+
     const tag = btn.dataset.tag;
     let visibleCards = 0;
+
     cards.forEach(card => {
       const tags = card.dataset.tags || '';
       const show = tag === 'all' || tags.includes(tag);
       card.style.display = show ? '' : 'none';
       if(show) visibleCards++;
     });
+
     let featVisible = 0;
+
     featLinks.forEach(link => {
       const tags = link.dataset.tags || '';
       const show = tag === 'all' || tags.includes(tag);
       link.style.display = show ? '' : 'none';
       if(show) featVisible++;
     });
+
     featured.style.display = featVisible === 0 ? 'none' : '';
     empty.style.display = (visibleCards === 0 && featVisible === 0) ? 'block' : 'none';
   });
 });
 </script>
+
 </body>
 </html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robotics: Western Countries vs China — Iryna K</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --t:#0abab5;
+      --t-dk:#088a86;
+      --t-bg:#e8faf9;
+      --ink:#111;
+      --mute:#6b7280;
+      --bg:#fff;
+      --surf:#f8fffe;
+      --line:rgba(10,186,181,.15);
+    }
+
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family:'DM Sans', sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
+    a { text-decoration:none; color:inherit; }
+
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      display:flex; justify-content:space-between; align-items:center;
+      height:68px; padding:0 60px;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid #e5f7f6;
+    }
+
+    .nav-logo {
+      font-family:'DM Serif Display', serif;
+      font-size:19px;
+      color:var(--t);
+    }
+
+    .nav-links {
+      display:flex;
+      gap:36px;
+      list-style:none;
+    }
+
+    .nav-links a {
+      font-size:13px;
+      color:var(--mute);
+      letter-spacing:.04em;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color:var(--t);
+    }
+
+    .page-hero {
+      padding:130px 60px 56px;
+      max-width:860px;
+      margin:0 auto;
+    }
+
+    .hero-badge {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:var(--t-bg);
+      color:var(--t-dk);
+      font-size:12px;
+      font-weight:500;
+      letter-spacing:.08em;
+      padding:6px 14px;
+      border-radius:100px;
+      margin-bottom:24px;
+    }
+
+    .hero-badge::before {
+      content:'';
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:var(--t);
+    }
+
+    h1 {
+      font-family:'DM Serif Display', serif;
+      font-size:clamp(36px,5vw,56px);
+      line-height:1.1;
+      font-weight:400;
+      margin-bottom:18px;
+    }
+
+    h1 em {
+      color:var(--t);
+      font-style:italic;
+    }
+
+    .hero-sub {
+      font-size:17px;
+      font-weight:300;
+      line-height:1.75;
+      color:var(--mute);
+      max-width:660px;
+    }
+
+    .ticker {
+      overflow:hidden;
+      background:var(--t);
+      padding:12px 0;
+      white-space:nowrap;
+    }
+
+    .ticker-track {
+      display:inline-flex;
+      animation:tick 22s linear infinite;
+    }
+
+    .ticker-item {
+      font-size:11px;
+      font-weight:500;
+      letter-spacing:.18em;
+      color:#fff;
+      padding:0 32px;
+      text-transform:uppercase;
+    }
+
+    .ticker-item::after {
+      content:'·';
+      margin-left:32px;
+      opacity:.5;
+    }
+
+    @keyframes tick {
+      to { transform:translateX(-50%); }
+    }
+
+    .article-wrap {
+      max-width:860px;
+      margin:0 auto;
+      padding:60px 60px 100px;
+    }
+
+    .lead {
+      font-size:17px;
+      font-weight:300;
+      line-height:1.85;
+      color:var(--ink);
+      border-left:2px solid var(--t);
+      padding-left:20px;
+      margin-bottom:28px;
+    }
+
+    .lead strong {
+      font-weight:500;
+    }
+
+    .section-tag {
+      font-size:11px;
+      font-weight:500;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--t);
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-top:52px;
+      margin-bottom:24px;
+    }
+
+    .section-tag::before {
+      content:'';
+      width:28px;
+      height:1px;
+      background:var(--t);
+    }
+
+    .card {
+      border:1px solid var(--line);
+      border-radius:8px;
+      padding:28px;
+      background:var(--surf);
+      transition:.2s;
+    }
+
+    .card:hover {
+      border-color:var(--t);
+    }
+
+    .card p {
+      font-size:15px;
+      font-weight:300;
+      color:var(--mute);
+      line-height:1.82;
+      margin-bottom:14px;
+    }
+
+    .card p:last-child {
+      margin-bottom:0;
+    }
+
+    .card h3 {
+      font-family:'DM Serif Display', serif;
+      font-size:22px;
+      font-weight:400;
+      margin-bottom:8px;
+    }
+
+    .callout {
+      border:1px solid var(--line);
+      border-left:3px solid var(--t);
+      background:#fff;
+      padding:16px 20px;
+      border-radius:6px;
+      margin-bottom:20px;
+      font-size:15px;
+      font-weight:300;
+      color:var(--ink);
+      line-height:1.75;
+      font-style:italic;
+    }
+
+    .hl {
+      color:var(--t-dk);
+      font-weight:500;
+    }
+
+    .two-col {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .comparison-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+      gap:12px;
+    }
+
+    .item {
+      background:#fff;
+      border:1px solid var(--line);
+      border-left:3px solid var(--t);
+      border-radius:6px;
+      padding:18px;
+    }
+
+    .item strong {
+      display:block;
+      font-size:15px;
+      font-weight:500;
+      color:var(--ink);
+      margin-bottom:6px;
+    }
+
+    .item p {
+      font-size:13px;
+      font-weight:300;
+      color:var(--mute);
+      line-height:1.65;
+    }
+
+    .plain-list {
+      list-style:none;
+      display:grid;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .plain-list li {
+      position:relative;
+      padding-left:18px;
+      font-size:14px;
+      font-weight:300;
+      color:var(--mute);
+      line-height:1.65;
+    }
+
+    .plain-list li::before {
+      content:'';
+      position:absolute;
+      left:0;
+      top:.55em;
+      width:7px;
+      height:7px;
+      border-radius:2px;
+      background:var(--t);
+    }
+
+    footer {
+      background:#0c0c0c;
+      color:rgba(255,255,255,.45);
+      padding:60px;
+    }
+
+    .footer-inner {
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .footer-brand {
+      font-family:'DM Serif Display', serif;
+      font-size:22px;
+      color:var(--t);
+      display:block;
+      margin-bottom:10px;
+    }
+
+    .footer-tagline {
+      font-size:13px;
+      font-weight:300;
+      max-width:260px;
+    }
+
+    @media(max-width:900px) {
+      nav { padding:0 24px; }
+      .page-hero { padding:110px 24px 48px; }
+      .article-wrap { padding:48px 24px 80px; }
+      .two-col { grid-template-columns:1fr; }
+      footer { padding:48px 24px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Iryna Khandoniak</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mycv.html">Projects</a></li>
+      <li><a href="articles.html" class="active">Articles</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="page-hero">
+    <span class="hero-badge">Article · Technology & Innovation</span>
+    <h1>Robotics in Western Countries vs China —<br>who is <em>moving faster?</em></h1>
+    <p class="hero-sub">
+      Robotics is no longer a futuristic idea. It is already changing manufacturing, healthcare, logistics, retail, agriculture and everyday life.
+    </p>
+  </section>
+
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item">Robotics</span>
+      <span class="ticker-item">Automation</span>
+      <span class="ticker-item">China</span>
+      <span class="ticker-item">Western Innovation</span>
+      <span class="ticker-item">AI</span>
+      <span class="ticker-item">Industry 4.0</span>
+      <span class="ticker-item">Future of Work</span>
+
+      <span class="ticker-item">Robotics</span>
+      <span class="ticker-item">Automation</span>
+      <span class="ticker-item">China</span>
+      <span class="ticker-item">Western Innovation</span>
+      <span class="ticker-item">AI</span>
+      <span class="ticker-item">Industry 4.0</span>
+      <span class="ticker-item">Future of Work</span>
+    </div>
+  </div>
+
+  <main class="article-wrap">
+
+    <p class="lead">
+      Robotics has become one of the most important technologies shaping the future economy. 
+      It is not only about machines replacing people — it is about how countries use 
+      <strong>automation, artificial intelligence and engineering</strong> to become more competitive.
+    </p>
+
+    <p class="section-tag">Why robotics matters</p>
+    <div class="card">
+      <p class="callout">
+        “The robotics race is not just about machines. It is about productivity, innovation, national strategy and the future of work.”
+      </p>
+      <p>
+        Across the world, countries are investing in robotics to improve productivity, reduce costs, support ageing populations and create smarter industries.
+        Robots are now used in factories, hospitals, warehouses, restaurants, farms and even homes.
+      </p>
+      <p>
+        However, the way robotics develops in Western countries is different from the way it is growing in China.
+        The West is often stronger in <span class="hl">research, software, design and advanced innovation</span>,
+        while China is becoming extremely powerful in <span class="hl">speed, scale and industrial deployment</span>.
+      </p>
+    </div>
+
+    <p class="section-tag">Western countries</p>
+    <div class="card">
+      <h3>Strong innovation, slower scale</h3>
+      <p>
+        Western countries such as the United States, Germany and the United Kingdom have strong robotics ecosystems.
+        They have leading universities, advanced engineering companies, start-ups, research labs and private investment.
+      </p>
+      <p>
+        The United States is known for advanced robotics, artificial intelligence and autonomous technology.
+        Germany is a leader in industrial automation and smart manufacturing.
+        The UK has strong research in robotics, AI, healthcare technology and autonomous systems.
+      </p>
+      <p>
+        The main challenge for Western countries is that innovation can sometimes move slower because of regulation,
+        higher labour costs, fragmented policy and slower manufacturing scale.
+      </p>
+    </div>
+
+    <p class="section-tag">China</p>
+    <div class="card">
+      <h3>Fast growth, massive deployment</h3>
+      <p>
+        China has moved very quickly in robotics. It has made robotics a national priority and has invested heavily in automation,
+        manufacturing and artificial intelligence.
+      </p>
+      <p>
+        China’s biggest strength is scale. Because it has a huge manufacturing base, it can test, produce and deploy robotic systems very quickly.
+        This gives Chinese companies a strong advantage in areas such as factory automation, logistics robots and service robots.
+      </p>
+      <p>
+        China is not only trying to buy robots from other countries. It is also trying to build its own robotics industry and become less dependent on foreign technology.
+      </p>
+    </div>
+
+    <p class="section-tag">Key comparison</p>
+    <div class="comparison-grid">
+      <div class="item">
+        <strong>Innovation</strong>
+        <p>Western countries are strong in research, design, AI and advanced robotics concepts.</p>
+      </div>
+
+      <div class="item">
+        <strong>Scale</strong>
+        <p>China is stronger at producing and deploying robotics quickly across large industries.</p>
+      </div>
+
+      <div class="item">
+        <strong>Government support</strong>
+        <p>China has a more centralised national strategy, while the West relies more on private companies and universities.</p>
+      </div>
+
+      <div class="item">
+        <strong>Speed</strong>
+        <p>China often moves faster because policy, manufacturing and business goals are closely connected.</p>
+      </div>
+
+      <div class="item">
+        <strong>Regulation</strong>
+        <p>Western countries usually have more legal and ethical debate before introducing new technologies widely.</p>
+      </div>
+
+      <div class="item">
+        <strong>Future advantage</strong>
+        <p>The West may lead in breakthrough ideas, while China may lead in mass adoption and industrial power.</p>
+      </div>
+    </div>
+
+    <p class="section-tag">What the West can learn from China</p>
+    <div class="two-col">
+      <div class="card">
+        <h3>Move faster</h3>
+        <ul class="plain-list">
+          <li>Connect research more closely with industry.</li>
+          <li>Support robotics start-ups with stronger funding.</li>
+          <li>Invest in practical automation skills.</li>
+          <li>Build clearer long-term technology strategies.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Keep human values</h3>
+        <ul class="plain-list">
+          <li>Protect workers from being left behind.</li>
+          <li>Use robotics to support people, not only replace them.</li>
+          <li>Create ethical standards for AI and automation.</li>
+          <li>Balance innovation with responsibility.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="section-tag">My perspective</p>
+    <div class="card">
+      <p>
+        From a marketing and technology perspective, robotics is fascinating because it shows how innovation is not only about invention.
+        It is also about communication, adoption and trust.
+      </p>
+      <p>
+        A country or company can have amazing technology, but people still need to understand why it matters.
+        This is where storytelling, branding and strategy become important.
+      </p>
+      <p>
+        Robotics will influence how businesses communicate their value, how brands show innovation and how people prepare for future careers.
+      </p>
+    </div>
+
+    <div class="callout" style="margin-top:36px; font-style:normal;">
+      <strong>Takeaway:</strong> Western countries and China are both powerful in robotics, but in different ways.
+      The West leads through innovation and research, while China is becoming stronger through speed, scale and national focus.
+      The future of robotics will likely belong to those who can combine both: smart ideas and fast execution.
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-brand">Iryna Khandoniak</span>
+      <p class="footer-tagline">
+        Front-End Developer, Photographer and Digital Marketing student exploring technology, creativity and future careers.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
