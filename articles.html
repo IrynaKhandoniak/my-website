@@ -1,397 +1,803 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Articles — Iryna K</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="Articles and ideas by Iryna Khandoniak on technology, productivity, health and marketing." />
+  <title>Journal — Iryna K</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet"/>
 
-<style>
-  :root{
-    --t:#0abab5;--t-dk:#088a86;--t-bg:#e8faf9;--t-lt:#5de0db;
-    --ink:#111111;--mute:#6b7280;--bg:#ffffff;--surf:#f8fffe;
-    --line:#e5f7f6;--dark:#0c0c0c;--teal-deep:#064e4b;
-  }
+  <style>
+    :root{
+      --accent:#0abab5;
+      --accent-dark:#087f7b;
+      --accent-soft:#eaf8f7;
+      --ink:#111;
+      --muted:#676767;
+      --line:#e7ecea;
+      --surface:#f7f8f7;
+      --white:#fff;
+      --black:#0b0c0c;
+      --max:1180px;
+    }
 
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
-  a{text-decoration:none;color:inherit}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--white);
+      color:var(--ink);
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(var(--max),calc(100% - 48px));margin:0 auto}
+    .eyebrow{
+      color:var(--accent-dark);
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
 
-  nav{
-    position:fixed;top:0;left:0;right:0;z-index:200;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:0 60px;height:68px;
-    background:rgba(255,255,255,.92);backdrop-filter:blur(14px);
-    border-bottom:1px solid var(--line);
-  }
+    nav{
+      position:fixed;
+      inset:0 0 auto 0;
+      z-index:200;
+      height:72px;
+      background:rgba(255,255,255,.88);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(17,17,17,.06);
+    }
+    .nav-inner{
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .nav-logo{
+      font-family:'Inter Tight',sans-serif;
+      font-size:18px;
+      font-weight:600;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+    }
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap:32px;
+    }
+    .nav-links a{
+      font-size:11px;
+      font-weight:500;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+      color:#444;
+      transition:color .2s;
+    }
+    .nav-links a:hover,.nav-links a.active{color:var(--accent-dark)}
+    .status{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:var(--accent-dark);
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .status::before{
+      content:'';
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:var(--accent);
+    }
 
-  .nav-logo{font-family:'DM Serif Display',serif;font-size:19px;color:var(--t)}
-  .nav-links{display:flex;gap:36px;list-style:none}
-  .nav-links a{font-size:13px;color:var(--mute);letter-spacing:.04em;transition:color .2s}
-  .nav-links a:hover{color:var(--t)}
-  .nav-links a.active{color:var(--t);font-weight:500}
+    .hero{
+      padding:150px 0 88px;
+      border-bottom:1px solid var(--line);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:80px;
+      align-items:end;
+    }
+    .hero h1{
+      font-family:'Inter Tight',sans-serif;
+      font-size:clamp(64px,8vw,116px);
+      font-weight:500;
+      line-height:.93;
+      letter-spacing:-.06em;
+      margin-top:24px;
+      max-width:780px;
+    }
+    .hero h1 em{
+      font-family:Georgia,'Times New Roman',serif;
+      color:var(--accent-dark);
+      font-weight:400;
+    }
+    .hero-side p{
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.8;
+      max-width:450px;
+      margin-bottom:28px;
+    }
+    .hero-meta{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+      border-top:1px solid var(--line);
+      padding-top:24px;
+    }
+    .hero-meta strong{
+      display:block;
+      font-family:'Inter Tight',sans-serif;
+      font-size:30px;
+      letter-spacing:-.04em;
+      margin-bottom:5px;
+    }
+    .hero-meta span{
+      color:var(--muted);
+      font-size:9px;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+    }
 
-  .hero{padding:148px 60px 72px;max-width:1100px;margin:0 auto}
-  .eyebrow{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--t);display:flex;align-items:center;gap:10px;margin-bottom:24px}
-  .eyebrow::before{content:'';width:28px;height:1px;background:var(--t)}
-  .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(56px,8vw,96px);font-weight:400;line-height:1.0;max-width:800px}
-  .hero h1 em{font-style:italic;color:var(--t)}
-  .hero-sub{font-size:16px;font-weight:300;color:var(--mute);margin-top:20px;max-width:420px;line-height:1.7}
+    .ticker{
+      overflow:hidden;
+      background:var(--accent-dark);
+      padding:13px 0;
+      white-space:nowrap;
+    }
+    .ticker-track{
+      display:inline-flex;
+      animation:tick 23s linear infinite;
+    }
+    .ticker-item{
+      color:#fff;
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.17em;
+      text-transform:uppercase;
+      padding:0 32px;
+    }
+    .ticker-item::after{
+      content:'•';
+      margin-left:32px;
+      opacity:.45;
+    }
+    @keyframes tick{to{transform:translateX(-50%)}}
 
-  .ticker{overflow:hidden;background:var(--t);padding:11px 0;white-space:nowrap}
-  .ticker-track{display:inline-flex;animation:tick 22s linear infinite}
-  .ticker-item{font-size:11px;font-weight:500;letter-spacing:.18em;color:#fff;padding:0 28px}
-  .ticker-item::after{content:'·';margin-left:28px;opacity:.5}
-  @keyframes tick{to{transform:translateX(-50%)}}
+    .journal-wrap{padding:76px 0 110px}
+    .journal-top{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:30px;
+      margin-bottom:34px;
+    }
+    .journal-top h2{
+      font-family:'Inter Tight',sans-serif;
+      font-size:clamp(42px,5vw,70px);
+      font-weight:500;
+      line-height:1;
+      letter-spacing:-.05em;
+      margin-top:12px;
+    }
+    .journal-top p{
+      max-width:430px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+    }
 
-  .filter-wrap{max-width:1100px;margin:0 auto;padding:32px 60px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-  .filter-label{font-size:12px;color:var(--mute);letter-spacing:.1em;text-transform:uppercase;margin-right:8px}
-  .pill{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:.06em;padding:6px 18px;border-radius:100px;border:1px solid var(--line);background:transparent;color:var(--mute);cursor:pointer;transition:all .18s}
-  .pill:hover{border-color:var(--t);color:var(--t)}
-  .pill.on{background:var(--t);border-color:var(--t);color:#fff}
+    .filter-wrap{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+      padding:22px 0 34px;
+      border-top:1px solid var(--line);
+    }
+    .filter-label{
+      font-size:10px;
+      color:var(--muted);
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      margin-right:8px;
+    }
+    .pill{
+      font-family:'Inter',sans-serif;
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      padding:8px 14px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:#555;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+    .pill:hover{
+      border-color:var(--accent-dark);
+      color:var(--accent-dark);
+    }
+    .pill.on{
+      background:var(--accent-dark);
+      color:#fff;
+      border-color:var(--accent-dark);
+    }
 
-  .grid-outer{max-width:1100px;margin:36px auto 100px;padding:0 60px}
+    .featured{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:1px;
+      background:var(--line);
+      margin-bottom:1px;
+    }
+    .feature-card{
+      min-height:390px;
+      padding:46px;
+      display:flex;
+      flex-direction:column;
+      position:relative;
+      overflow:hidden;
+      background:#fff;
+      transition:.25s ease;
+    }
+    .feature-card.dark{
+      background:var(--black);
+      color:#fff;
+    }
+    .feature-card:hover{
+      transform:translateY(-4px);
+      z-index:2;
+    }
+    .article-tag{
+      color:var(--accent-dark);
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-bottom:24px;
+    }
+    .feature-card.dark .article-tag{color:var(--accent)}
+    .article-title{
+      font-family:'Inter Tight',sans-serif;
+      font-size:clamp(34px,4vw,56px);
+      line-height:1.02;
+      letter-spacing:-.045em;
+      font-weight:500;
+      max-width:580px;
+      margin-bottom:20px;
+    }
+    .feature-card.dark .article-title{color:#fff}
+    .article-excerpt{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.75;
+      max-width:560px;
+    }
+    .feature-card.dark .article-excerpt{color:rgba(255,255,255,.58)}
+    .article-foot{
+      margin-top:auto;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .feature-card.dark .article-foot{border-top-color:rgba(255,255,255,.12)}
+    .article-meta{
+      color:var(--muted);
+      font-size:11px;
+    }
+    .feature-card.dark .article-meta{color:rgba(255,255,255,.45)}
+    .arrow{
+      width:38px;
+      height:38px;
+      border:1px solid var(--line);
+      display:grid;
+      place-items:center;
+      color:var(--accent-dark);
+      transition:.2s ease;
+    }
+    .feature-card.dark .arrow{
+      border-color:rgba(255,255,255,.22);
+      color:#fff;
+    }
+    .feature-card:hover .arrow{
+      background:var(--accent-dark);
+      border-color:var(--accent-dark);
+      color:#fff;
+    }
+    .feature-card.dark:hover .arrow{
+      background:var(--accent);
+      border-color:var(--accent);
+      color:var(--black);
+    }
+    .article-number{
+      position:absolute;
+      right:20px;
+      bottom:-22px;
+      font-family:'Inter Tight',sans-serif;
+      font-size:140px;
+      line-height:1;
+      color:rgba(10,186,181,.06);
+      pointer-events:none;
+    }
+    .feature-card.dark .article-number{color:rgba(255,255,255,.05)}
+    .badge-new{
+      display:inline-block;
+      margin-left:8px;
+      padding:3px 8px;
+      border:1px solid currentColor;
+      font-size:8px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      vertical-align:middle;
+    }
 
-  .featured{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:20px}
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1px;
+      background:var(--line);
+    }
+    .card{
+      min-height:330px;
+      background:#fff;
+      padding:30px;
+      display:flex;
+      flex-direction:column;
+      position:relative;
+      overflow:hidden;
+      transition:.22s ease;
+    }
+    .card:hover{
+      background:var(--surface);
+      transform:translateY(-3px);
+      z-index:2;
+    }
+    .card .article-title{
+      font-size:28px;
+      margin-bottom:16px;
+    }
+    .card .article-excerpt{
+      font-size:13px;
+      line-height:1.7;
+    }
+    .card .article-number{
+      font-size:96px;
+      bottom:-16px;
+      right:4px;
+    }
 
-  .feat-l{padding:52px 48px;display:flex;flex-direction:column;gap:18px;background:var(--bg);transition:background .2s;position:relative;overflow:hidden}
-  .feat-l:hover{background:var(--surf)}
+    .empty{
+      display:none;
+      text-align:center;
+      padding:70px 20px;
+      color:var(--muted);
+      font-size:14px;
+    }
 
-  .feat-r{padding:52px 48px;display:flex;flex-direction:column;gap:18px;background:var(--teal-deep);transition:background .2s;position:relative;overflow:hidden}
-  .feat-r:hover{background:#053a38}
+    .photo-idea{
+      margin-top:70px;
+      background:var(--surface);
+      border:1px solid var(--line);
+      padding:46px;
+      display:grid;
+      grid-template-columns:.75fr 1.25fr;
+      gap:60px;
+    }
+    .photo-idea h3{
+      font-family:'Inter Tight',sans-serif;
+      font-size:40px;
+      line-height:1;
+      letter-spacing:-.04em;
+      font-weight:500;
+      margin:14px 0 18px;
+    }
+    .photo-idea p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.75;
+    }
+    .idea-list{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+    .idea-card{
+      background:#fff;
+      border:1px solid var(--line);
+      padding:24px;
+      min-height:190px;
+    }
+    .idea-card span{
+      display:block;
+      color:var(--accent-dark);
+      font-size:10px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-bottom:24px;
+    }
+    .idea-card h4{
+      font-family:'Inter Tight',sans-serif;
+      font-size:22px;
+      letter-spacing:-.03em;
+      font-weight:500;
+      margin-bottom:10px;
+    }
+    .idea-card p{
+      font-size:12px;
+      line-height:1.65;
+    }
 
-  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-  .card{background:var(--bg);padding:36px 30px;display:flex;flex-direction:column;gap:14px;transition:background .2s;position:relative;overflow:hidden}
-  .card:hover{background:var(--surf)}
+    .contact-strip{
+      background:var(--black);
+      color:#fff;
+      padding:58px 0;
+    }
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1.1fr 1fr auto;
+      gap:48px;
+      align-items:center;
+    }
+    .contact-grid h2{
+      font-family:'Inter Tight',sans-serif;
+      font-size:clamp(38px,4vw,60px);
+      line-height:1;
+      letter-spacing:-.05em;
+      font-weight:500;
+    }
+    .contact-grid h2 em{
+      font-family:Georgia,serif;
+      color:var(--accent);
+      font-weight:400;
+    }
+    .contact-grid p{
+      color:rgba(255,255,255,.58);
+      font-size:14px;
+      line-height:1.7;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:150px;
+      padding:13px 20px;
+      border:1px solid rgba(255,255,255,.55);
+      color:#fff;
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+    .btn:hover{
+      color:var(--accent);
+      border-color:var(--accent);
+    }
 
-  .c-tag{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--t);display:flex;align-items:center;gap:8px}
-  .c-tag::before{content:'';width:14px;height:1px;background:var(--t)}
+    footer{
+      background:var(--black);
+      color:rgba(255,255,255,.55);
+      padding:20px 0 30px;
+    }
+    .footer-inner{
+      border-top:1px solid rgba(255,255,255,.08);
+      padding-top:22px;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+      font-size:11px;
+    }
+    .footer-links{display:flex;gap:24px}
+    .footer-links a{
+      color:#fff;
+      font-size:10px;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
 
-  .c-title{font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;line-height:1.22;color:var(--ink)}
-  .feat-l .c-title{font-size:30px}
-  .feat-r .c-title{font-size:26px;color:#fff}
-
-  .c-excerpt{font-size:14px;font-weight:300;line-height:1.72;color:var(--mute)}
-  .feat-r .c-excerpt{color:rgba(255,255,255,.6)}
-
-  .c-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--line)}
-  .feat-r .c-foot{border-top-color:rgba(255,255,255,.15)}
-
-  .c-meta{font-size:12px;color:var(--mute);font-weight:300;letter-spacing:.03em}
-  .feat-r .c-meta{color:rgba(255,255,255,.45)}
-
-  .c-arrow{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--t);transition:all .18s;flex-shrink:0}
-  .card:hover .c-arrow,.feat-l:hover .c-arrow{background:var(--t);border-color:var(--t);color:#fff}
-  .feat-r .c-arrow{border-color:rgba(255,255,255,.25);color:#fff}
-  .feat-r:hover .c-arrow{background:var(--t);border-color:var(--t);color:#fff}
-
-  .c-ghost{font-family:'DM Serif Display',serif;font-size:110px;color:var(--t);opacity:.045;position:absolute;bottom:-18px;right:-8px;line-height:1;pointer-events:none}
-  .feat-r .c-ghost{color:#fff;opacity:.07}
-  .card .c-ghost{font-size:88px}
-
-  .badge-new{display:inline-block;font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border-radius:100px;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);margin-left:8px;vertical-align:middle}
-
-  .empty{text-align:center;padding:80px 20px;font-size:15px;color:var(--mute);font-weight:300;display:none}
-
-  footer{background:var(--dark);color:rgba(255,255,255,.38);padding:60px}
-  .f-inner{max-width:1100px;margin:0 auto}
-  .f-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px;gap:40px;flex-wrap:wrap}
-  .f-brand{font-family:'DM Serif Display',serif;font-size:22px;color:var(--t);display:block;margin-bottom:8px}
-  .f-tagline{font-size:13px;font-weight:300;line-height:1.6;max-width:220px}
-  .f-cols{display:flex;gap:60px}
-  .f-col-title{font-size:10px;letter-spacing:.2em;color:rgba(10,186,181,.55);text-transform:uppercase;margin-bottom:14px;display:block}
-  .f-col ul{list-style:none}
-  .f-col li{margin-bottom:10px}
-  .f-col a{font-size:14px;font-weight:300;color:rgba(255,255,255,.42);transition:color .2s}
-  .f-col a:hover{color:var(--t)}
-  .f-hr{border:none;border-top:1px solid rgba(255,255,255,.07);margin-bottom:22px}
-  .f-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-  .f-copy{font-size:12px}
-  .f-social{display:flex;gap:24px}
-  .f-social a{font-size:11px;letter-spacing:.14em;color:var(--t);font-weight:500;transition:opacity .2s}
-  .f-social a:hover{opacity:.6}
-
-  .fade-in{opacity:0;transform:translateY(18px);animation:fadeUp .5s forwards}
-  @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-
-  .feat-l,.feat-r{animation:fadeUp .55s forwards}
-  .feat-r{animation-delay:.08s}
-
-  .card:nth-child(1){animation:fadeUp .5s .05s forwards;opacity:0}
-  .card:nth-child(2){animation:fadeUp .5s .1s forwards;opacity:0}
-  .card:nth-child(3){animation:fadeUp .5s .15s forwards;opacity:0}
-  .card:nth-child(4){animation:fadeUp .5s .2s forwards;opacity:0}
-  .card:nth-child(5){animation:fadeUp .5s .25s forwards;opacity:0}
-  .card:nth-child(6){animation:fadeUp .5s .3s forwards;opacity:0}
-  .card:nth-child(7){animation:fadeUp .5s .35s forwards;opacity:0}
-  .card:nth-child(8){animation:fadeUp .5s .4s forwards;opacity:0}
-
-  @media(max-width:900px){
-    nav{padding:0 24px}
-    .hero{padding:110px 24px 56px}
-    .filter-wrap{padding:24px 24px 0}
-    .grid-outer{padding:28px 24px 80px}
-    .featured{grid-template-columns:1fr}
-    .f-top{flex-direction:column}
-    footer{padding:48px 24px}
-  }
-
-  @media(max-width:600px){
-    .cards{grid-template-columns:1fr}
-    .nav-links{gap:18px}
-  }
-</style>
+    @media(max-width:980px){
+      .status{display:none}
+      .hero-grid,.photo-idea,.contact-grid{grid-template-columns:1fr}
+      .featured{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr 1fr}
+      .idea-list{grid-template-columns:1fr}
+    }
+    @media(max-width:700px){
+      .container{width:min(100% - 28px,var(--max))}
+      nav{height:64px}
+      .nav-links{gap:14px}
+      .nav-links li:nth-child(2){display:none}
+      .hero{padding:120px 0 64px}
+      .hero h1{font-size:clamp(58px,18vw,88px)}
+      .journal-top{align-items:start;flex-direction:column}
+      .cards{grid-template-columns:1fr}
+      .feature-card{padding:30px;min-height:340px}
+      .photo-idea{padding:28px}
+    }
+  </style>
 </head>
 
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">Iryna Khandoniak</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#work">Work</a></li>
-    <li><a href="articles.html" class="active">Articles</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
-  </ul>
-</nav>
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">Iryna K.</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="articles.html" class="active">Journal</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="status">Available for projects</div>
+    </div>
+  </nav>
 
-<section class="hero fade-in">
-  <div class="eyebrow">Writing & ideas</div>
-  <h1>Things I think<br>about &amp; <em>write</em></h1>
-  <p class="hero-sub">Design, frontend, productivity, fitness, technology, and the occasional deep dive into whatever has my attention.</p>
-</section>
-
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span class="ticker-item">Marketing</span>
-    <span class="ticker-item">Robotics</span>
-    <span class="ticker-item">Automation</span>
-    <span class="ticker-item">Habits</span>
-    <span class="ticker-item">Emotional Intelligence</span>
-    <span class="ticker-item">Crypto</span>
-    <span class="ticker-item">Sport & Fitness</span>
-    <span class="ticker-item">Agentic AI</span>
-    <span class="ticker-item">Future Skills</span>
-    <span class="ticker-item">Pomodoro</span>
-    <span class="ticker-item">Deep Work</span>
-
-    <span class="ticker-item">Marketing</span>
-    <span class="ticker-item">Robotics</span>
-    <span class="ticker-item">Automation</span>
-    <span class="ticker-item">Habits</span>
-    <span class="ticker-item">Emotional Intelligence</span>
-    <span class="ticker-item">Crypto</span>
-    <span class="ticker-item">Sport & Fitness</span>
-    <span class="ticker-item">Agentic AI</span>
-    <span class="ticker-item">Future Skills</span>
-    <span class="ticker-item">Pomodoro</span>
-    <span class="ticker-item">Deep Work</span>
-  </div>
-</div>
-
-<div class="filter-wrap">
-  <span class="filter-label">Filter</span>
-  <button class="pill on" data-tag="all">All</button>
-  <button class="pill" data-tag="productivity">Productivity</button>
-  <button class="pill" data-tag="tech">Tech & AI</button>
-  <button class="pill" data-tag="health">Health</button>
-  <button class="pill" data-tag="finance">Finance</button>
-</div>
-
-<div class="grid-outer">
-
-  <div class="featured" id="featured">
-
-    <a class="feat-l" href="agenticai.html" data-tags="tech">
-      <div class="c-tag">Tech & AI</div>
-      <div class="c-title">Agentic AI &amp; the future of work</div>
-      <div class="c-excerpt">Agentic AI is changing how companies think about jobs, leadership, workflows, and organisational design. A deep look at what's coming.</div>
-      <div class="c-foot">
-        <div class="c-meta">April 2026 · 17 min read</div>
-        <div class="c-arrow">→</div>
-      </div>
-      <div class="c-ghost">01</div>
-    </a>
-
-    <a class="feat-r" href="robotics.html" data-tags="tech">
-      <div class="c-tag" style="color:var(--t-lt)">Tech & AI <span class="badge-new">New</span></div>
-      <div class="c-title">Robotics in Western Countries vs China</div>
-      <div class="c-excerpt">A deep dive into the global robotics race — comparing Western innovation, Chinese scale, automation strategy, and the future of intelligent machines.</div>
-      <div class="c-foot">
-        <div class="c-meta">May 2026 · 12 min read</div>
-        <div class="c-arrow">→</div>
-      </div>
-      <div class="c-ghost">02</div>
-    </a>
-
-  </div>
-
-  <div class="cards" id="cardGrid">
-
-    <a class="card" href="pomodoro.html" data-tags="productivity">
-      <div class="c-tag">Productivity</div>
-      <div class="c-title">The Pomodoro Technique &amp; how deep work actually gets done</div>
-      <div class="c-excerpt">One of the simplest productivity systems ever created — yet a powerful framework for focus, energy management, and sustainable performance.</div>
-      <div class="c-foot">
-        <div class="c-meta">May 2026 · 8 min</div>
-        <div class="c-arrow">→</div>
-      </div>
-      <div class="c-ghost">03</div>
-    </a>
-
-    <a class="card" href="future-skills.html" data-tags="tech productivity">
-      <div class="c-tag">Tech & AI</div>
-      <div class="c-title">Top 10 fastest-growing skills by 2030</div>
-      <div class="c-excerpt">The future of work is changing fast. Here are the skills that will matter most — and why you should start building them now.</div>
-      <div class="c-foot">
-        <div class="c-meta">April 2026 · 10 min</div>
-        <div class="c-arrow">→</div>
-      </div>
-      <div class="c-ghost">04</div>
-    </a>
-
-    <a class="card" href="zonesport.html" data-tags="health">
-      <div class="c-tag">Health</div>
-      <div class="c-title">Heart rate training zones</div>
-      <div class="c-excerpt">Zone class — are you working hard or hardly working? How to train with more purpose using heart rate data.</div>
-      <div class="c-foot">
-        <div class="c-meta">April 2026 · 15 min</div>
-        <div class="c-arrow">→</div>
-      </div>
-      <div class="c-ghost">05</div>
-    </a>
-
-    <a class="card" href="crypto.html" data-tags="finance">
-      <div class="c-tag">Finance</div>
-      <div class="c-title">Risk management &amp; crypto liquidations</div>
-      <div class="c-excerpt">Mistakes are experience — if you become aware of them. A breakdown of the October 2025 liquidation surge.</div>
-      <div class="c-foot">
-        <div class="c-meta">Oct 2025 · 8 min</div>
-        <div class="c-arrow">→</div>
-      </div>
-      <div class="c-ghost">06</div>
-    </a>
-
-    <a class="card" href="ie.html" data-tags="productivity">
-      <div class="c-tag">Productivity</div>
-      <div class="c-title">Emotional intelligence for makers</div>
-      <div class="c-excerpt">Notice, name, and navigate emotions to build better products and teams. The soft skill that's actually hard.</div>
-      <div class="c-foot">
-        <div class="c-meta">Sep 2025 · 6 min</div>
-        <div class="c-arrow">→</div>
-      </div>
-      <div class="c-ghost">07</div>
-    </a>
-
-    <a class="card" href="habits.html" data-tags="productivity health">
-      <div class="c-tag">Productivity</div>
-      <div class="c-title">Tiny habits, big wins</div>
-      <div class="c-excerpt">Start microscopic, attach to cues, and track streaks without guilt. The science behind lasting habit change.</div>
-      <div class="c-foot">
-        <div class="c-meta">Sep 2025 · 7 min</div>
-        <div class="c-arrow">→</div>
-      </div>
-      <div class="c-ghost">08</div>
-    </a>
-
-    <a class="card" href="marketing.html" data-tags="productivity">
-      <div class="c-tag">Productivity</div>
-      <div class="c-title">The simple marketing playbook</div>
-      <div class="c-excerpt">Positioning, messaging, and a weekly cadence that actually ships. No fluff, just what works.</div>
-      <div class="c-foot">
-        <div class="c-meta">Sep 2025 · 6 min</div>
-        <div class="c-arrow">→</div>
-      </div>
-      <div class="c-ghost">09</div>
-    </a>
-
-  </div>
-
-  <div class="empty" id="empty">No articles in this category yet.</div>
-
-</div>
-
-<footer>
-  <div class="f-inner">
-    <div class="f-top">
+  <header class="hero">
+    <div class="container hero-grid">
       <div>
-        <span class="f-brand">Iryna Khandoniak</span>
-        <p class="f-tagline">Front-End Developer & Photographer crafting beautiful digital experiences.</p>
+        <div class="eyebrow">Writing & ideas</div>
+        <h1>Things I think about and <em>write.</em></h1>
       </div>
 
-      <div class="f-cols">
-        <div class="f-col">
-          <span class="f-col-title">Contact</span>
-          <ul>
-            <li><a href="mailto:irr.enn.booking@gmail.com">irr.enn.booking@gmail.com</a></li>
-            <li><a href="https://t.me/irynakhandoniak" target="_blank" rel="noreferrer">t.me/irynakhandoniak</a></li>
-          </ul>
-        </div>
-
-        <div class="f-col">
-          <span class="f-col-title">Navigate</span>
-          <ul>
-            <li><a href="index.html#work">My Work</a></li>
-            <li><a href="articles.html">Articles</a></li>
-            <li><a href="leancanva.html">Lean Canvas</a></li>
-          </ul>
+      <div class="hero-side">
+        <p>
+          Notes and long-form thinking on technology, productivity, marketing,
+          health and the systems shaping modern work.
+        </p>
+        <div class="hero-meta">
+          <div><strong>9</strong><span>Published articles</span></div>
+          <div><strong>4</strong><span>Core topics</span></div>
         </div>
       </div>
     </div>
+  </header>
 
-    <hr class="f-hr"/>
-
-    <div class="f-bottom">
-      <span class="f-copy">© Iryna Khandoniak 2025</span>
-      <div class="f-social">
-        <a href="https://github.com/IrynaKhandoniak" target="_blank" rel="noreferrer">GH</a>
-        <a href="https://www.linkedin.com/in/irynakhandoniak/" target="_blank" rel="noreferrer">LN</a>
-        <a href="https://www.instagram.com/irakhnk" target="_blank" rel="noreferrer">IG</a>
-      </div>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">Marketing</span>
+      <span class="ticker-item">Robotics</span>
+      <span class="ticker-item">Automation</span>
+      <span class="ticker-item">Habits</span>
+      <span class="ticker-item">Emotional intelligence</span>
+      <span class="ticker-item">Crypto</span>
+      <span class="ticker-item">Sport & fitness</span>
+      <span class="ticker-item">Agentic AI</span>
+      <span class="ticker-item">Future skills</span>
+      <span class="ticker-item">Deep work</span>
+      <span class="ticker-item">Marketing</span>
+      <span class="ticker-item">Robotics</span>
+      <span class="ticker-item">Automation</span>
+      <span class="ticker-item">Habits</span>
+      <span class="ticker-item">Emotional intelligence</span>
+      <span class="ticker-item">Crypto</span>
+      <span class="ticker-item">Sport & fitness</span>
+      <span class="ticker-item">Agentic AI</span>
+      <span class="ticker-item">Future skills</span>
+      <span class="ticker-item">Deep work</span>
     </div>
   </div>
-</footer>
 
-<script>
-const pills = document.querySelectorAll('.pill');
-const cards = document.querySelectorAll('#cardGrid .card');
-const featLinks = document.querySelectorAll('.feat-l, .feat-r');
-const featured = document.getElementById('featured');
-const empty = document.getElementById('empty');
+  <main class="journal-wrap">
+    <div class="container">
+      <div class="journal-top">
+        <div>
+          <div class="eyebrow">Journal</div>
+          <h2>Latest thinking</h2>
+        </div>
+        <p>
+          A growing archive of practical ideas, research notes and personal observations.
+        </p>
+      </div>
 
-pills.forEach(btn => {
-  btn.addEventListener('click', () => {
-    pills.forEach(p => p.classList.remove('on'));
-    btn.classList.add('on');
+      <div class="filter-wrap">
+        <span class="filter-label">Filter</span>
+        <button class="pill on" data-tag="all">All</button>
+        <button class="pill" data-tag="productivity">Productivity</button>
+        <button class="pill" data-tag="tech">Tech & AI</button>
+        <button class="pill" data-tag="health">Health</button>
+        <button class="pill" data-tag="finance">Finance</button>
+      </div>
 
-    const tag = btn.dataset.tag;
-    let visibleCards = 0;
+      <section class="featured" id="featured">
+        <a class="feature-card" href="agenticai.html" data-tags="tech">
+          <div class="article-tag">Tech & AI</div>
+          <div class="article-title">Agentic AI & the future of work</div>
+          <div class="article-excerpt">
+            Agentic AI is changing how companies think about jobs, leadership,
+            workflows and organisational design.
+          </div>
+          <div class="article-foot">
+            <div class="article-meta">April 2026 · 17 min read</div>
+            <div class="arrow">→</div>
+          </div>
+          <div class="article-number">01</div>
+        </a>
 
-    cards.forEach(card => {
-      const tags = card.dataset.tags || '';
-      const show = tag === 'all' || tags.includes(tag);
-      card.style.display = show ? '' : 'none';
-      if(show) visibleCards++;
+        <a class="feature-card dark" href="robotics.html" data-tags="tech">
+          <div class="article-tag">Tech & AI <span class="badge-new">New</span></div>
+          <div class="article-title">Robotics in Western Countries vs China</div>
+          <div class="article-excerpt">
+            A deep dive into the global robotics race — Western innovation,
+            Chinese scale and the future of intelligent machines.
+          </div>
+          <div class="article-foot">
+            <div class="article-meta">May 2026 · 12 min read</div>
+            <div class="arrow">→</div>
+          </div>
+          <div class="article-number">02</div>
+        </a>
+      </section>
+
+      <section class="cards" id="cardGrid">
+        <a class="card" href="pomodoro.html" data-tags="productivity">
+          <div class="article-tag">Productivity</div>
+          <div class="article-title">The Pomodoro Technique & how deep work actually gets done</div>
+          <div class="article-excerpt">
+            A simple system for focus, energy management and sustainable performance.
+          </div>
+          <div class="article-foot">
+            <div class="article-meta">May 2026 · 8 min</div>
+            <div class="arrow">→</div>
+          </div>
+          <div class="article-number">03</div>
+        </a>
+
+        <a class="card" href="future-skills.html" data-tags="tech productivity">
+          <div class="article-tag">Tech & AI</div>
+          <div class="article-title">Top 10 fastest-growing skills by 2030</div>
+          <div class="article-excerpt">
+            The skills that will matter most as work changes — and why they deserve attention now.
+          </div>
+          <div class="article-foot">
+            <div class="article-meta">April 2026 · 10 min</div>
+            <div class="arrow">→</div>
+          </div>
+          <div class="article-number">04</div>
+        </a>
+
+        <a class="card" href="zonesport.html" data-tags="health">
+          <div class="article-tag">Health</div>
+          <div class="article-title">Heart rate training zones</div>
+          <div class="article-excerpt">
+            How to train with more intention by understanding what your heart-rate data means.
+          </div>
+          <div class="article-foot">
+            <div class="article-meta">April 2026 · 15 min</div>
+            <div class="arrow">→</div>
+          </div>
+          <div class="article-number">05</div>
+        </a>
+
+        <a class="card" href="crypto.html" data-tags="finance">
+          <div class="article-tag">Finance</div>
+          <div class="article-title">Risk management & crypto liquidations</div>
+          <div class="article-excerpt">
+            A breakdown of the October 2025 liquidation surge and the lessons behind it.
+          </div>
+          <div class="article-foot">
+            <div class="article-meta">Oct 2025 · 8 min</div>
+            <div class="arrow">→</div>
+          </div>
+          <div class="article-number">06</div>
+        </a>
+
+        <a class="card" href="ie.html" data-tags="productivity">
+          <div class="article-tag">Productivity</div>
+          <div class="article-title">Emotional intelligence for makers</div>
+          <div class="article-excerpt">
+            Notice, name and navigate emotions to build better products and teams.
+          </div>
+          <div class="article-foot">
+            <div class="article-meta">Sep 2025 · 6 min</div>
+            <div class="arrow">→</div>
+          </div>
+          <div class="article-number">07</div>
+        </a>
+
+        <a class="card" href="habits.html" data-tags="productivity health">
+          <div class="article-tag">Productivity</div>
+          <div class="article-title">Tiny habits, big wins</div>
+          <div class="article-excerpt">
+            The science behind small behaviour changes that become lasting routines.
+          </div>
+          <div class="article-foot">
+            <div class="article-meta">Sep 2025 · 7 min</div>
+            <div class="arrow">→</div>
+          </div>
+          <div class="article-number">08</div>
+        </a>
+
+        <a class="card" href="marketing.html" data-tags="productivity">
+          <div class="article-tag">Marketing</div>
+          <div class="article-title">The simple marketing playbook</div>
+          <div class="article-excerpt">
+            Positioning, messaging and a weekly rhythm that helps ideas actually ship.
+          </div>
+          <div class="article-foot">
+            <div class="article-meta">Sep 2025 · 6 min</div>
+            <div class="arrow">→</div>
+          </div>
+          <div class="article-number">09</div>
+        </a>
+      </section>
+
+      <div class="empty" id="empty">No articles in this category yet.</div>
+
+      
+
+  <section class="contact-strip">
+    <div class="container contact-grid">
+      <h2>Have an idea worth <em>exploring?</em></h2>
+      <p>
+        I'm always interested in thoughtful conversations, collaborations and new projects.
+      </p>
+      <a class="btn" href="mailto:irr.enn.booking@gmail.com">Start a conversation →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© Iryna Khandoniak 2026</span>
+      <div class="footer-links">
+        <a href="https://github.com/IrynaKhandoniak" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/irynakhandoniak/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://www.instagram.com/irakhnk" target="_blank" rel="noreferrer">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const pills = document.querySelectorAll('.pill');
+    const cards = document.querySelectorAll('#cardGrid .card');
+    const featLinks = document.querySelectorAll('.feature-card');
+    const featured = document.getElementById('featured');
+    const empty = document.getElementById('empty');
+
+    pills.forEach(btn => {
+      btn.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('on'));
+        btn.classList.add('on');
+
+        const tag = btn.dataset.tag;
+        let visibleCards = 0;
+
+        cards.forEach(card => {
+          const tags = card.dataset.tags || '';
+          const show = tag === 'all' || tags.includes(tag);
+          card.style.display = show ? '' : 'none';
+          if(show) visibleCards++;
+        });
+
+        let featVisible = 0;
+
+        featLinks.forEach(link => {
+          const tags = link.dataset.tags || '';
+          const show = tag === 'all' || tags.includes(tag);
+          link.style.display = show ? '' : 'none';
+          if(show) featVisible++;
+        });
+
+        featured.style.display = featVisible === 0 ? 'none' : '';
+        empty.style.display = (visibleCards === 0 && featVisible === 0) ? 'block' : 'none';
+      });
     });
-
-    let featVisible = 0;
-
-    featLinks.forEach(link => {
-      const tags = link.dataset.tags || '';
-      const show = tag === 'all' || tags.includes(tag);
-      link.style.display = show ? '' : 'none';
-      if(show) featVisible++;
-    });
-
-    featured.style.display = featVisible === 0 ? 'none' : '';
-    empty.style.display = (visibleCards === 0 && featVisible === 0) ? 'block' : 'none';
-  });
-});
-</script>
+  </script>
 
 </body>
 </html>
