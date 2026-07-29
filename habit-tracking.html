@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Why tracking your habits changes everything and how small daily actions create lasting change." />
+  <title>Why Tracking Your Habits Changes Everything — Iryna K</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --t:    #0abab5;
+      --t-dk: #088a86;
+      --t-bg: #e8faf9;
+      --ink:  #111111;
+      --mute: #6b7280;
+      --bg:   #ffffff;
+      --surf: #f8fffe;
+      --line: rgba(10,186,181,.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 60px; height: 68px;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e5f7f6;
+    }
+    .nav-logo { font-family: 'Inter Tight', sans-serif; font-size: 19px; color: var(--t); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--mute); letter-spacing: .04em; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--t); }
+
+    /* ── PAGE HERO ── */
+    .page-hero { padding: 130px 60px 56px; max-width: 860px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--t-bg); color: var(--t-dk);
+      font-size: 12px; font-weight: 500; letter-spacing: .08em;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 24px;
+    }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--t); }
+    h1 {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.1; font-weight: 400; color: var(--ink); margin-bottom: 18px;
+    }
+    h1 em { font-style: italic; color: var(--t); }
+    .hero-sub { font-size: 17px; font-weight: 300; line-height: 1.75; color: var(--mute); max-width: 640px; }
+
+    /* ── TICKER ── */
+    .ticker { overflow: hidden; background: var(--t); padding: 12px 0; white-space: nowrap; }
+    .ticker-track { display: inline-flex; animation: tick 22s linear infinite; }
+    .ticker-item { font-size: 11px; font-weight: 500; letter-spacing: .18em; color: #fff; padding: 0 32px; }
+    .ticker-item::after { content: '·'; margin-left: 32px; opacity: .5; }
+    @keyframes tick { to { transform: translateX(-50%); } }
+
+    /* ── ARTICLE BODY ── */
+    .article-wrap { max-width: 860px; margin: 0 auto; padding: 60px 60px 100px; }
+
+    .lead {
+      font-size: 17px; font-weight: 300; line-height: 1.85;
+      color: var(--ink); margin-bottom: 28px;
+      border-left: 2px solid var(--t); padding-left: 20px;
+    }
+    .lead strong { font-weight: 500; }
+
+    .section-tag {
+      font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--t); display: flex; align-items: center; gap: 10px;
+      margin-bottom: 24px; margin-top: 52px;
+    }
+    .section-tag::before { content: ''; width: 28px; height: 1px; background: var(--t); }
+
+    /* callout/quote */
+    .callout {
+      border: 1px solid var(--line); border-left: 3px solid var(--t);
+      background: var(--surf); padding: 16px 20px; border-radius: 6px;
+      margin-bottom: 20px; font-size: 15px; font-weight: 300;
+      color: var(--ink); line-height: 1.75; font-style: italic;
+    }
+    .callout strong { font-style: normal; color: var(--t-dk); font-weight: 500; }
+
+    /* body card */
+    .card {
+      border: 1px solid var(--line); border-radius: 8px;
+      padding: 28px 28px 24px; background: var(--surf);
+      margin: 0; transition: border-color .2s;
+    }
+    .card:hover { border-color: var(--t); }
+    .card p {
+      font-size: 15px; font-weight: 300; color: var(--mute);
+      line-height: 1.82; margin-bottom: 14px;
+    }
+    .card p:last-child { margin-bottom: 0; }
+    .card p strong { color: var(--ink); font-weight: 500; }
+
+    .sep { height: 1px; background: var(--line); margin: 16px 0; }
+
+    .card h3 {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 20px; font-weight: 400; color: var(--ink); margin-bottom: 6px;
+    }
+    .card-sub { font-size: 13px; font-weight: 300; color: var(--mute); margin-bottom: 14px; letter-spacing: .04em; }
+
+    /* two col */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    /* plain list */
+    .plain-list { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 8px; }
+    .plain-list li {
+      position: relative; padding-left: 18px;
+      font-size: 14px; font-weight: 300; color: var(--mute); line-height: 1.65;
+    }
+    .plain-list li::before {
+      content: ''; position: absolute; left: 0; top: .55em;
+      width: 7px; height: 7px; border-radius: 2px; background: var(--t);
+    }
+
+    /* highlight inline */
+    .hl { color: var(--t-dk); font-weight: 500; }
+
+    /* ── SKILLS GRID ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px; margin-top: 4px;
+    }
+    .skill-item {
+      padding: 18px 18px 16px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--t);
+      border-radius: 6px;
+      transition: border-color .2s, transform .2s;
+    }
+    .skill-item:hover { border-color: var(--t); transform: translateY(-2px); }
+    .skill-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 50%;
+      background: var(--t-bg); color: var(--t-dk);
+      font-size: 13px; font-weight: 500; margin-bottom: 10px;
+    }
+    .skill-item strong { display: block; font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+    .skill-item p { font-size: 13px; font-weight: 300; color: var(--mute); line-height: 1.65; margin: 0; }
+
+    /* share */
+    .share-panel {
+      margin-top: 48px; border: 1px solid var(--line);
+      border-radius: 8px; padding: 20px 24px; background: var(--surf);
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    }
+    .share-title { font-size: 13px; font-weight: 500; color: var(--mute); letter-spacing: .08em; text-transform: uppercase; margin-right: 4px; }
+    .share-btn {
+      display: inline-flex; align-items: center;
+      padding: 10px 18px; border-radius: 4px;
+      border: 1.5px solid var(--line); background: var(--bg);
+      font-family: 'Inter', sans-serif; font-size: 12px;
+      font-weight: 500; letter-spacing: .06em; color: var(--mute);
+      cursor: pointer; transition: border-color .2s, color .2s; text-decoration: none;
+    }
+    .share-btn:hover { border-color: var(--t); color: var(--t); }
+    .share-feedback { font-size: 13px; color: var(--t); }
+
+    /* ── FOOTER ── */
+    footer { background: #0c0c0c; color: rgba(255,255,255,.4); padding: 60px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; gap: 40px; flex-wrap: wrap; }
+    .footer-brand { font-family: 'Inter Tight', sans-serif; font-size: 22px; color: var(--t); display: block; margin-bottom: 10px; }
+    .footer-tagline { font-size: 13px; font-weight: 300; line-height: 1.6; max-width: 240px; }
+    .footer-cols { display: flex; gap: 60px; }
+    .footer-col-title { font-size: 10px; letter-spacing: .2em; color: rgba(10,186,181,.6); text-transform: uppercase; margin-bottom: 16px; display: block; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: 14px; font-weight: 300; color: rgba(255,255,255,.45); transition: color .2s; }
+    .footer-col a:hover { color: var(--t); }
+    .footer-hr { border: none; border-top: 1px solid rgba(255,255,255,.07); margin-bottom: 24px; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .footer-copy { font-size: 12px; }
+    .footer-social { display: flex; gap: 24px; }
+    .footer-social a { font-size: 11px; letter-spacing: .14em; color: var(--t); font-weight: 500; transition: opacity .2s; }
+    .footer-social a:hover { opacity: .65; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .page-hero { padding: 110px 24px 48px; }
+      .article-wrap { padding: 48px 24px 80px; }
+      .two-col { grid-template-columns: 1fr; }
+      footer { padding: 48px 24px; }
+      .footer-top { flex-direction: column; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { gap: 18px; }
+      .footer-cols { gap: 32px; }
+    }
+  
+    /* ===== PREMIUM EDITORIAL REDESIGN ===== */
+    :root{
+      --t:#0abab5;
+      --t-dk:#087f7b;
+      --t-bg:#eaf8f7;
+      --ink:#111;
+      --mute:#676767;
+      --bg:#fff;
+      --surf:#f7f8f7;
+      --line:#e7ecea;
+      --black:#0b0c0c;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      line-height:1.72;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    #prog{
+      position:fixed;
+      top:72px;
+      left:0;
+      width:0;
+      height:2px;
+      background:var(--t);
+      z-index:999;
+    }
+
+    nav{
+      height:72px;
+      padding:0;
+      background:rgba(255,255,255,.9);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(17,17,17,.06);
+    }
+
+    .nav-inner{
+      width:min(1180px,calc(100% - 48px));
+      height:100%;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .nav-logo{
+      font-family:'Inter Tight',sans-serif;
+      font-size:18px;
+      font-weight:600;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:var(--ink);
+    }
+
+    .nav-links a{
+      font-size:11px;
+      font-weight:500;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+      color:#444;
+    }
+
+    .status{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:var(--t-dk);
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .status::before{
+      content:'';
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:var(--t);
+    }
+
+    .page-hero{
+      max-width:1180px;
+      padding:154px 60px 88px;
+    }
+
+    .hero-badge{
+      background:transparent;
+      padding:0;
+      border-radius:0;
+      color:var(--t-dk);
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      font-family:'Inter Tight',sans-serif;
+      font-size:clamp(64px,8vw,108px);
+      line-height:.92;
+      letter-spacing:-.06em;
+      font-weight:500;
+      max-width:980px;
+    }
+
+    h1 em{
+      font-family:Georgia,'Times New Roman',serif;
+      font-weight:400;
+      color:var(--t-dk);
+    }
+
+    .hero-sub{
+      max-width:760px;
+      font-size:17px;
+      line-height:1.8;
+      color:var(--mute);
+    }
+
+    .ticker{
+      background:var(--t-dk);
+      padding:13px 0;
+    }
+
+    .ticker-item{
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.17em;
+      text-transform:uppercase;
+    }
+
+    .article-shell{
+      display:grid;
+      grid-template-columns:220px minmax(0,760px);
+      gap:70px;
+      max-width:1080px;
+      margin:0 auto;
+      padding:80px 24px 110px;
+      align-items:start;
+    }
+
+    .toc{
+      position:sticky;
+      top:110px;
+      border-top:1px solid var(--line);
+      padding-top:18px;
+    }
+
+    .toc-title{
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      color:var(--mute);
+      margin-bottom:14px;
+    }
+
+    .toc a{
+      display:block;
+      padding:8px 0;
+      color:#666;
+      font-size:12px;
+      line-height:1.45;
+      border-bottom:1px solid rgba(17,17,17,.05);
+    }
+
+    .toc a:hover{color:var(--t-dk)}
+
+    .article-wrap{
+      max-width:none;
+      margin:0;
+      padding:0;
+    }
+
+    .lead{
+      border-left:0;
+      padding-left:0;
+      font-size:21px;
+      line-height:1.75;
+      color:#222;
+      margin-bottom:38px;
+    }
+
+    .section-tag{
+      margin:64px 0 24px;
+      color:var(--t-dk);
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .callout{
+      background:var(--black);
+      color:#fff;
+      border:0;
+      border-left:3px solid var(--t);
+      border-radius:0;
+      padding:24px 26px;
+      font-style:normal;
+    }
+
+    .callout strong{color:var(--t)}
+
+    .card{
+      border-radius:0;
+      background:#fff;
+      border:1px solid var(--line);
+      padding:32px;
+    }
+
+    .card h3{
+      font-family:'Inter Tight',sans-serif;
+      font-size:30px;
+      letter-spacing:-.04em;
+      font-weight:500;
+    }
+
+    .skills-grid{
+      grid-template-columns:1fr;
+      gap:1px;
+      background:var(--line);
+    }
+
+    .skill-item{
+      display:grid;
+      grid-template-columns:70px 1fr;
+      gap:24px;
+      align-items:start;
+      border:0;
+      border-radius:0;
+      padding:28px;
+      background:#fff;
+    }
+
+    .skill-item:hover{
+      transform:none;
+      background:var(--surf);
+    }
+
+    .skill-num{
+      width:auto;
+      height:auto;
+      border-radius:0;
+      background:transparent;
+      font-family:'Inter Tight',sans-serif;
+      font-size:34px;
+      color:var(--t-dk);
+      justify-content:flex-start;
+      margin:0;
+    }
+
+    .skill-item strong{
+      font-family:'Inter Tight',sans-serif;
+      font-size:28px;
+      letter-spacing:-.035em;
+      line-height:1.05;
+      font-weight:500;
+      margin-bottom:8px;
+    }
+
+    .skill-item p{
+      font-size:14px;
+      line-height:1.75;
+    }
+
+    .two-col{
+      gap:1px;
+      background:var(--line);
+    }
+
+    .share-panel{
+      border-radius:0;
+      background:var(--surf);
+      border:1px solid var(--line);
+    }
+
+    .share-btn{
+      border-radius:0;
+      font-family:'Inter',sans-serif;
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    .contact-strip{
+      background:var(--black);
+      color:#fff;
+      padding:58px 0;
+    }
+
+    .contact-inner{
+      width:min(1180px,calc(100% - 48px));
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1.1fr 1fr auto;
+      gap:48px;
+      align-items:center;
+    }
+
+    .contact-inner h2{
+      font-family:'Inter Tight',sans-serif;
+      font-size:clamp(38px,4vw,60px);
+      line-height:1;
+      letter-spacing:-.05em;
+      font-weight:500;
+    }
+
+    .contact-inner h2 em{
+      font-family:Georgia,serif;
+      color:var(--t);
+      font-weight:400;
+    }
+
+    .contact-inner p{
+      color:rgba(255,255,255,.58);
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    .journal-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:150px;
+      padding:13px 20px;
+      border:1px solid rgba(255,255,255,.55);
+      color:#fff;
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+    }
+
+    footer{
+      background:var(--black);
+      padding:20px 0 30px;
+    }
+
+    footer .footer-inner{
+      width:min(1180px,calc(100% - 48px));
+      border-top:1px solid rgba(255,255,255,.08);
+      padding-top:22px;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+      font-size:11px;
+    }
+
+    .footer-social{
+      display:flex;
+      gap:24px;
+    }
+
+    .footer-social a{
+      color:#fff;
+      font-size:10px;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    @media(max-width:980px){
+      .status{display:none}
+      .article-shell{grid-template-columns:1fr}
+      .toc{position:static}
+      .contact-inner{grid-template-columns:1fr}
+    }
+
+    @media(max-width:700px){
+      #prog{top:64px}
+      nav{height:64px}
+      .nav-inner{width:min(100% - 28px,1180px)}
+      .nav-links{gap:14px}
+      .nav-links li:nth-child(2){display:none}
+      .page-hero{padding:122px 24px 64px}
+      h1{font-size:clamp(56px,18vw,86px)}
+      .skill-item{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+      .contact-inner{width:min(100% - 28px,1180px)}
+    }
+
+
+    /* Corrected editorial skills layout */
+    .skills-grid{display:block!important;background:transparent!important;margin-top:10px}
+    .skill-item{
+      display:grid!important;
+      grid-template-columns:72px minmax(220px,300px) minmax(0,1fr)!important;
+      column-gap:36px!important;
+      align-items:start!important;
+      width:100%!important;
+      min-height:0!important;
+      padding:32px 0!important;
+      border:0!important;
+      border-top:1px solid var(--line)!important;
+      border-radius:0!important;
+      background:#fff!important;
+    }
+    .skill-item:last-child{border-bottom:1px solid var(--line)!important}
+    .skill-item:hover{transform:none!important;background:var(--surf)!important}
+    .skill-num{
+      display:block!important;width:auto!important;height:auto!important;margin:0!important;padding:0!important;
+      background:transparent!important;border-radius:0!important;text-align:left!important;
+      font-family:'Inter Tight',sans-serif!important;font-size:28px!important;line-height:1!important;
+      font-weight:500!important;color:var(--t-dk)!important;
+    }
+    .skill-item strong{
+      display:block!important;margin:0!important;font-family:'Inter Tight',sans-serif!important;
+      font-size:30px!important;line-height:1.05!important;letter-spacing:-.04em!important;font-weight:500!important;
+    }
+    .skill-item p{
+      max-width:560px!important;margin:0!important;font-size:14px!important;line-height:1.75!important;color:var(--mute)!important;
+    }
+    
+
+    @media(max-width:900px){
+      .skill-item{
+        grid-template-columns:52px minmax(190px,260px) minmax(0,1fr)!important;
+        column-gap:24px!important;
+      }
+      .skill-item strong{font-size:25px!important}
+    }
+
+    @media(max-width:700px){
+      .skill-item{
+        grid-template-columns:44px 1fr!important;
+        column-gap:16px!important;
+        row-gap:10px!important;
+        padding:26px 0!important;
+      }
+      .skill-item p{
+        grid-column:2!important;
+        max-width:none!important;
+      }
+      .skill-num{font-size:23px!important}
+      .skill-item strong{font-size:24px!important}
+    }
+
+</style>
+</head>
+<body>
+  <div id="prog"></div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Iryna K.</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="articles.html" class="active">Journal</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="status">Available for projects</div>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <span class="hero-badge">Article · Productivity & Self-Development</span>
+    <h1>Why tracking your habits<br><em>changes everything</em></h1>
+    <p class="hero-sub">Small actions, repeated consistently, shape extraordinary results. Habit tracking helps turn intention into awareness, discipline and lasting personal change.</p>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">Daily Habits</span>
+      <span class="ticker-item">1% Better</span>
+      <span class="ticker-item">Consistency</span>
+      <span class="ticker-item">Self-Awareness</span>
+      <span class="ticker-item">Progress</span>
+      <span class="ticker-item">Identity</span>
+      <span class="ticker-item">Discipline</span>
+      <span class="ticker-item">Personal Growth</span>
+      <span class="ticker-item">Daily Habits</span>
+      <span class="ticker-item">1% Better</span>
+      <span class="ticker-item">Consistency</span>
+      <span class="ticker-item">Self-Awareness</span>
+      <span class="ticker-item">Progress</span>
+      <span class="ticker-item">Identity</span>
+      <span class="ticker-item">Discipline</span>
+      <span class="ticker-item">Personal Growth</span>
+    </div>
+  </div>
+
+  <main class="article-shell">
+    <aside class="toc">
+      <div class="toc-title">In this article</div>
+      <a href="#why-matters">Why habits matter</a>
+      <a href="#consistency">Consistency over motivation</a>
+      <a href="#one-percent">The 1% principle</a>
+      <a href="#tracking">Why tracking works</a>
+      <a href="#identity">Habits and identity</a>
+      <a href="#progress">Progress, not perfection</a>
+      <a href="#bigger-picture">The bigger picture</a>
+    </aside>
+
+    <article class="article-wrap">
+      <p class="lead">Goals can point us in the right direction, but our repeated actions determine where we eventually arrive. The habits we practise every day quietly shape our health, confidence, skills and identity.</p>
+
+      <p class="section-tag" id="why-matters">Why habits matter</p>
+      <div class="card">
+        <p class="callout">“We often overestimate what we can change in a week and underestimate what consistent effort can create in a year.”</p>
+        <p>Most people begin with a goal: getting fitter, learning a language, improving their career or becoming more organised. Goals are useful because they provide direction, but they do not create results on their own.</p>
+        <p>Results come from the actions repeated after the excitement of setting the goal has disappeared. Every workout, healthy meal, focused study session and difficult task completed is a small investment in the person you are becoming.</p>
+        <p>The challenge is rarely knowing what to do. The challenge is doing it consistently enough for the action to become part of your life.</p>
+      </div>
+
+      <p class="section-tag" id="consistency">Consistency over motivation</p>
+      <div class="two-col">
+        <div class="card">
+          <h3>Motivation changes</h3>
+          <p class="card-sub">Energy and enthusiasm are never equally available every day.</p>
+          <div class="sep"></div>
+          <p>Some mornings you will feel focused and capable. On others, you may feel tired, distracted or overwhelmed. If progress depends entirely on motivation, results will naturally become inconsistent.</p>
+        </div>
+        <div class="card">
+          <h3>Systems remain</h3>
+          <p class="card-sub">A routine makes action easier when motivation is low.</p>
+          <div class="sep"></div>
+          <p>Habits reduce the number of decisions you need to make. Instead of asking whether you feel like exercising, studying or working, you follow the routine you have already chosen.</p>
+        </div>
+      </div>
+
+      <p class="section-tag" id="one-percent">The power of becoming 1% better</p>
+      <div class="card">
+        <h3>Small improvements compound</h3>
+        <div class="sep"></div>
+        <p>One of the most useful ideas in personal development is to focus on becoming just <span class="hl">1% better each day</span>.</p>
+        <p>One extra page, one healthier meal, one short workout, one new word or one difficult conversation may seem insignificant in isolation. But lasting success is rarely created by one extraordinary day.</p>
+        <p>It is created by ordinary actions repeated often enough to build momentum. Like compound interest, small improvements accumulate. Over time, they can produce a result that feels much larger than the effort required on any single day.</p>
+        <p class="callout"><strong>The principle:</strong> do not ask whether one small action will transform your life today. Ask where that action could take you if you repeat it for a year.</p>
+      </div>
+
+      <p class="section-tag" id="tracking">Why tracking works</p>
+      <div class="card">
+        <h3>Tracking turns intention into evidence</h3>
+        <div class="sep"></div>
+        <p>Habit tracking is not about creating a perfect streak. It is about creating awareness. When habits are recorded, they become visible and measurable. You stop relying on memory and begin seeing your actual behaviour.</p>
+        <ul class="plain-list">
+          <li>It keeps you accountable to yourself.</li>
+          <li>It reveals patterns in your energy and behaviour.</li>
+          <li>It makes small wins visible before major results arrive.</li>
+          <li>It helps you focus on the process rather than only the outcome.</li>
+          <li>It gives you a clear place to restart after a difficult day.</li>
+        </ul>
+      </div>
+
+      <p class="section-tag" id="identity">Habits shape identity</p>
+      <div class="card">
+        <p class="callout">“Every completed habit is a vote for the person you want to become.”</p>
+        <p>Every run supports the identity of being a runner. Every page read supports the identity of being a reader. Every healthy meal reinforces the identity of someone who values their wellbeing.</p>
+        <p>Instead of only asking, <span class="hl">“What do I want to achieve?”</span>, it can be more powerful to ask, <span class="hl">“Who do I want to become?”</span></p>
+        <p>Your daily actions answer that question long before the final result appears.</p>
+      </div>
+
+      <p class="section-tag" id="progress">Progress, not perfection</p>
+      <div class="card">
+        <h3>Falling off track is normal</h3>
+        <div class="sep"></div>
+        <p>You will get tired, travel, become busy, lose motivation or simply have a difficult week. You may miss a workout, skip a journal entry or abandon a routine for several days.</p>
+        <p>That does not erase the progress you have already made. Missing one day is part of life. Giving up completely is a separate decision.</p>
+        <p>The people who make lasting progress are not those who never lose momentum. They are the people who repeatedly find their way back.</p>
+        <p class="callout"><strong>A useful rule:</strong> do not wait until Monday, next month or the perfect moment. Return with the next decision you make.</p>
+      </div>
+
+      <p class="section-tag" id="bigger-picture">The bigger picture</p>
+      <div class="card">
+        <p>Building better habits is not about becoming perfect. It is about becoming more intentional.</p>
+        <p>There will be days when your routine flows naturally and days when life gets in the way. That is not failure. It is part of the process.</p>
+        <p>What matters is not how many times you fall off track, but how many times you decide to return. A single 1% improvement may appear insignificant, but over weeks, months and years, small actions compound into something remarkable.</p>
+        <p>One run can become a healthier lifestyle. One page can become a book. One lesson can become a new skill. One positive decision can gradually become a new way of living.</p>
+        <p>Your tracker is not there to judge you. It is there to guide you, make progress visible and remind you that every small step counts.</p>
+      </div>
+
+      <div class="callout" style="margin-top:36px;font-style:normal;">
+        <strong>Takeaway:</strong> lasting change does not come from doing something extraordinary once. It comes from choosing ordinary actions repeatedly, until they become part of who you are.
+      </div>
+
+      <div class="share-panel">
+        <span class="share-title">Share</span>
+        <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://irynakhandoniak.com/habit-tracking.html" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="share-btn" href="https://twitter.com/intent/tweet?text=Why%20Tracking%20Your%20Habits%20Changes%20Everything&url=https://irynakhandoniak.com/habit-tracking.html" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+        <button id="copyBtn" class="share-btn" type="button">Copy Link</button>
+        <span class="share-feedback" id="shareFeedback" aria-live="polite"></span>
+      </div>
+    </article>
+  </main>
+
+  <section class="contact-strip">
+    <div class="contact-inner">
+      <h2>Small choices create <em>lasting change.</em></h2>
+      <p>Explore more writing on productivity, health, technology and modern work.</p>
+      <a class="journal-btn" href="articles.html">Back to journal →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© Iryna Khandoniak 2026</span>
+      <div class="footer-social">
+        <a href="https://github.com/IrynaKhandoniak" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/irynakhandoniak/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="mailto:irr.enn.booking@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const prog = document.getElementById('prog');
+    const feedback = document.getElementById('shareFeedback');
+
+    window.addEventListener('scroll', () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      prog.style.width = (max > 0 ? (doc.scrollTop / max) * 100 : 0) + '%';
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        feedback.textContent = 'Link copied!';
+        setTimeout(() => feedback.textContent = '', 2500);
+      } catch {
+        feedback.textContent = 'Could not copy.';
+      }
+    });
+  </script>
+</body>
+</html>
